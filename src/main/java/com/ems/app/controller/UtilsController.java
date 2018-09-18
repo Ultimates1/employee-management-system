@@ -1,5 +1,7 @@
 package com.ems.app.controller;
 
+import java.io.FileOutputStream;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ems.app.utils.EmailSendingUtil;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfWriter;
 
 @RestController
 public class UtilsController {
@@ -28,4 +34,21 @@ public class UtilsController {
 		}
 	}
 
+	@RequestMapping(value="/ems/utils/pdfgenerator", method=RequestMethod.GET)
+	String pdfGenerator() {
+		try {
+			final String PATH= "hello_narrow.pdf";
+			Rectangle pagesize = new Rectangle(216f, 720f);
+			Document document = new Document(pagesize, 36f, 72f, 108f, 180f);
+			PdfWriter.getInstance(document, new FileOutputStream(PATH));
+			document.open();
+			document.add(new Paragraph(
+					"Testing of pdf generator\nNew line on pdf"));
+			document.close();
+			return "Document Generated!";
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			return "Error in generating document: "+ex;
+		}
+	}
 }
