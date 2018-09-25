@@ -1,7 +1,7 @@
 # employee-management-system
 This repo is for Employee Management System (as a part of CS5800 course project)
 
-Steps to setup project:
+## Steps to setup project
 
 1. Download git for your laptop/desktop
 https://git-scm.com/downloads
@@ -30,3 +30,7 @@ https://www.eclipse.org/downloads/packages/release/photon/r/eclipse-ide-java-ee-
 	2. Verify the running process in your web browser by the following URLs:
     http://localhost:8080/
 		http://localhost:8080/ems/access/statuscheck
+
+## Notes
+
+- Developers, please read this before beginning development: [Coding Standars](https://github.com/Ultimates1/employee-management-system/wiki/Coding-Standards)
