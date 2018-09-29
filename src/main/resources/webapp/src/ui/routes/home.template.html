@@ -1,0 +1,11 @@
+<div id="home" ng-controller="HomeController" ng-init="htmlLoaded()" ng-show="ready()">
+	<label>Update password</label>
+	<input type="text" id="user" ng-model="user">
+	<input type="text" id="old_password" ng-model="oldPass">
+	<input type="text" id="new_password" ng-model="newPass">
+	<button ng-click="updatePassword()">Update</button>
+	<br>
+	<label>Success: {{response.success}}</label>
+	<br>
+	<label>Message: {{response.message}}</label>
+</div>
