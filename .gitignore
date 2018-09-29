@@ -24,3 +24,9 @@
 *.zip
 *.tar.gz
 *.rar
+
+# Front-end files
+.DS_Store
+package-lock.json
+node_modules/
+static/
