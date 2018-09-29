@@ -12,6 +12,10 @@ import java.util.Map;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.HashMap;
+import java.util.Map;
+
+
 @RestController
 public class AccessController {
 
@@ -24,18 +28,25 @@ public class AccessController {
 	}
 
 	@RequestMapping(value="/ems/access/updatepassword/{user}", method=RequestMethod.GET)
-	String updatePassword(
+	Map<String, Object> updatePassword(
 			@PathVariable("user") String user,
 			@RequestParam("oldpass") String oldPass,
 			@RequestParam("newpass") String newPass) {
+		Map <String, Object> response = new HashMap<String, Object>();
 		if (!user.equals(username)) {
-			return "<center><h1><font color=#28B463>Unrecognized user " + user + "</font></h1></center>";
+			response.put("success", false);
+			response.put("message", "Unrecognized user: " + user);
+			return response;
 		}
 		if (!oldPass.equals(password)) {
-			return "<center><h1><font color=#28B463>Unrecognized password " + oldPass + "</font></h1></center>";
+			response.put("success", false);
+			response.put("message", "Unrecognized password: " + oldPass);
+			return response;
 		}
 		password = newPass;
-		return "<center><h1><font color=#28B463>Password has been changed to " + password + "</font></h1></center>";
+		response.put("success", true);
+		response.put("message", "Password has been changed to: " + password);
+		return response;
 	}
 
 	@RequestMapping(value="/ems/access/login", method=RequestMethod.GET)
