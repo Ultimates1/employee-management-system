@@ -40,6 +40,7 @@
 	"dependencies": {
 		"angular": "^1.7.4",
 		"angular-route": "^1.7.4",
-		"babel-polyfill": "latest"
+		"babel-polyfill": "latest",
+		"jquery": "^3.3.1"
 	}
 }
