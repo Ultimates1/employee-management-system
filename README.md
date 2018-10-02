@@ -35,7 +35,7 @@ https://www.eclipse.org/downloads/packages/release/photon/r/eclipse-ide-java-ee-
 	1. Install NodeJS and NPM for your system: https://www.npmjs.com/get-npm
 		1. [Mac instructions](https://blog.teamtreehouse.com/install-node-js-npm-mac)
 		2. [Windows instructions](https://blog.teamtreehouse.com/install-node-js-npm-windows)
-	2. In terminal or command prompt, run `npm install` to install packages defined in `package.json`. These are packages needed for this project.
+	2. In terminal or command prompt, `cd src/main/resources/webapp` and `npm install` to install packages defined in `package.json`. These are packages needed for this project.
 	3. In terminal or command prompt, run this command to build to `src/main/resources/static/`: `npm run build`
 	4. If you want to add a package, see [instructions](https://docs.npmjs.com/cli/install)
 
