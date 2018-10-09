@@ -41,6 +41,10 @@ https://www.eclipse.org/downloads/packages/release/photon/r/eclipse-ide-java-ee-
 
 9. Running the UI locally
 	1. After installing front-end packages, with the server running in step 7, the URL http://localhost:8080/ should now display a simple UI that executes the same as  http://localhost:8080/abc/?oldpass=123&newpass=your_new_password after filling in inputs and click Update button.
+	
+10. Database setup (PostgreSQL)
+	1. Download PostgreSQL, and install it as per instruction given by software provider.
+	2. Run `postgreSQL_restart.bat` to start database server and admin page (Dashboard).
 
 ## Notes
 
