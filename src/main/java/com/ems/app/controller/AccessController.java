@@ -50,9 +50,13 @@ public class AccessController {
 	}
 
 	@RequestMapping(value="/ems/access/login", method=RequestMethod.GET)
-	String login(@RequestParam("user") String user,
+		
+		Map <String, Object> login(@RequestParam("user") String user,
 			@RequestParam("password") String password) {
-
+		
+		Map <String, Object> response = new HashMap<String, Object>();
+		
+		
 		Map loginMap = new HashMap<String, String>();
 		loginMap.put("rafi", "abc");
 		loginMap.put("bhargav", "xyz");
@@ -61,9 +65,13 @@ public class AccessController {
 
 		if(null != user && loginMap.containsKey(user)) {
 			if(loginMap.get(user).equals(password)) {
-				return "Login Successfully";
+				response.put("success", true);
+				response.put("message", "Login Successfully");
+				return response;
 			}
 		}
-		return "User id or password is wrong";
+		response.put("success", false);
+		response.put("message", "User id or password is wrong");
+		return response;
 	}
 }

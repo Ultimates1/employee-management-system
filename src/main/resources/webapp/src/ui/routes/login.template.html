@@ -1,0 +1,13 @@
+<!--making and linking setup for a login page
+<Mi set up the password reset (home page), my job is to make the login page -->
+    <div id="login" ng-controller="LoginController" ng-init="htmlLoaded()" ng-show="ready()">
+        <h1>Welcome</h1>
+        Username:<input type="text" id="user" ng-model="user">
+        Password:<input type="text" id="password" ng-model="Pass">
+        <button ng-click="login()">Login</button>
+        <br>
+        <label>Success: {{response.success}}</label>
+        <br>
+        <label>Message: {{response.message}}</label>
+        <br>
+    </div>

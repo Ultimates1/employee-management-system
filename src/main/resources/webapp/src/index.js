@@ -6,4 +6,5 @@ import '../assets/css/layout.css';
 import './ui/app.module';
 import './ui/app.config';
 import './ui/routes/home.controller';
+import './ui/routes/login.controller';
 import './ui/app.controller';

@@ -1,17 +1,16 @@
 import $ from 'jquery';
 var angular = require('angular');
-
 //-------------------------
-// Home controller
+// Login controller
 //-------------------------
 angular
     .module('ems')
-    .controller('HomeController', [
+    .controller('LoginController', [
         '$scope',
         '$http',
         function ($scope, $http) {
             $scope.htmlReady = false;
-            $scope.user, $scope.oldPass, $scope.newPass, $scope.response;
+            $scope.user, $scope.Pass;
 
             $scope.ready = function () {
                 return $scope.htmlReady;
@@ -22,20 +21,14 @@ angular
                 $scope.htmlReady = true;
             };
 
-            $scope.updatePassword = function () {
-                
-                $http.get("ems/access/updatepassword/" + $scope.user + "?oldpass=" + $scope.oldPass + "&newpass=" + $scope.newPass)
+            $scope.login = function () {
+                //?user= :=signify to http that 
+                $http.get("/ems/access/login/?user=" + $scope.user + "&password=" + $scope.Pass)
                     .then(function success(response) {
                         $scope.response = response.data;
                     }, function error(err) {
                         $scope.response = err;
                     });
             };
-
-            $(document).ready(function () {
-                $('#alert').click(function () {
-                    alert('Hello');
-                });
-            });
         }
     ]);
