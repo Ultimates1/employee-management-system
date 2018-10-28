@@ -1,0 +1,19 @@
+<div id="forgot" ng-controller="ForgotController" ng-init="htmlLoaded()" ng-show="ready()">
+	<label>Forgot Username?</label>
+	<label>Enter your email to retrieve your username.</label>
+	<input type="text" id="email" placeholder="example@mail.com" ng-model="email">
+	<label id="emailError" class="error">Sorry, we can't find this email in our records.</label>
+	<button ng-click="retrieveID()">RETRIEVE</button>
+	<button ng-click="back()">BACK</button>
+	<hr>
+	<label>Forgot Password?</label>
+	<label>Enter your username or email to reset your password.</label>
+	<input type="text" id="user" placeholder="username or example@mail.com" ng-model="user">
+	<label id="userError" class="error">Sorry, we can't find this username or email in our records.</label>
+	<button ng-click="resetPassword()">RESET</button>
+	<button ng-click="back()">BACK</button>
+	<br>
+	<label>Success: {{response.success}}</label>
+	<br>
+	<label>Message: {{response.message}}</label>
+</div>
