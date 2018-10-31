@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ems.app.bean.EmailNotificationBean;
+import com.ems.app.service.EmailNotificationService;
 import com.ems.app.utils.EmailSendingUtil;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
@@ -21,12 +23,21 @@ public class UtilsController {
 	@Autowired
 	private JavaMailSender sender;
 
+	@Autowired
+	EmailNotificationService emailNotificationService;
+
 	@RequestMapping(value="/ems/utils/sendemail", method=RequestMethod.GET)
-	String sendEmail(@RequestParam("to") String [] sendTo,
+	String sendEmail(@RequestParam("to") String sendTo,
 			@RequestParam("subject") String emailSubject,
 			@RequestParam("body") String emailBody) {
 		try {
-			new EmailSendingUtil().sendEmail(sender, sendTo, emailSubject, emailBody);
+			EmailNotificationBean emailNotificationBean = new EmailNotificationBean();
+			emailNotificationBean.setEmailTo(sendTo);
+			emailNotificationBean.setEmailCc("NA");
+			emailNotificationBean.setEmailFrom("The Ultimates");
+			emailNotificationBean.setEmailBody(emailBody);
+			emailNotificationBean.setEmailSubject(emailSubject);
+			new EmailSendingUtil().sendEmail(sender, emailNotificationService, emailNotificationBean);
 			return "Email Sent!";
 		}catch(Exception ex) {
 			ex.printStackTrace();
