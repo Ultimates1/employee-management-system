@@ -11,8 +11,8 @@ angular
 		'$http',
 		function ($scope, $location, $http) {
 			$scope.htmlReady = false;
-			$scope.email = '';
-			$scope.user = '';
+			$scope.newPass = '';
+			$scope.oldPass = '';
 
 			$scope.ready = function () {
 				return $scope.htmlReady;
@@ -23,11 +23,11 @@ angular
 				$scope.htmlReady = true;
 			};
 
-			$scope.retrieveID = function () {
+			$scope.forgotID = function () {
 				if (!$scope.email) {
 					return;
 				}
-				$http.get('ems/access/retrieveid/?email=' + $scope.email)
+				$http.get('ems/access/forgotid/?email=' + $scope.email)
 					.then(function success(response) {
 						$scope.response = response.data;
 						angular.element('#emailError').css('visibility', 'hidden');
@@ -37,11 +37,11 @@ angular
 					});
 			};
 
-			$scope.resetPassword = function () {
+			$scope.forgotPassword = function () {
 				if (!$scope.user) {
 					return;
 				}
-				$http.get('ems/access/resetpassword/?user=' + $scope.user)
+				$http.get('ems/access/forgotpassword/?user=' + $scope.user)
 					.then(function success(response) {
 						$scope.response = response.data;
 						angular.element('#userError').css('visibility', 'hidden');
