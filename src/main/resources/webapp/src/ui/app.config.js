@@ -18,7 +18,15 @@ angular
 					templateUrl: 'src/ui/routes/login.template.html',
 					controller: 'LoginController'
 				})
-				
+				.when('/forgot', {
+					templateUrl: 'src/ui/routes/forgot.template.html',
+					controller: 'ForgotController'
+				})
+				.when('/reset/:user', {
+					templateUrl: 'src/ui/routes/reset.template.html',
+					controller: 'ResetController'
+				})
+
 				.otherwise('/');
 		}
 	]);
