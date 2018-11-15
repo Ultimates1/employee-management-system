@@ -24,8 +24,8 @@ public class EmailNotificationBean implements Serializable {
 
 	@Id
 	@Column(name="notification_id")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "NOTIFICATION_ID_SEQ")
-	@SequenceGenerator(name = "NOTIFICATION_ID_SEQ", sequenceName = "NOTIFICATION_ID_SEQ")
+	@GeneratedValue(strategy=GenerationType.IDENTITY, generator = "NOTIFICATION_ID_SEQ")
+	@SequenceGenerator(name = "NOTIFICATION_ID_SEQ", sequenceName = "NOTIFICATION_ID_SEQ", allocationSize = 1)
 	private Long notificationId;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -53,6 +53,9 @@ public class EmailNotificationBean implements Serializable {
 
 	@Column(name="attachment_path")
 	private String attachmentPath;
+	
+	@Column(name="send_flag")
+	private String sendFlag;
 
 	@Column(name="status")
 	private String status;
@@ -130,6 +133,14 @@ public class EmailNotificationBean implements Serializable {
 
 	public void setAttachmentPath(String attachmentPath) {
 		this.attachmentPath = attachmentPath;
+	}
+
+	public String getSendFlag() {
+		return sendFlag;
+	}
+
+	public void setSendFlag(String sendFlag) {
+		this.sendFlag = sendFlag;
 	}
 
 	public String getStatus() {

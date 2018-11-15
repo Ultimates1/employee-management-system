@@ -1,16 +1,15 @@
 package com.ems.app.controller;
 
 import java.io.FileOutputStream;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ems.app.bean.EmailNotificationBean;
-import com.ems.app.service.EmailNotificationService;
 import com.ems.app.utils.EmailSendingUtil;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
@@ -21,23 +20,22 @@ import com.itextpdf.text.pdf.PdfWriter;
 public class UtilsController {
 
 	@Autowired
-	private JavaMailSender sender;
-
-	@Autowired
-	EmailNotificationService emailNotificationService;
-
+	EmailSendingUtil emailSendingUtil;
+	
 	@RequestMapping(value="/ems/utils/sendemail", method=RequestMethod.GET)
 	String sendEmail(@RequestParam("to") String sendTo,
 			@RequestParam("subject") String emailSubject,
 			@RequestParam("body") String emailBody) {
 		try {
 			EmailNotificationBean emailNotificationBean = new EmailNotificationBean();
+			emailNotificationBean.setCreateDate(new Date());
 			emailNotificationBean.setEmailTo(sendTo);
-			emailNotificationBean.setEmailCc("NA");
-			emailNotificationBean.setEmailFrom("The Ultimates");
+			//emailNotificationBean.setEmailCc("NA");
+			//emailNotificationBean.setEmailFrom("The Ultimates");
 			emailNotificationBean.setEmailBody(emailBody);
 			emailNotificationBean.setEmailSubject(emailSubject);
-			new EmailSendingUtil().sendEmail(sender, emailNotificationService, emailNotificationBean);
+			emailNotificationBean.setSendFlag("P");
+			emailSendingUtil.addEmailNotification(emailNotificationBean);
 			return "Email Sent!";
 		}catch(Exception ex) {
 			ex.printStackTrace();

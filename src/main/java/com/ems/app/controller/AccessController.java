@@ -1,19 +1,17 @@
 package com.ems.app.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ems.app.utils.EmailSendingUtil;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.ems.app.exception.UserAccessException;
+import com.ems.app.utils.EmployeeAccessUtil;
 
 
 @RestController
@@ -22,6 +20,9 @@ public class AccessController {
 	private String username = "abc";
 	private String password = "123";
 
+	@Autowired
+	EmployeeAccessUtil employeeAccessUtil;
+	
 	@RequestMapping(value="/ems/access/statuscheck", method=RequestMethod.GET)
 	String statusCheck() {
 		return "<center><h1><font color=#28B463>OK: System is running</font></h1></center>";
@@ -46,6 +47,20 @@ public class AccessController {
 		password = newPass;
 		response.put("success", true);
 		response.put("message", "Password has been changed to: " + password);
+		return response;
+	}
+	
+	@RequestMapping(value="/ems/access/resetpasswordrequest/{user}", method=RequestMethod.GET)
+	String resetPasswordRequest(
+			@PathVariable("user") String userId) {
+		String response = new String();
+		try {
+			employeeAccessUtil.resetPaswordEntry(userId.trim());
+			response = "Please check your email for password reset instruction";
+		} catch (UserAccessException e) {
+			response = e.getMessage();
+			e.printStackTrace();
+		}
 		return response;
 	}
 

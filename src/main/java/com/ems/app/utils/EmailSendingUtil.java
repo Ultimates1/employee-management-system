@@ -1,41 +1,25 @@
 package com.ems.app.utils;
 
-import java.util.Date;
-
-import javax.mail.internet.MimeMessage;
-
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ems.app.bean.EmailNotificationBean;
 import com.ems.app.exception.EmailNotificationSendException;
 import com.ems.app.service.EmailNotificationService;
 
+@Service
 public class EmailSendingUtil {
 
-	public void sendEmail(JavaMailSender sender, EmailNotificationService emailNotificationService, EmailNotificationBean emailNotificationBean) throws EmailNotificationSendException{
+	@Autowired
+	EmailNotificationService emailNotificationService;
+	
+	public void addEmailNotification(EmailNotificationBean emailNotificationBean) throws EmailNotificationSendException{
 		try {
-			MimeMessage message = sender.createMimeMessage();
-			MimeMessageHelper helper = new MimeMessageHelper(message);
-
-			helper.setTo(emailNotificationBean.getEmailTo());
-			//helper.setCc(emailNotificationBean.getEmailCc());
-			helper.setSubject(emailNotificationBean.getEmailSubject());
-			helper.setText(emailNotificationBean.getEmailBody());
-			emailNotificationBean.setCreateDate(new Date());
-			sender.send(message);
-			emailNotificationBean.setStatus("SUCCESS");
+			emailNotificationService.addEmailNotification(emailNotificationBean);
 		} catch(Exception ex) {
-			emailNotificationBean.setStatus("ERROR");
-			emailNotificationBean.setInfo(ex.getMessage());			
+			System.out.println("Error while inserting to EMS_EMAIL_NOTIFICATION");
+			ex.printStackTrace();
 			throw new EmailNotificationSendException(ex.getMessage());
-		} finally {
-			try {
-				emailNotificationService.addEmailNotification(emailNotificationBean);
-			} catch (Exception e) {
-				System.out.println("Error while inserting to EMS_EMAIL_NOTIFICATION");
-				e.printStackTrace();
-			}
-		}
+		} 
 	}
 }
