@@ -1,0 +1,15 @@
+<div id="reset" ng-controller="ResetController" ng-init="htmlLoaded()" ng-show="ready()">
+	<label>Reset Password</label>
+	<label>Hint: Strong password should be 8 or more characters, with
+		upper and lower case characters, numbers, and symbols like
+		! ? $ % ^ &. Don't use passwords that are commonly used or too
+		similar to your other personal information.</label>
+	<input type="password" id="newPass" placeholder="New password" ng-model="newPass">
+	<input type="password" id="confirmPass" placeholder="Confirm new password" ng-model="confirmPass">
+	<label id="resetError" class="error">Password entries don't match.</label>
+	<button ng-click="resetPassword()">RESET</button>
+	<br>
+	<label>Success: {{response.success}}</label>
+	<br>
+	<label>Message: {{response.message}}</label>
+</div>
