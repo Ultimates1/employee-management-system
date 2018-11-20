@@ -34,10 +34,14 @@ angular
 						Access.setLoginStatus(response.data.success);
 						Access.setAccessContent(response.data.message || {});
 						if (response.data.success) {
+							angular.element('#loginError').css('visibility', 'hidden');
 							$rootScope.goTo('home');
 						}
+						angular.element('#loginError').css('visibility', 'visible');
 					}, function error(response) {
 						Access.setLoginStatus(response.data.success);
+						Access.setAccessContent({});
+						angular.element('#loginError').css('visibility', 'visible');
 					});
 			};
 		}
