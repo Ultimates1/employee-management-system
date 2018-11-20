@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +23,7 @@ public class AccessController {
 
 	@Autowired
 	EmployeeAccessUtil employeeAccessUtil;
-	
+
 	@RequestMapping(value="/ems/access/statuscheck", method=RequestMethod.GET)
 	String statusCheck() {
 		return "<center><h1><font color=#28B463>OK: System is running</font></h1></center>";
@@ -49,7 +50,7 @@ public class AccessController {
 		response.put("message", "Password has been changed to: " + password);
 		return response;
 	}
-	
+
 	@RequestMapping(value="/ems/access/resetpasswordrequest/{user}", method=RequestMethod.GET)
 	String resetPasswordRequest(
 			@PathVariable("user") String userId) {
@@ -64,22 +65,21 @@ public class AccessController {
 		return response;
 	}
 
-	@RequestMapping(value="/ems/access/login", method=RequestMethod.GET)
-		
-		Map <String, Object> login(@RequestParam("user") String user,
-			@RequestParam("password") String password) {
-		
+	@RequestMapping(value="/ems/access/login", method=RequestMethod.POST)
+
+		Map <String, Object> login(@RequestBody Map <String, Object> requestBody) {
+
 		Map <String, Object> response = new HashMap<String, Object>();
-		
-		
+
+
 		Map loginMap = new HashMap<String, String>();
 		loginMap.put("rafi", "abc");
 		loginMap.put("bhargav", "xyz");
 		loginMap.put("mi", "abc");
 		loginMap.put("darsh", "abc");
 
-		if(null != user && loginMap.containsKey(user)) {
-			if(loginMap.get(user).equals(password)) {
+		if(null != requestBody.get("user") && loginMap.containsKey(requestBody.get("user"))) {
+			if(loginMap.get(requestBody.get("user")).equals(requestBody.get("password"))) {
 				response.put("success", true);
 				response.put("message", "Login Successfully");
 				return response;
