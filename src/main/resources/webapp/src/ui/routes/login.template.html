@@ -4,5 +4,7 @@
         <h1>Welcome</h1>
         Username:<input type="text" id="user" ng-model="user">
         Password:<input type="text" id="password" ng-model="pass">
+        <label id="loginError" class="error">The username or password you entered is incorrect.</label>
         <button ng-click="login()">Login</button>
+        <label ng-click="goTo('forgot')">Forgot ID/password?</label>
     </div>
