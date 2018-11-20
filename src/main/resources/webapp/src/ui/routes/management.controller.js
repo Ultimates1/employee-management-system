@@ -4,7 +4,7 @@ require('../data/access.service.js');
 
 angular
 	.module('ems')
-	.controller('HomeController', [
+	.controller('ManagementController', [
 		'$rootScope',
 		'$scope',
 		'Access',

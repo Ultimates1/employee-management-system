@@ -1,22 +1,20 @@
 var angular = require('angular');
 
-//----------------
-// Application controller
-//----------------
 angular
 	.module('ems')
 	.controller('ApplicationController', [
+		'$rootScope',
 		'$scope',
 		'$window',
 		'$location',
-		function ($scope, $window, $location) {
+		function ($rootScope, $scope, $window, $location) {
 			$scope.htmlReady = false;
 
 			// On resize
 			angular.element($window).bind('resize', function () {
 				var width = parseInt($window.innerWidth / 6);
 				// Ensure we can divide by 2
-				if (width % 2 != 0) {
+				if (width % 2 !== 0) {
 					width += 1;
 				}
 			});
@@ -30,9 +28,38 @@ angular
 				return $scope.htmlReady;
 			};
 
-			// Home
-			$scope.enterHome = function () {
-				$location.path('/');
+			$rootScope.goTo = function (page) {
+				switch (page) {
+					case 'home':
+						$location.path('/');
+						break;
+					case 'login':
+						$location.path('/login');
+						break;
+					case 'profile':
+						$location.path('/profile');
+						break;
+					case 'timekeeping':
+						$location.path('/timekeeping');
+						break;
+					case 'leaverequest':
+						$location.path('/leaverequest');
+						break;
+					case 'documents':
+						$location.path('/documents');
+						break;
+					case 'management':
+						$location.path('/management');
+						break;
+					case 'budget':
+						$location.path('/budget');
+						break;
+					case 'evaluation':
+						$location.path('/evaluation');
+						break;
+					default:
+						$location.path('/');
+				}
 			};
 		}
 	]);

@@ -6,11 +6,11 @@ var angular = require('angular');
 angular
 	.module('ems')
 	.controller('ResetController', [
+		'$rootScope',
 		'$scope',
 		'$routeParams',
-		'$location',
 		'$http',
-		function ($scope, $routeParams, $location, $http) {
+		function ($rootScope, $scope, $routeParams, $http) {
 			$scope.htmlReady = false;
 			$scope.user = $routeParams.user;
 			$scope.newPass = '';
@@ -32,7 +32,6 @@ angular
 
 				if ($scope.newPass !== $scope.confirmPass) {
 					angular.element('#resetError').css('visibility', 'visible');
-					return;
 				} else {
 					angular.element('#resetError').css('visibility', 'hidden');
 				}
@@ -42,7 +41,7 @@ angular
 				// - 1 Upper and 1 lower
 				// - 1 Number
 				// - 1 Symbol
-			}
+			};
 
 			$scope.resetPassword = function () {
 				if (!$scope.validatePassword()) {
@@ -52,7 +51,7 @@ angular
 				$http.get('ems/access/resetpassword/?user=' + $scope.user + '&newpass=' + $scope.newPass)
 					.then(function success(response) {
 						$scope.response = response.data;
-						$location.path('/login');
+						$rootScope.goTo('login');
 					}, function error(err) {
 						$scope.response = err;
 					});

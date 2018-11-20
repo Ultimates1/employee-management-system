@@ -1,13 +1,9 @@
 <div id="home" ng-controller="HomeController" ng-init="htmlLoaded()" ng-show="ready()">
-	<label>Update password</label>
-	<input type="text" id="user" ng-model="user">
-	<input type="text" id="old_password" ng-model="oldPass">
-	<input type="text" id="new_password" ng-model="newPass">
-	<button ng-click="updatePassword()">Update</button>
-	<br>
-	<label>Success: {{response.success}}</label>
-	<br>
-	<label>Message: {{response.message}}</label>
-	<br>
-	<button id="alert">Alert</button>
+	<button ng-click="goTo('profile')">Profile</button>
+	<button ng-click="goTo('timekeeping')">Timekeeping</button>
+	<button ng-click="goTo('leaverequest')">Leave Request</button>
+	<button ng-click="goTo('documents')">Documents</button>
+	<button ng-click="goTo('management')" ng-show="accessContent.functions.indexOf('management') !== -1">Management</button>
+	<button ng-click="goTo('budget')" ng-show="accessContent.functions.indexOf('budget') !== -1">Budget</button>
+	<button ng-click="goTo('evaluation')" ng-show="accessContent.functions.indexOf('evaluation') !== -1">Evaluation</button>
 </div>

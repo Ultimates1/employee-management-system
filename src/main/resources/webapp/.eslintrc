@@ -1,7 +1,7 @@
 {
 	"extends": "standard",
 	"rules": {
-		"indent": ["error", "tab"],
+		"indent": ["error", "tab", { "SwitchCase": 1 }],
 		"no-tabs": ["off"],
 		"semi": ["error", "always"],
 		"space-before-function-paren": ["error", {
@@ -10,7 +10,7 @@
 			"asyncArrow": "always"
 		}],
 		"brace-style": ["error", "stroustrup"],
-		"yoda": ["off"],
+		"yoda": ["off"]
 	},
 	"env": {
 		"browser": true
