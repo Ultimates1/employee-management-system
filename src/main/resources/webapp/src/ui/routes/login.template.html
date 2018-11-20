@@ -3,11 +3,6 @@
     <div id="login" ng-controller="LoginController" ng-init="htmlLoaded()" ng-show="ready()">
         <h1>Welcome</h1>
         Username:<input type="text" id="user" ng-model="user">
-        Password:<input type="text" id="password" ng-model="Pass">
+        Password:<input type="text" id="password" ng-model="pass">
         <button ng-click="login()">Login</button>
-        <br>
-        <label>Success: {{response.success}}</label>
-        <br>
-        <label>Message: {{response.message}}</label>
-        <br>
     </div>
