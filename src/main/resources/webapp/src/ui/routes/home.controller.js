@@ -1,41 +1,27 @@
-import $ from 'jquery';
 var angular = require('angular');
 
-//-------------------------
-// Home controller
-//-------------------------
+require('../data/access.service.js');
+
 angular
-    .module('ems')
-    .controller('HomeController', [
-        '$scope',
-        '$http',
-        function ($scope, $http) {
-            $scope.htmlReady = false;
-            $scope.user, $scope.oldPass, $scope.newPass, $scope.response;
+	.module('ems')
+	.controller('HomeController', [
+		'$rootScope',
+		'$scope',
+		'Access',
+		function ($rootScope, $scope, Access) {
+			$scope.htmlReady = false;
+			$scope.accessContent = Access.getAccessContent();
 
-            $scope.ready = function () {
-                return $scope.htmlReady;
-            };
+			$scope.ready = function () {
+				if (!Access.getLoginStatus()) {
+					$rootScope.goTo('login');
+				}
+				return $scope.htmlReady;
+			};
 
-            // Fired when html ready
-            $scope.htmlLoaded = function () {
-                $scope.htmlReady = true;
-            };
-
-            $scope.updatePassword = function () {
-                
-                $http.get("ems/access/updatepassword/" + $scope.user + "?oldpass=" + $scope.oldPass + "&newpass=" + $scope.newPass)
-                    .then(function success(response) {
-                        $scope.response = response.data;
-                    }, function error(err) {
-                        $scope.response = err;
-                    });
-            };
-
-            $(document).ready(function () {
-                $('#alert').click(function () {
-                    alert('Hello');
-                });
-            });
-        }
-    ]);
+			// Fired when html ready
+			$scope.htmlLoaded = function () {
+				$scope.htmlReady = true;
+			};
+		}
+	]);
