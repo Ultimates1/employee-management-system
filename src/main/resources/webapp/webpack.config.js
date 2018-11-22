@@ -1,8 +1,4 @@
-const path = require('path')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-
+const path = require('path');
 
 module.exports = {
 	entry: ['babel-polyfill', './src/index.js'],
@@ -17,8 +13,8 @@ module.exports = {
 			cacheGroups: {
 				vendors: {
 					test: /[\\/]node_modules[\\/]/,
-					chunks: "initial",
-					name: "vendors"
+					chunks: 'initial',
+					name: 'vendors'
 				}
 			}
 		}
@@ -37,7 +33,6 @@ module.exports = {
 		{
 			test: /\.css$/,
 			use: [
-				MiniCssExtractPlugin.loader,
 				'css-loader'
 			]
 		},
@@ -53,18 +48,7 @@ module.exports = {
 			]
 		}]
 	},
-	plugins: [
-		new CopyWebpackPlugin([
-			{ from: 'assets/*' },
-			{ from: 'src/ui/routes/*.template.html' },
-			{ from: 'index.html' }
-		]),
-		new MiniCssExtractPlugin({
-			filename: "assets/css/index.css",
-			chunkFilename: "assets/css/[id].css"
-		})
-	],
 	resolve: {
 		symlinks: false
 	}
-}
+};
