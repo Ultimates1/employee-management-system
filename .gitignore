@@ -29,5 +29,5 @@
 .DS_Store
 package-lock.json
 node_modules/
-static/index.js
-static/vendors.js
+**/static/index.js
+**/static/vendors.js
