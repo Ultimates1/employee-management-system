@@ -1,26 +1,47 @@
 <div id="home" ng-controller="HomeController" ng-init="htmlLoaded()" ng-show="ready()">
 	<label>Welcome, {{accessContent.name}}</label>
 	<div class="dashboard">
-			<div class="panel" ng-click="goTo('profile')" ng-show="hasFunction('profile')">
-				<img src="assets/images/profile_square.jpg">
+		<div class="panel" ng-click="goTo('profile')" ng-show="hasFunction('profile')">
+			<img src="assets/images/profile_square.jpg">
+			<div class="overlay">
+				<span>Profile</span>
 			</div>
-			<div class="panel" ng-click="goTo('timekeeping')" ng-show="hasFunction('timekeeping')">
-				<img src="assets/images/timekeeping_square.jpg">
+		</div>
+		<div class="panel" ng-click="goTo('timekeeping')" ng-show="hasFunction('timekeeping')">
+			<img src="assets/images/timekeeping_square.jpg">
+			<div class="overlay">
+				<span>Timekeeping</span>
 			</div>
-			<div class="panel" ng-click="goTo('leaverequest')" ng-show="hasFunction('leaverequest')">
-				<img src="assets/images/leave_square.jpg">
+		</div>
+		<div class="panel" ng-click="goTo('leaverequest')" ng-show="hasFunction('leaverequest')">
+			<img src="assets/images/leave_square.jpg">
+			<div class="overlay">
+				<span>Leave Request</span>
 			</div>
-			<div class="panel" ng-click="goTo('documents')" ng-show="hasFunction('documents')">
-				<img src="assets/images/documents_square.jpg">
+		</div>
+		<div class="panel" ng-click="goTo('documents')" ng-show="hasFunction('documents')">
+			<img src="assets/images/documents_square.jpg">
+			<div class="overlay">
+				<span>Documents</span>
 			</div>
-			<div class="panel" ng-click="goTo('management')" ng-show="hasFunction('management')">
-				<img src="assets/images/management_square.jpg">
+		</div>
+		<div class="panel" ng-click="goTo('management')" ng-show="hasFunction('management')">
+			<img src="assets/images/management_square.jpg">
+			<div class="overlay">
+				<span>Management</span>
 			</div>
-			<div class="panel" ng-click="goTo('budget')" ng-show="hasFunction('budget')">
-				<img src="assets/images/budget_square.jpg">
+		</div>
+		<div class="panel" ng-click="goTo('budget')" ng-show="hasFunction('budget')">
+			<img src="assets/images/budget_square.jpg">
+			<div class="overlay">
+				<span>Budget</span>
 			</div>
-			<div class="panel" ng-click="goTo('evaluation')" ng-show="hasFunction('evaluation')">
-				<img src="assets/images/evaluation_square.jpg">
+		</div>
+		<div class="panel" ng-click="goTo('evaluation')" ng-show="hasFunction('evaluation')">
+			<img src="assets/images/evaluation_square.jpg">
+			<div class="overlay">
+				<span>Evaluation</span>
 			</div>
+		</div>
 	</div>
 </div>

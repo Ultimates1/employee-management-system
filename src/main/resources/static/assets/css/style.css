@@ -43,5 +43,11 @@ input {
 	color: #67AB9F;
 	font-size: 5vh;
 	text-align: center;
-	font-weight: label;
+	font-weight: bold;
+}
+
+#home .dashboard .panel .overlay {
+	font-size: 3vh;
+	font-weight: bold;
+	vertical-align: middle;
 }
