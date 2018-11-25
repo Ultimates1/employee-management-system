@@ -1,3 +1,7 @@
+body {
+	font-family: Helvetica, sans-serif;
+}
+
 button {
 	text-align: center;
 	font-size: 3vh;
@@ -33,4 +37,11 @@ input {
 	color: #10739E;
 	font-size: 2vh;
 	text-decoration: underline;
+}
+
+#home label {
+	color: #67AB9F;
+	font-size: 5vh;
+	text-align: center;
+	font-weight: label;
 }

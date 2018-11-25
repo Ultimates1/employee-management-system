@@ -24,6 +24,11 @@ input {
     padding: 1vh;
 }
 
+img {
+    width: 100%;
+    height: 100%;
+}
+
 .error {
     position: absolute;
     display: block;
@@ -36,6 +41,14 @@ input {
     display: block;
     margin: 1vh;
     padding: 0px;
+}
+
+.interactable {
+    text-decoration: none;
+    cursor: pointer;
+    pointer-events: all;
+    outline: 0;
+    transform: translateZ(0) scale(1.0, 1.0);
 }
 
 .imgA1 {
@@ -51,8 +64,9 @@ input {
 
 .imgB1 {
     position: absolute;
-    max-width: 100vw;
+    width: auto;
     height: auto;
+    max-width: 100vw;
     bottom: 60vh;
     left: 50vw;
     transform: translate(-50%, 50%);
@@ -82,4 +96,39 @@ input {
     bottom: 10vh;
     left: 50%;
     transform: translate(-50%, 0%);
+}
+
+#home label {
+    position: absolute;
+    top: 10vh;
+    width: 100vw;
+    max-width: 100vw;
+    height: auto;
+    margin: 1vh;
+    padding: 1vh;
+}
+
+#home .dashboard {
+    position: absolute;
+    left: 50vw;
+    top: 50vh;
+    display: grid;
+    grid-template-columns: 27vh 27vh 27vh 27vh;
+    grid-template-rows: 27vh 27vh;
+    transform: translate(-50%, -40%);
+    text-align: center;
+}
+
+#home .dashboard .panel {
+    width: 25vh;
+    height: 25vh;
+    margin: 0px;
+    padding: 1vh;
+}
+
+#home .dashboard .panel:hover {
+    cursor: pointer;
+    width: 27vh;
+    height: 27vh;
+    transform: translate(-1vh, -1vh);
 }

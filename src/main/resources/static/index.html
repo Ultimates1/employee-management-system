@@ -9,10 +9,9 @@
 </head>
 
 <body ng-controller="ApplicationController" ng-init="htmlLoaded()" ng-show="ready()">
+		<label class="interactable link" ng-show="view.logout" ng-click="logout()" style="right:1vw; top:1vh;">Sign Out</label>
 	<div ng-view>
 	</div>
-
-
 </body>
 
 </html>

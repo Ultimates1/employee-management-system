@@ -23,7 +23,7 @@ angular
 				$scope.htmlReady = true;
 			};
 
-			$scope.displayError = function(display) {
+			$scope.displayError = function (display) {
 				angular.element(document.getElementById('loginError')).css('visibility', display ? 'visible' : 'hidden');
 			};
 
@@ -36,7 +36,17 @@ angular
 					})
 					.then(function success(response) {
 						Access.setLoginStatus(response.data.success);
-						Access.setAccessContent(response.data.message || {});
+						// Manager
+						Access.setAccessContent({
+							name: 'Mi Nguyen',
+							fns: ['profile', 'timekeeping', 'leaverequest', 'documents', 'management', 'budget', 'evaluation']
+						});
+						// // Employee
+						// Access.setAccessContent({
+						//  name: 'Mi Nguyen',
+						// 	fns: ['profile', 'timekeeping', 'leaverequest', 'documents']
+						// });
+						// Access.setAccessContent(response.data.message || {});
 						if (response.data.success) {
 							$scope.displayError(false);
 							$rootScope.goTo('home');
