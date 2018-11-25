@@ -1,5 +1,7 @@
 var angular = require('angular');
 
+require('./data/access.service.js');
+
 angular
 	.module('ems')
 	.controller('ApplicationController', [
@@ -7,8 +9,10 @@ angular
 		'$scope',
 		'$window',
 		'$location',
-		function ($rootScope, $scope, $window, $location) {
+		'Access',
+		function ($rootScope, $scope, $window, $location, Access) {
 			$scope.htmlReady = false;
+			$scope.view = {};
 
 			// On resize
 			angular.element($window).bind('resize', function () {
@@ -27,6 +31,29 @@ angular
 			$scope.ready = function () {
 				return $scope.htmlReady;
 			};
+
+			$scope.logout = function () {
+				Access.setLoginStatus(false);
+				Access.setAccessContent({});
+				$location.path('/login');
+			};
+
+			$scope.$on('$routeChangeStart', function (event, next, current) {
+				let route = next.$$route || current.$$route;
+
+				switch (route.controller) {
+					case 'LoginController':
+					case 'ForgotController':
+					case 'ResetController':
+						$scope.view.logout = false;
+						break;
+					case 'HomeController':
+						$scope.view.logout = true;
+						break;
+					default:
+						break;
+				}
+			});
 
 			$rootScope.goTo = function (page) {
 				switch (page) {
