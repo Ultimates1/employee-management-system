@@ -1,32 +1,85 @@
 body {
-	overflow: hidden;
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+}
+
+button {
+    position: absolute;
+    display: block;
+    width: 20vw;
+    max-width: 30vw;
+    height: auto;
+    margin: 1vh;
+    padding: 1vh;
+}
+
+input {
+    position: absolute;
+    display: block;
+    width: 20vw;
+    max-width: 30vw;
+    height: auto;
+    margin: 1vh;
+    padding: 1vh;
+}
+
+.error {
+    position: absolute;
+    display: block;
+    margin: 1vh;
+    padding: 0px;
+}
+
+.link {
+	position: absolute;
+    display: block;
+    margin: 1vh;
+    padding: 0px;
 }
 
 .imgA1 {
-	position:absolute; top: 15px; left: 0px;width:100%;
+    position: absolute;
+    width: auto;
+    height: auto;
+    max-height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    left: 50vw;
+    transform: translate(-50%, 0%);
 }
 
 .imgB1 {
-	position: absolute;
-    top: 95px;
-    left: 50%;
-    width: 100%;
-    transform: translate(-50%,0);
+    position: absolute;
+    max-width: 100vw;
+    height: auto;
+    bottom: 60vh;
+    left: 50vw;
+    transform: translate(-50%, 50%);
+    margin: 0px;
+    padding: 0px;
 }
 
-.textInput {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%,100%);
-    display: block;
+#login input {
+    left: 50vw;
+    transform: translate(-50%, 0%);
 }
 
+#login .error {
+    bottom: 25vh;
+    left: 50vw;
+    transform: translate(-50%, 0%);
+    visibility: hidden;
+}
 
-.buttoninfo {
-    position: absolute;
-    top: 55%;
+#login button {
+    bottom: 14vh;
+    left: 50vw;
+    transform: translate(-50%, 0%);
+}
+
+#login .link {
+    bottom: 10vh;
     left: 50%;
-    transform: translate(-50%,100%);
-    display: block;
+    transform: translate(-50%, 0%);
 }
