@@ -1,3 +1,36 @@
+button {
+	text-align: center;
+	font-size: 3vh;
+	font-weight: bold;
+	color: #67AB9F;
+	text-transform: uppercase;
+	border: 1px solid #6C8EBF;
+	border-radius: 12px;
+	background-color: #F5F5F5;
+}
+
+button:hover {
+	background-color: lightblue;
+}
+
+button:focus {
+	background-color: #DAE8FC;
+	outline: none;
+}
+
+input {
+	font-size: 3vh;
+	border: none;
+	background-color: rgba(255, 255, 255, 0.75);
+}
+
 .error {
 	color: red;
+	font-size: 2vh;
+}
+
+.link {
+	color: #10739E;
+	font-size: 2vh;
+	text-decoration: underline;
 }
