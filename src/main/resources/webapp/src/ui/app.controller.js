@@ -36,6 +36,9 @@ angular
 					case 'login':
 						$location.path('/login');
 						break;
+					case 'forgot':
+						$location.path('/forgot');
+						break;
 					case 'profile':
 						$location.path('/profile');
 						break;
