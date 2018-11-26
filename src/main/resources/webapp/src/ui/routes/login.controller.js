@@ -23,6 +23,10 @@ angular
 				$scope.htmlReady = true;
 			};
 
+			$scope.displayError = function (display) {
+				angular.element(document.getElementById('loginError')).css('visibility', display ? 'visible' : 'hidden');
+			};
+
 			$scope.login = function () {
 				$http.post(
 					'/ems/access/login',
@@ -32,16 +36,26 @@ angular
 					})
 					.then(function success(response) {
 						Access.setLoginStatus(response.data.success);
-						Access.setAccessContent(response.data.message || {});
+						// Manager
+						Access.setAccessContent({
+							name: 'Mi Nguyen',
+							fns: ['profile', 'timekeeping', 'leaverequest', 'documents', 'management', 'budget', 'evaluation']
+						});
+						// // Employee
+						// Access.setAccessContent({
+						//  name: 'Mi Nguyen',
+						// 	fns: ['profile', 'timekeeping', 'leaverequest', 'documents']
+						// });
+						// Access.setAccessContent(response.data.message || {});
 						if (response.data.success) {
-							angular.element('#loginError').css('visibility', 'hidden');
+							$scope.displayError(false);
 							$rootScope.goTo('home');
 						}
-						angular.element('#loginError').css('visibility', 'visible');
+						$scope.displayError(true);
 					}, function error(response) {
 						Access.setLoginStatus(response.data.success);
 						Access.setAccessContent({});
-						angular.element('#loginError').css('visibility', 'visible');
+						$scope.displayError(true);
 					});
 			};
 		}
