@@ -98,3 +98,7 @@ input {
 #profile .right .infoContainer p {
 	font-size: 2vh;
 }
+
+#documents .link {
+    font-size: 3vh;
+}

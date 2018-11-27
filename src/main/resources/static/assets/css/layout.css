@@ -1,7 +1,8 @@
 body {
     margin: 0px;
     padding: 0px;
-    overflow: show;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 button {
@@ -80,7 +81,7 @@ img {
 }
 
 .banner {
-    width: 100vw;
+    width: 100%;
     height: 15vh;
     display: flex;
 }
@@ -88,6 +89,83 @@ img {
 .banner img {
     height: 100%;
     width: auto;
+}
+
+.toggle-panel {
+    background: transparent url('../images/toggle_right.png') left center/80% 80% no-repeat !important;
+    border: none;
+    width: 30px;
+    height: 100px;
+    opacity: 0.5;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    margin: auto 1vh;
+}
+
+.toggle-panel:hover {
+    opacity: 1;
+}
+
+.toggle-panel.active {
+    background: transparent url('../images/toggle_left.png') left center/80% 80% no-repeat !important;
+}
+
+.toggle-panel.active:hover {
+    opacity: 1;
+}
+
+.navigation {
+    z-index: 1;
+    position: absolute;
+    width: 15vw;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: all;
+    margin-left: calc(30px + 2vh);
+}
+
+.navigation.hidden-add,
+.navigation.hidden-remove {
+    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.navigation.hidden,
+.navigation.hidden-add.hidden-add-active {
+    transform: translateX(-5vh);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.navigation.hidden-remove.hidden-remove-active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.navigation .nav_tab {
+    position: relative;
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    cursor: pointer;
+}
+
+.navigation .nav_tab img {
+    text-align: left;
+    flex-grow: 0;
+    padding: 1%;
+}
+
+.navigation .nav_tab label {
+    text-align: right;
+    flex-grow: 1;
+    vertical-align: middle;
+    line-height: 5vh;
+    padding-right: 5%;
+    cursor: pointer;
 }
 
 .imgA1 {
@@ -297,79 +375,14 @@ img {
     padding-bottom: 1vh;
 }
 
-.toggle-panel {
-    background: transparent url('../images/toggle_right.png') left center/80% 80% no-repeat !important;
-    border: none;
-    width: 30px;
-    height: 100px;
-    opacity: 0.5;
-    z-index: 2;
-    top: 0;
-    bottom: 0;
-    margin: auto 1vh;
-}
-
-.toggle-panel:hover {
-    opacity: 1;
-}
-
-.toggle-panel.active {
-    background: transparent url('../images/toggle_left.png') left center/80% 80% no-repeat !important;
-}
-
-.toggle-panel.active:hover {
-    opacity: 1;
-}
-
-.navigation {
-    z-index: 1;
-    position: absolute;
-    width: 15vw;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: all;
-    margin-left: calc(30px + 2vh);
-}
-
-.navigation.hidden-add,
-.navigation.hidden-remove {
-    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.navigation.hidden,
-.navigation.hidden-add.hidden-add-active {
-    transform: translateX(-5vh);
-    opacity: 0;
-    pointer-events: none;
-}
-
-.navigation.hidden-remove.hidden-remove-active {
-    transform: translateX(0);
-    opacity: 1;
-}
-
-.navigation .nav_tab {
-    position: relative;
-    width: 100%;
-    height: 5vh;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1%;
-    margin-bottom: 1%;
-    cursor: pointer;
-}
-
-.navigation .nav_tab img {
-    text-align: left;
-    flex-grow: 0;
-    padding: 1%;
-}
-
-.navigation .nav_tab label {
-    text-align: right;
-    flex-grow: 1;
+#documents {
+    height: 65vh;
     vertical-align: middle;
-    line-height: 5vh;
-    padding-right: 5%;
-    cursor: pointer;
+    line-height: 65vh;
+}
+
+#documents .link {
+    left: 30%;
+    position: relative;
+    height: 5vh;
 }
