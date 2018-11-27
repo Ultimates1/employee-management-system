@@ -89,6 +89,10 @@ angular
 									}
 								]
 							},
+							documents: [
+								['Doc 1', 'abc.com'],
+								['Doc 2', 'xyz.com']
+							],
 							// Manager
 							fns: ['profile', 'timekeeping', 'leaverequest', 'documents', 'management', 'budget', 'evaluation']
 							// // Employee
