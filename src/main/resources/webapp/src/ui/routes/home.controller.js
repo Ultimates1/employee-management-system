@@ -23,9 +23,5 @@ angular
 			$scope.htmlLoaded = function () {
 				$scope.htmlReady = true;
 			};
-
-			$scope.hasFunction = function (fn) {
-				return $scope.accessContent.fns.indexOf(fn) !== -1;
-			}
 		}
 	]);
