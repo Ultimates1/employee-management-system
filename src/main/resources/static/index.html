@@ -10,6 +10,45 @@
 
 <body ng-controller="ApplicationController" ng-init="htmlLoaded()" ng-show="ready()">
 		<label class="interactable link" ng-show="view.logout" ng-click="logout()" style="right:1vw; top:1vh;">Sign Out</label>
+		<div class="banner" ng-show="view.banner">
+			<img class="item-left" src="assets/images/logo.png">
+			<img class="item-right" ng-src="{{bannerImgPath}}">
+		</div>
+		<button class="interactable toggle-panel" ng-show="view.banner" ng-class="{active: !panelHidden}" ng-click="togglePanel()"></button>
+		<div class="navigation" ng-class="panelClass" ng-show="view.nav">
+			<div class="nav_tab" ng-click="goTo('home')">
+				<img src="assets/images/nav_home.png">
+				<label>Home</label>
+			</div>
+			<div class="nav_tab" ng-show="navs.profile" ng-click="goTo('profile')">
+				<img src="assets/images/nav_profile.png">
+				<label>Profile</label>
+			</div>
+			<div class="nav_tab" ng-show="navs.timekeeping" ng-click="goTo('timekeeping')">
+				<img src="assets/images/nav_timekeeping.png">
+				<label>Timekeeping</label>
+			</div>
+			<div class="nav_tab" ng-show="navs.leaveRequest" ng-click="goTo('leaverequest')">
+				<img src="assets/images/nav_leave.png">
+				<label>Leave Request</label>
+			</div>
+			<div class="nav_tab" ng-show="navs.documents" ng-click="goTo('documents')">
+				<img src="assets/images/nav_documents.png">
+				<label>Documents</label>
+			</div>
+			<div class="nav_tab" ng-show="navs.management" ng-click="goTo('management')">
+				<img src="assets/images/nav_management.png">
+				<label>Management</label>
+			</div>
+			<div class="nav_tab" ng-show="navs.budget" ng-click="goTo('budget')">
+				<img src="assets/images/nav_budget.png">
+				<label>Budget</label>
+			</div>
+			<div class="nav_tab" ng-show="navs.evaluation" ng-click="goTo('evaluation')">
+				<img src="assets/images/nav_evaluation.png">
+				<label>Evaluation</label>
+			</div>
+		</div>
 	<div ng-view>
 	</div>
 </body>
