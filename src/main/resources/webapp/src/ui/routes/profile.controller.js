@@ -23,5 +23,9 @@ angular
 			$scope.htmlLoaded = function () {
 				$scope.htmlReady = true;
 			};
+
+			$scope.getProfileImgPath = function () {
+				return 'image' in $scope.accessContent.info && $scope.accessContent.info.image !== '' ? 'accessContent.info.image' : 'assets/images/square_profile.jpg';
+			}
 		}
 	]);
