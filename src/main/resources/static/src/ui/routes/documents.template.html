@@ -1,3 +1,5 @@
 <div id="documents" ng-controller="DocumentsController" ng-init="htmlLoaded()" ng-show="ready()">
-
+	<div class="interactable link" ng-repeat="field in accessContent.documents">
+		<a href="{{field[1]}}">{{field[0]}}</a>
+	</div>
 </div>

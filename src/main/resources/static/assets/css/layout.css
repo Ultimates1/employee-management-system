@@ -1,7 +1,8 @@
 body {
-    overflow: hidden;
     margin: 0px;
     padding: 0px;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 button {
@@ -25,8 +26,11 @@ input {
 }
 
 img {
-    width: 100%;
-    height: 100%;
+    max-height: 100%;
+    height: auto;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
 }
 
 .error {
@@ -49,6 +53,119 @@ img {
     pointer-events: all;
     outline: 0;
     transform: translateZ(0) scale(1.0, 1.0);
+}
+
+.column {
+    float: left;
+    padding-top: 5%;
+    height: 100vh;
+    max-height: 100vh;
+}
+
+.left {
+    text-align: left;
+    width: 25%;
+}
+
+.right {
+    text-align: left;
+    width: 75%;
+}
+
+.item-left {
+    flex-grow: 0;
+}
+
+.item-right {
+    flex-grow: 1;
+}
+
+.banner {
+    width: 100%;
+    height: 15vh;
+    display: flex;
+}
+
+.banner img {
+    height: 100%;
+    width: auto;
+}
+
+.toggle-panel {
+    background: transparent url('../images/toggle_right.png') left center/80% 80% no-repeat !important;
+    border: none;
+    width: 30px;
+    height: 100px;
+    opacity: 0.5;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    margin: auto 1vh;
+}
+
+.toggle-panel:hover {
+    opacity: 1;
+}
+
+.toggle-panel.active {
+    background: transparent url('../images/toggle_left.png') left center/80% 80% no-repeat !important;
+}
+
+.toggle-panel.active:hover {
+    opacity: 1;
+}
+
+.navigation {
+    z-index: 1;
+    position: absolute;
+    width: 15vw;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: all;
+    margin-left: calc(30px + 2vh);
+}
+
+.navigation.hidden-add,
+.navigation.hidden-remove {
+    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.navigation.hidden,
+.navigation.hidden-add.hidden-add-active {
+    transform: translateX(-5vh);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.navigation.hidden-remove.hidden-remove-active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.navigation .nav_tab {
+    position: relative;
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    cursor: pointer;
+}
+
+.navigation .nav_tab img {
+    text-align: left;
+    flex-grow: 0;
+    padding: 1%;
+}
+
+.navigation .nav_tab label {
+    text-align: right;
+    flex-grow: 1;
+    vertical-align: middle;
+    line-height: 5vh;
+    padding-right: 5%;
+    cursor: pointer;
 }
 
 .imgA1 {
@@ -157,4 +274,115 @@ img {
 #home .dashboard .panel:hover .overlay span {
     color: rgba(103, 171, 159, 1);
     text-shadow: 0.25vh 0.5vh 0.5vh #000000;
+}
+
+#profile {
+    display: flex;
+    padding-left: 5%;
+    padding-right: 10%;
+    transform: translateY(-10vh);
+}
+
+#profile hr {
+    margin-left: 0;
+    width: 100%;
+}
+
+#profile .sectionTitle {
+    margin-bottom: 2vh;
+    display: flex;
+}
+
+#profile .imgContainer {
+    position: relative;
+    left: 0;
+    right: 0;
+    width: 20vh;
+    height: 20vh;
+    margin: 0 auto;
+}
+
+#profile .text {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+#profile .infoContainer {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding-top: 10%;
+}
+
+#profile .infoContainer div {
+    flex: 1;
+}
+
+#profile .infoContainer label {
+    display: block;
+}
+
+#profile .infoContainer .item {
+    display: flex;
+    align-items: center;
+}
+
+#profile .infoContainer .item img {
+    width: 100%;
+}
+
+#profile .infoContainer .item .item-left {
+    text-align: left;
+    flex-grow: 0.2;
+}
+
+#profile .infoContainer .item .item-right {
+    text-align: left;
+    flex-grow: 0.8;
+    margin-left: 10%;
+}
+
+#profile .left hr {
+    margin-left: 28%;
+    width: 70%;
+}
+
+#profile .right {
+    padding-top: 20vh;
+    margin-left: 5%;
+}
+
+#profile .right .infoContainer {
+    padding-top: 0;
+    padding-left: 5%;
+    width: 95%;
+}
+
+#profile .sectionTitle .item-left {
+    flex-grow: 0;
+}
+
+#profile .sectionTitle .item-right {
+    text-align: right;
+    flex-grow: 1;
+    margin-left: 1%;
+}
+
+#profile .sectionTitle .item-right hr {
+    margin-bottom: 0;
+    padding-bottom: 1vh;
+}
+
+#documents {
+    height: 65vh;
+    vertical-align: middle;
+    line-height: 65vh;
+}
+
+#documents .link {
+    left: 30%;
+    position: relative;
+    height: 5vh;
 }

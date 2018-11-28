@@ -39,6 +39,16 @@ input {
 	text-decoration: underline;
 }
 
+.banner {
+    background-color: #67ab9f;
+}
+
+.navigation .nav_tab {
+    background: lightblue;
+    border: 1px solid black;
+    border-radius: 24px;
+}
+
 #home label {
 	color: #67AB9F;
 	font-size: 5vh;
@@ -50,4 +60,45 @@ input {
 	font-size: 3vh;
 	font-weight: bold;
 	vertical-align: middle;
+}
+
+#profile .text {
+	text-align: center;
+	color: white;
+	font-size: 2vh;
+}
+
+#profile .infoContainer label {
+    font-size: 2vh;
+}
+
+#profile hr {
+	border-bottom: 1px solid #67AB9F;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+#profile .sectionTitle {
+	font-size: 3vh;
+	text-transform: uppercase;
+	color: #67AB9F;
+}
+
+#profile .right .infoContainer .title {
+	font-size: 2vh;
+	font-style: italic;
+}
+
+#profile .right .infoContainer .period {
+	font-size: 2vh;
+	color: #00D9D9;
+}
+
+#profile .right .infoContainer p {
+	font-size: 2vh;
+}
+
+#documents .link {
+    font-size: 3vh;
 }

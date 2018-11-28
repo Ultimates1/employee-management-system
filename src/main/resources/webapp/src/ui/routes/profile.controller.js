@@ -16,6 +16,9 @@ angular
 				if (!Access.getLoginStatus()) {
 					$rootScope.goTo('login');
 				}
+				if (!$rootScope.hasFunction('profile')) {
+					$rootScope.goTo('home');
+				}
 				return $scope.htmlReady;
 			};
 
@@ -23,5 +26,9 @@ angular
 			$scope.htmlLoaded = function () {
 				$scope.htmlReady = true;
 			};
+
+			$scope.getProfileImgPath = function () {
+				return 'image' in $scope.accessContent.info && $scope.accessContent.info.image !== '' ? 'accessContent.info.image' : 'assets/images/square_profile.jpg';
+			}
 		}
 	]);
