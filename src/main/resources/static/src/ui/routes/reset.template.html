@@ -1,15 +1,20 @@
-<div id="reset" ng-controller="ResetController" ng-init="htmlLoaded()" ng-show="ready()">
-	<label>Reset Password</label>
-	<label>Hint: Strong password should be 8 or more characters, with
+<!-- The link: http://localhost:8080/#!/reset/:user -->
+<div id="reset" ng-controller="ResetController" ng-init="htmlLoaded()" ng-show="ready()" class="resetCenter">
+	<h1 style="color:MediumSeaGreen;"><ins>Reset Password</ins></h1>
+	<label><b>Hint:</b> Strong password should be 8 or more characters, with
 		upper and lower case characters, numbers, and symbols like
 		! ? $ % ^ &. Don't use passwords that are commonly used or too
-		similar to your other personal information.</label>
+			similar to your other personal information.</label>
+	<br><br>
 	<input type="password" id="newPass" placeholder="New password" ng-model="newPass">
+	<br><br>
 	<input type="password" id="confirmPass" placeholder="Confirm new password" ng-model="confirmPass">
+	<br><br>
+	<!-- conditions need to me met for the error class, it is 
+	always outputting even when they are the same -->
 	<label id="resetError" class="error">Password entries don't match.</label>
-	<button ng-click="resetPassword()">RESET</button>
+	<br><br>
+	<button class="buttonReset" ng-click="resetPassword()" ><b>RESET</b></button>
 	<br>
-	<label>Success: {{response.success}}</label>
-	<br>
-	<label>Message: {{response.message}}</label>
+	<label>{{response.message}}</label>
 </div>

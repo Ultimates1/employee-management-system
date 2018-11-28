@@ -1,16 +1,28 @@
-<div id="forgot" ng-controller="ForgotController" ng-init="htmlLoaded()" ng-show="ready()">
-	<label>Forgot Username?</label>
+<!-- The link: http://localhost:8080/#!/forgot -->
+<div id="forgot" ng-controller="ForgotController" ng-init="htmlLoaded()" ng-show="ready()" class="resetCenter">
+	<br>
+	<h1 style="color:MediumSeaGreen;"> <ins>Forgot Username?</ins> </h1>
+	<br>
 	<label>Enter your email to retrieve your username.</label>
+	<br><br>
 	<input type="text" id="email" placeholder="example@mail.com" ng-model="email">
+	<br><br>
 	<label id="emailError" class="error">Sorry, we can't find this email in our records.</label>
-	<button ng-click="forgotID()">RETRIEVE</button>
-	<button ng-click="back()">BACK</button>
-	<hr>
-	<label>Forgot Password?</label>
+	<br><br>
+	<button class="buttonReset" ng-click="forgotID()"><b>RETRIEVE</b></button>
+	<br><br>
+	<button class="buttonReset" ng-click="back()"><b>BACK</b></button>
+	<hr style="height:1px;border-top:1px solid MediumSeaGreen " />
+	<h1 style="color:MediumSeaGreen;"> <ins>Forgot Password? </ins></h1>
+	<br>
 	<label>Enter your username or email to reset your password.</label>
-	<input type="text" id="user" placeholder="username or example@mail.com" ng-model="user">
+	<br><br>
+	<input type="text" id="user" placeholder="username or email@mail.com" size="25" ng-model="user">
+	<br><br>
 	<label id="userError" class="error">Sorry, we can't find this username or email in our records.</label>
-	<button ng-click="forgotPassword()">RESET</button>
-	<button ng-click="back()">BACK</button>
+	<br><br>
+	<button class="buttonReset" ng-click="forgotPassword()"><b>RESET</b></button>
+	<br><br>
+	<button class="buttonReset" ng-click="back()"><b>BACK</b></button>
 	<br>
 </div>
