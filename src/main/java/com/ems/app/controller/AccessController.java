@@ -1,11 +1,11 @@
 package com.ems.app.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,9 +18,6 @@ import com.ems.app.utils.EmployeeAccessUtil;
 @RestController
 public class AccessController {
 
-	private String username = "abc";
-	private String password = "123";
-
 	@Autowired
 	EmployeeAccessUtil employeeAccessUtil;
 
@@ -29,34 +26,12 @@ public class AccessController {
 		return "<center><h1><font color=#28B463>OK: System is running</font></h1></center>";
 	}
 
-	@RequestMapping(value="/ems/access/updatepassword/{user}", method=RequestMethod.GET)
-	Map<String, Object> updatePassword(
-			@PathVariable("user") String user,
-			@RequestParam("oldpass") String oldPass,
-			@RequestParam("newpass") String newPass) {
-		Map <String, Object> response = new HashMap<String, Object>();
-		if (!user.equals(username)) {
-			response.put("success", false);
-			response.put("message", "Unrecognized user: " + user);
-			return response;
-		}
-		if (!oldPass.equals(password)) {
-			response.put("success", false);
-			response.put("message", "Unrecognized password: " + oldPass);
-			return response;
-		}
-		password = newPass;
-		response.put("success", true);
-		response.put("message", "Password has been changed to: " + password);
-		return response;
-	}
-
 	@RequestMapping(value="/ems/access/resetpasswordrequest/{user}", method=RequestMethod.GET)
 	String resetPasswordRequest(
-			@PathVariable("user") String userId) {
+			@PathVariable("user") String emailId) {
 		String response = new String();
 		try {
-			employeeAccessUtil.resetPaswordEntry(userId.trim());
+			employeeAccessUtil.resetPaswordEntry(emailId.trim());
 			response = "Please check your email for password reset instruction";
 		} catch (UserAccessException e) {
 			response = e.getMessage();
@@ -65,28 +40,36 @@ public class AccessController {
 		return response;
 	}
 
-	@RequestMapping(value="/ems/access/login", method=RequestMethod.POST)
-
-		Map <String, Object> login(@RequestBody Map <String, Object> requestBody) {
-
-		Map <String, Object> response = new HashMap<String, Object>();
-
-
-		Map loginMap = new HashMap<String, String>();
-		loginMap.put("rafi", "abc");
-		loginMap.put("bhargav", "xyz");
-		loginMap.put("mi", "abc");
-		loginMap.put("darsh", "abc");
-
-		if(null != requestBody.get("user") && loginMap.containsKey(requestBody.get("user"))) {
-			if(loginMap.get(requestBody.get("user")).equals(requestBody.get("password"))) {
-				response.put("success", true);
-				response.put("message", "Login Successfully");
-				return response;
-			}
+	@RequestMapping(value="/ems/access/resetpassword/{resetkey}", method=RequestMethod.GET)
+	String resetPassword(
+			@PathVariable("resetkey") String resetKey,
+			@RequestParam("newpass") String newPass) {
+		String response = new String();
+		try {
+			employeeAccessUtil.resetPasword(resetKey, newPass);
+			response = "Your password is updated successfully.";
+		} catch (UserAccessException e) {
+			response = e.getMessage();
+			e.printStackTrace();
 		}
-		response.put("success", false);
-		response.put("message", "User id or password is wrong");
+		return response;
+	}
+
+	@RequestMapping(value="/ems/access/login", method=RequestMethod.GET)	
+	Map <String, Object> login(@RequestParam("user") String user,
+			@RequestParam("password") String password) {
+		Map <String, Object> response = new HashMap<String, Object>();
+		try {
+			Map<Long, List<String>> accessList = employeeAccessUtil.authenticateUser(user, password);
+			response.put("success", true);
+			response.put("message", "Login Successfully.");
+			response.put("userid", accessList.keySet().toArray()[0]);
+			response.put("access", accessList.get(accessList.keySet().toArray()[0]));
+		} catch (UserAccessException e) {
+			response.put("success", false);
+			response.put("message", e.getMessage());
+			e.printStackTrace();
+		}
 		return response;
 	}
 }

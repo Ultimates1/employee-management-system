@@ -22,6 +22,10 @@ public class ProjectService {
 		return (List<ProjectBean>) projectRepository.findAll();
 	}
 
+	public ProjectBean getProjectBeanByEmployeeUserId(Long userId) {
+		return projectRepository.getProjectBeanByEmployeeUserId(userId);
+	}
+
 	/*public Long getCurrentEmployeeIdByEmailId(String emailId) {
 		return projectRepository.getCurrentEmployeeIdByEmailId(emailId);
 	}*/
