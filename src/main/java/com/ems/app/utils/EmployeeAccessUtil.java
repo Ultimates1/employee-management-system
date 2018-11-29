@@ -63,7 +63,7 @@ public class EmployeeAccessUtil {
 			//emailNotificationBean.setEmailCc("NA");
 			//emailNotificationBean.setEmailFrom("The Ultimates");
 			emailNotificationBean.setEmailBody("Please go to below link to reset your account password. This link is active for 60 mins, " + 
-					"please do not share this link. http://localhost:8080/ems/access/resetpassword/"+resetKey);
+					"please do not share this link. http://localhost:8080/#!/reset/"+resetKey);
 			emailNotificationBean.setEmailSubject("The Ultimates: Reset password link");
 			emailNotificationBean.setSendFlag("P");
 			emailSendingUtil.addEmailNotification(emailNotificationBean);
