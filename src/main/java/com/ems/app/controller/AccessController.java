@@ -27,14 +27,16 @@ public class AccessController {
 	}
 
 	@RequestMapping(value="/ems/access/resetpasswordrequest", method=RequestMethod.GET)
-	String resetPasswordRequest(
+	Map <String, Object> resetPasswordRequest(
 			@RequestParam("user") String emailId) {
-		String response = new String();
+		Map <String, Object> response = new HashMap<String, Object>();
 		try {
 			employeeAccessUtil.resetPaswordEntry(emailId.trim());
-			response = "Please check your email for password reset instruction";
+			response.put("success", true);
+			response.put("message", "Please check your email for password reset instruction");
 		} catch (UserAccessException e) {
-			response = e.getMessage();
+			response.put("success", false);
+			response.put("message", e.getMessage());
 			e.printStackTrace();
 		}
 		return response;
