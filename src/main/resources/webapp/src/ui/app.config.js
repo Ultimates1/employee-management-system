@@ -47,10 +47,6 @@ angular
 					templateUrl: 'src/ui/routes/budget.template.html',
 					controller: 'BudgetController'
 				})
-				.when('/evaluation', {
-					templateUrl: 'src/ui/routes/evaluation.template.html',
-					controller: 'EvaluationController'
-				})
 				.otherwise('/');
 		}
 	]);
