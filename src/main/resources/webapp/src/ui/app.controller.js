@@ -68,11 +68,11 @@ angular
 						$scope.view.nav = true;
 						$scope.navs = {
 							profile: false,
-							timekeeping: $rootScope.hasFunction('timekeeping'),
-							leaveRequest: $rootScope.hasFunction('leaverequest'),
-							documents: $rootScope.hasFunction('documents'),
-							management: $rootScope.hasFunction('management'),
-							budget: $rootScope.hasFunction('budget')
+							timekeeping: $rootScope.hasFunction('TIME_SHEET'),
+							leaveRequest: $rootScope.hasFunction('LEAVE_REQUEST'),
+							documents: $rootScope.hasFunction('MY_DOCUMENTS'),
+							management: $rootScope.hasFunction('PROJECT_MANAGEMENT'),
+							budget: $rootScope.hasFunction('WORKFLOW')
 						};
 						$scope.bannerImgPath = 'assets/images/banner_profile.jpg';
 						break;
@@ -81,12 +81,12 @@ angular
 						$scope.view.banner = true;
 						$scope.view.nav = true;
 						$scope.navs = {
-							profile: $rootScope.hasFunction('profile'),
+							profile: $rootScope.hasFunction('PROFILE'),
 							timekeeping: false,
-							leaveRequest: $rootScope.hasFunction('leaverequest'),
-							documents: $rootScope.hasFunction('documents'),
-							management: $rootScope.hasFunction('management'),
-							budget: $rootScope.hasFunction('budget')
+							leaveRequest: $rootScope.hasFunction('LEAVE_REQUEST'),
+							documents: $rootScope.hasFunction('MY_DOCUMENTS'),
+							management: $rootScope.hasFunction('PROJECT_MANAGEMENT'),
+							budget: $rootScope.hasFunction('WORKFLOW')
 						};
 						$scope.bannerImgPath = 'assets/images/banner_timekeeping.jpg';
 						break;
@@ -95,12 +95,12 @@ angular
 						$scope.view.banner = true;
 						$scope.view.nav = true;
 						$scope.navs = {
-							profile: $rootScope.hasFunction('profile'),
-							timekeeping: $rootScope.hasFunction('timekeeping'),
+							profile: $rootScope.hasFunction('PROFILE'),
+							timekeeping: $rootScope.hasFunction('TIME_SHEET'),
 							leaveRequest: false,
-							documents: $rootScope.hasFunction('documents'),
-							management: $rootScope.hasFunction('management'),
-							budget: $rootScope.hasFunction('budget')
+							documents: $rootScope.hasFunction('MY_DOCUMENTS'),
+							management: $rootScope.hasFunction('PROJECT_MANAGEMENT'),
+							budget: $rootScope.hasFunction('WORKFLOW')
 						};
 						$scope.bannerImgPath = 'assets/images/banner_leave.jpg';
 						break;
@@ -109,12 +109,12 @@ angular
 						$scope.view.banner = true;
 						$scope.view.nav = true;
 						$scope.navs = {
-							profile: $rootScope.hasFunction('profile'),
-							timekeeping: $rootScope.hasFunction('timekeeping'),
-							leaveRequest: $rootScope.hasFunction('leaverequest'),
+							profile: $rootScope.hasFunction('PROFILE'),
+							timekeeping: $rootScope.hasFunction('TIME_SHEET'),
+							leaveRequest: $rootScope.hasFunction('LEAVE_REQUEST'),
 							documents: false,
-							management: $rootScope.hasFunction('management'),
-							budget: $rootScope.hasFunction('budget')
+							management: $rootScope.hasFunction('PROJECT_MANAGEMENT'),
+							budget: $rootScope.hasFunction('WORKFLOW')
 						};
 						$scope.bannerImgPath = 'assets/images/banner_documents.jpg';
 						break;
@@ -123,12 +123,12 @@ angular
 						$scope.view.banner = true;
 						$scope.view.nav = true;
 						$scope.navs = {
-							profile: $rootScope.hasFunction('profile'),
-							timekeeping: $rootScope.hasFunction('timekeeping'),
-							leaveRequest: $rootScope.hasFunction('leaverequest'),
-							documents: $rootScope.hasFunction('documents'),
+							profile: $rootScope.hasFunction('PROFILE'),
+							timekeeping: $rootScope.hasFunction('TIME_SHEET'),
+							leaveRequest: $rootScope.hasFunction('LEAVE_REQUEST'),
+							documents: $rootScope.hasFunction('MY_DOCUMENTS'),
 							management: false,
-							budget: $rootScope.hasFunction('budget')
+							budget: $rootScope.hasFunction('WORKFLOW')
 						};
 						$scope.bannerImgPath = 'assets/images/banner_management.jpg';
 						break;
@@ -137,11 +137,11 @@ angular
 						$scope.view.banner = true;
 						$scope.view.nav = true;
 						$scope.navs = {
-							profile: $rootScope.hasFunction('profile'),
-							timekeeping: $rootScope.hasFunction('timekeeping'),
-							leaveRequest: $rootScope.hasFunction('leaverequest'),
-							documents: $rootScope.hasFunction('documents'),
-							management: $rootScope.hasFunction('management'),
+							profile: $rootScope.hasFunction('PROFILE'),
+							timekeeping: $rootScope.hasFunction('TIME_SHEET'),
+							leaveRequest: $rootScope.hasFunction('LEAVE_REQUEST'),
+							documents: $rootScope.hasFunction('MY_DOCUMENTS'),
+							management: $rootScope.hasFunction('PROJECT_MANAGEMENT'),
 							budget: false
 						};
 						$scope.bannerImgPath = 'assets/images/banner_budget.jpg';

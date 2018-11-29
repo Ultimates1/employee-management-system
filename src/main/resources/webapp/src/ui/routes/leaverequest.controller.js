@@ -16,6 +16,9 @@ angular
 				if (!Access.getLoginStatus()) {
 					$rootScope.goTo('login');
 				}
+				if (!$rootScope.hasFunction('LEAVE_REQUEST')) {
+					$rootScope.goTo('home');
+				}
 				return $scope.htmlReady;
 			};
 

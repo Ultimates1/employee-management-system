@@ -17,7 +17,7 @@ angular
 				if (!Access.getLoginStatus()) {
 					$rootScope.goTo('login');
 				}
-				if (!$rootScope.hasFunction('documents')) {
+				if (!$rootScope.hasFunction('MY_DOCUMENTS')) {
 					$rootScope.goTo('home');
 				}
 				return $scope.htmlReady;
