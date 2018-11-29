@@ -26,9 +26,9 @@ public class AccessController {
 		return "<center><h1><font color=#28B463>OK: System is running</font></h1></center>";
 	}
 
-	@RequestMapping(value="/ems/access/resetpasswordrequest/{user}", method=RequestMethod.GET)
+	@RequestMapping(value="/ems/access/resetpasswordrequest", method=RequestMethod.GET)
 	String resetPasswordRequest(
-			@PathVariable("user") String emailId) {
+			@RequestParam("user") String emailId) {
 		String response = new String();
 		try {
 			employeeAccessUtil.resetPaswordEntry(emailId.trim());
