@@ -72,8 +72,7 @@ angular
 							leaveRequest: $rootScope.hasFunction('leaverequest'),
 							documents: $rootScope.hasFunction('documents'),
 							management: $rootScope.hasFunction('management'),
-							budget: $rootScope.hasFunction('budget'),
-							evaluation: $rootScope.hasFunction('evaluation')
+							budget: $rootScope.hasFunction('budget')
 						};
 						$scope.bannerImgPath = 'assets/images/banner_profile.jpg';
 						break;
@@ -87,8 +86,7 @@ angular
 							leaveRequest: $rootScope.hasFunction('leaverequest'),
 							documents: $rootScope.hasFunction('documents'),
 							management: $rootScope.hasFunction('management'),
-							budget: $rootScope.hasFunction('budget'),
-							evaluation: $rootScope.hasFunction('evaluation')
+							budget: $rootScope.hasFunction('budget')
 						};
 						$scope.bannerImgPath = 'assets/images/banner_timekeeping.jpg';
 						break;
@@ -102,8 +100,7 @@ angular
 							leaveRequest: false,
 							documents: $rootScope.hasFunction('documents'),
 							management: $rootScope.hasFunction('management'),
-							budget: $rootScope.hasFunction('budget'),
-							evaluation: $rootScope.hasFunction('evaluation')
+							budget: $rootScope.hasFunction('budget')
 						};
 						$scope.bannerImgPath = 'assets/images/banner_leave.jpg';
 						break;
@@ -117,8 +114,7 @@ angular
 							leaveRequest: $rootScope.hasFunction('leaverequest'),
 							documents: false,
 							management: $rootScope.hasFunction('management'),
-							budget: $rootScope.hasFunction('budget'),
-							evaluation: $rootScope.hasFunction('evaluation')
+							budget: $rootScope.hasFunction('budget')
 						};
 						$scope.bannerImgPath = 'assets/images/banner_documents.jpg';
 						break;
@@ -132,8 +128,7 @@ angular
 							leaveRequest: $rootScope.hasFunction('leaverequest'),
 							documents: $rootScope.hasFunction('documents'),
 							management: false,
-							budget: $rootScope.hasFunction('budget'),
-							evaluation: $rootScope.hasFunction('evaluation')
+							budget: $rootScope.hasFunction('budget')
 						};
 						$scope.bannerImgPath = 'assets/images/banner_management.jpg';
 						break;
@@ -147,25 +142,9 @@ angular
 							leaveRequest: $rootScope.hasFunction('leaverequest'),
 							documents: $rootScope.hasFunction('documents'),
 							management: $rootScope.hasFunction('management'),
-							budget: false,
-							evaluation: $rootScope.hasFunction('evaluation')
+							budget: false
 						};
 						$scope.bannerImgPath = 'assets/images/banner_budget.jpg';
-						break;
-					case 'EvaluationController':
-						$scope.view.logout = true;
-						$scope.view.banner = true;
-						$scope.view.nav = true;
-						$scope.navs = {
-							profile: $rootScope.hasFunction('profile'),
-							timekeeping: $rootScope.hasFunction('timekeeping'),
-							leaveRequest: $rootScope.hasFunction('leaverequest'),
-							documents: $rootScope.hasFunction('documents'),
-							management: $rootScope.hasFunction('management'),
-							budget: $rootScope.hasFunction('budget'),
-							evaluation: false
-						};
-						$scope.bannerImgPath = 'assets/images/banner_evaluation.jpg';
 						break;
 					default:
 						break;
@@ -201,16 +180,13 @@ angular
 					case 'budget':
 						$location.path('/budget');
 						break;
-					case 'evaluation':
-						$location.path('/evaluation');
-						break;
 					default:
 						$location.path('/');
 				}
 			};
 
 			$rootScope.hasFunction = function (fn) {
-				return Access.getAccessContent().fns.indexOf(fn) !== -1;
+				return Access.getAccessContent().access.indexOf(fn) !== -1;
 			};
 		}
 	]);
