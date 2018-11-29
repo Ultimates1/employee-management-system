@@ -43,15 +43,17 @@ public class AccessController {
 	}
 
 	@RequestMapping(value="/ems/access/resetpassword/{resetkey}", method=RequestMethod.GET)
-	String resetPassword(
+	Map <String, Object> resetPassword(
 			@PathVariable("resetkey") String resetKey,
 			@RequestParam("newpass") String newPass) {
-		String response = new String();
+		Map <String, Object> response = new HashMap<String, Object>();
 		try {
 			employeeAccessUtil.resetPasword(resetKey, newPass);
-			response = "Your password is updated successfully.";
+			response.put("success", true);
+			response.put("message", "Your password is updated successfully.");
 		} catch (UserAccessException e) {
-			response = e.getMessage();
+			response.put("success", false);
+			response.put("message", e.getMessage());
 			e.printStackTrace();
 		}
 		return response;
