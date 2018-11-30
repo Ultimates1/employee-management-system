@@ -17,7 +17,7 @@ angular
 				if (!Access.getLoginStatus()) {
 					$rootScope.goTo('login');
 				}
-				if (!$rootScope.hasFunction('profile')) {
+				if (!$rootScope.hasFunction('PROFILE')) {
 					$rootScope.goTo('home');
 				}
 				return $scope.htmlReady;
@@ -43,7 +43,7 @@ angular
 						'Some State, CA 12345',
 						'abc@xyz.com'
 					],
-					skills: ['Skill 1', 'Skill 2', 'Skill 3', 'Skill 4'],
+					skills: ['Javascript', 'Python', 'C++', 'Java'],
 
 					experiences: [
 						{

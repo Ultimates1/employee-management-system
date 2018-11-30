@@ -38,6 +38,7 @@ img {
     display: block;
     margin: 1vh;
     padding: 0px;
+    visibility: hidden;
 }
 
 .link {
@@ -221,7 +222,6 @@ img {
     bottom: 25vh;
     left: 50vw;
     transform: translate(-50%, 0%);
-    visibility: hidden;
 }
 
 #login button {

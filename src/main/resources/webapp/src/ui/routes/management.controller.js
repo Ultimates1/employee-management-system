@@ -16,6 +16,9 @@ angular
 				if (!Access.getLoginStatus()) {
 					$rootScope.goTo('login');
 				}
+				if (!$rootScope.hasFunction('PROJECT_MANAGEMENT')) {
+					$rootScope.goTo('home');
+				}
 				return $scope.htmlReady;
 			};
 
