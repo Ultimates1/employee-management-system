@@ -89,4 +89,17 @@ public class EmployeeLeaveRequestUtil {
 			throw new EmployeeLeaveException(ex.getMessage());
 		}
 	}
+
+	public List<EmployeeLeaveRequestBean> getEmployeeLeaveRequestList(Long userId) throws EmployeeLeaveException {
+		try {
+			List<EmployeeLeaveRequestBean> employeeLeaveRequestList = employeeLeaveRequestService.getEmployeeLeaveRequestList(userId);
+			if(null != employeeLeaveRequestList && !employeeLeaveRequestList.isEmpty()) {
+				return employeeLeaveRequestList;
+			}
+			throw new EmployeeLeaveException("No leave request record found for this employee.");
+		} catch(Exception ex) {
+			ex.printStackTrace();
+			throw new EmployeeLeaveException(ex.getMessage());
+		} 
+	}
 }

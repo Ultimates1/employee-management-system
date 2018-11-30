@@ -39,7 +39,15 @@ public class EmployeeLeaveRequestService {
 		return employeeLeaveRequestRepository.findById(leaveRequestId).get();
 	}
 
-	public List<EmployeeLeaveRequestBean> getLeaveRequestListByStatusOfWorkflow(String status) {
-		return employeeLeaveRequestRepository.getLeaveRequestListByStatusOfWorkflow(status);
+	public List<EmployeeLeaveRequestBean> getEmployeeLeaveRequestList(Long userId) {
+		return employeeLeaveRequestRepository.getEmployeeLeaveRequestList(userId);
+	}
+
+	public List<EmployeeLeaveRequestBean> getApprovedLeaveRequestList() {
+		return employeeLeaveRequestRepository.getApprovedLeaveRequestList();
+	}
+
+	public List<EmployeeLeaveRequestBean> getRejectedLeaveRequestList() {
+		return employeeLeaveRequestRepository.getRejectedLeaveRequestList();
 	}
 }

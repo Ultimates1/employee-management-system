@@ -42,6 +42,24 @@ public class LeaveController {
 		return response;
 	}
 	
+	@RequestMapping(value="/ems/leave/getrequesthistory/{user}", method=RequestMethod.GET)
+	Map <String, Object> getLeaveRequestHistory(
+			@PathVariable("user") String user) {
+		Map <String, Object> response = new HashMap<String, Object>();
+		try {
+			Long userId = Long.parseLong(user);
+			List<EmployeeLeaveRequestBean> leaveRequestList = employeeLeaveRequestUtil.getEmployeeLeaveRequestList(userId);
+			response.put("success", true);
+			response.put("message", "Retrieved Successfully.");
+			response.put("leavebalance", leaveRequestList);
+		} catch (Exception e) {
+			response.put("success", false);
+			response.put("message", e.getMessage());
+			e.printStackTrace();
+		}
+		return response;
+	}
+	
 	@RequestMapping(value="/ems/leave/requestleave/{user}", method=RequestMethod.GET)
 	Map <String, Object> requestLeave(
 			@PathVariable("user") String user,

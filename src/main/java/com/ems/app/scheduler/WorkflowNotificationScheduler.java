@@ -30,7 +30,7 @@ public class WorkflowNotificationScheduler {
 	@Autowired
 	EmployeeLeaveRequestService employeeLeaveRequestService;
 
-	@Scheduled(fixedRate = 60*1000)
+	@Scheduled(fixedRate = 6*60*60*1000)
 	public void run() {
 		System.out.println("Workflow Notification timer task run at "+ new Date());
 

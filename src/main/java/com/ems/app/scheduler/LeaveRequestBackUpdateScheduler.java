@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.ems.app.bean.EmailNotificationBean;
 import com.ems.app.bean.EmployeeLeaveRequestBean;
-import com.ems.app.bean.WorkflowRequestBean;
 import com.ems.app.service.EmployeeLeaveRequestService;
 import com.ems.app.service.EmployeeService;
 import com.ems.app.service.WorkflowRequestService;
@@ -26,28 +24,30 @@ public class LeaveRequestBackUpdateScheduler {
 	@Autowired
 	EmployeeLeaveRequestService employeeLeaveRequestService;
 	
-	@Scheduled(fixedRate = 60*1000)
-	public void run() {/*
+	@Scheduled(fixedRate = 6*60*60*1000)
+	public void run() {
 		System.out.println("Leave request back update timer task run at "+ new Date());
 
 		try {
-			List<EmployeeLeaveRequestBean> employeeLeaveRequestSuccessList = employeeLeaveRequestService.getLeaveRequestListByStatusOfWorkflow("A");
-			List<EmployeeLeaveRequestBean> employeeLeaveRequestFailList = employeeLeaveRequestService.getLeaveRequestListByStatusOfWorkflow("R");
+			List<EmployeeLeaveRequestBean> employeeLeaveRequestApprovedList = employeeLeaveRequestService.getApprovedLeaveRequestList();
+			List<EmployeeLeaveRequestBean> employeeLeaveRequestRejectedList = employeeLeaveRequestService.getRejectedLeaveRequestList();
 
-			for(WorkflowRequestBean workflowRequestBean: workflowRequestList) {
+			for(EmployeeLeaveRequestBean employeeLeaveRequestBean: employeeLeaveRequestApprovedList) {
 				try {
-					String approverEmailId = employeeService.getCurrentEmployeeEmailIdByUserId(workflowRequestBean.getUserId());
-					
-					EmployeeLeaveRequestBean employeeLeaveRequestBean = employeeLeaveRequestService.getLeaveRequestUserIdByLeaveRequestId(workflowRequestBean.getLeaveRequestId());
-					String emailBody = "Leave request from User ID:" + employeeLeaveRequestBean.getUserId() + " with comment: " + employeeLeaveRequestBean.getComment() +". Please take appropriate action.";
-					
-					EmailNotificationBean emailNotificationBean = new EmailNotificationBean();
-					emailNotificationBean.setCreateDate(new Date());
-					emailNotificationBean.setEmailTo(approverEmailId);
-					emailNotificationBean.setEmailBody(emailBody);
-					emailNotificationBean.setEmailSubject("Leave request is pending for approval");
-					emailNotificationBean.setSendFlag("P");
-					emailNotificationService.addEmailNotification(emailNotificationBean);
+					employeeLeaveRequestBean.setUpdateDate(new Date());
+					employeeLeaveRequestBean.setStatus("A");
+					employeeLeaveRequestService.saveOrUpdateLeaveRequest(employeeLeaveRequestBean);
+				} catch(Exception ex) {
+					System.out.println("Error while inserting to EMS_EMAIL_NOTIFICATION");
+					ex.printStackTrace();
+				} 
+			}
+			
+			for(EmployeeLeaveRequestBean employeeLeaveRequestBean: employeeLeaveRequestRejectedList) {
+				try {
+					employeeLeaveRequestBean.setUpdateDate(new Date());
+					employeeLeaveRequestBean.setStatus("R");
+					employeeLeaveRequestService.saveOrUpdateLeaveRequest(employeeLeaveRequestBean);
 				} catch(Exception ex) {
 					System.out.println("Error while inserting to EMS_EMAIL_NOTIFICATION");
 					ex.printStackTrace();
@@ -57,5 +57,5 @@ public class LeaveRequestBackUpdateScheduler {
 			System.out.println("Error while fetching list with send_flag P from EMS_EMAIL_NOTIFICATION");
 			ex.printStackTrace();
 		}
-	*/}
+	}
 }
