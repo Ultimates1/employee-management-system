@@ -2,7 +2,7 @@ body {
 	font-family: Helvetica, sans-serif;
 }
 
-button {
+.tealBtn {
 	text-align: center;
 	font-size: 3vh;
 	font-weight: bold;
@@ -13,13 +13,28 @@ button {
 	background-color: #F5F5F5;
 }
 
-button:hover {
+.tealBtn:hover {
 	background-color: lightblue;
 }
 
-button:focus {
+.tealBtn:focus {
 	background-color: #DAE8FC;
 	outline: none;
+}
+
+.addBtn {
+    background: transparent url('../images/button_add.png') no-repeat center center;
+    background-size: contain;
+}
+
+.submitBtn {
+    background: transparent url('../images/button_submit.png') no-repeat center center;
+    background-size: contain;
+}
+
+.cancelBtn {
+    background: transparent url('../images/button_cancel.png') no-repeat center center;
+    background-size: contain;
 }
 
 input {
@@ -101,4 +116,33 @@ input {
 
 #documents .link {
     font-size: 3vh;
+}
+
+#leaveRequest {
+	overflow: auto;
+}
+
+#leaveRequest td, input {
+	font-size: 2vh;
+}
+
+#leaveRequest th {
+	font-size: 3vh;
+	background-color: #404040;
+	color: #FFFFFF;
+	-webkit-box-shadow: 3px 5px 10px grey;
+	-moz-box-shadow: 3px 5px 10px grey;
+	box-shadow: 3px 5px 10px grey;
+}
+
+#leaveRequest .pending {
+	background-image: linear-gradient(rgb(233, 247, 110), rgb(244, 252, 210), rgb(233, 247, 110));
+}
+
+#leaveRequest .accepted {
+	background-image: linear-gradient(#67ab9f, lightblue, #67ab9f);
+}
+
+#leaveRequest .rejected {
+	background-image: linear-gradient(rgb(252, 103, 103), rgb(250, 180, 180), rgb(252, 103, 103));
 }

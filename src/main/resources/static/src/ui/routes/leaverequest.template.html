@@ -1,4 +1,46 @@
 <div id="leaveRequest" ng-controller="LeaveRequestController" ng-init="htmlLoaded()" ng-show="ready()">
-<!-- http://localhost:8080/#!/leaverequest -->
+	<div id="leaveRequestError" class="error"></div>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>Leave</th>
+				<th>Return</th>
+				<th>Status</th>
+				<th>Reason</th>
+				<th>Comment</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="request in leaveRequests" ng-class="{pending: request.status === 'P', accepted: request.status === 'A', rejected: request.status === 'R'}">
+				<td>
+					<input ng-if="$index === 0 && !adding" type="button" ng-class="{interactable: $index === 0, addBtn: !adding}" ng-click="addRequest()"/>
+				</td>
+				<td>
+					<input ng-if="$index === 0 && adding" ng-model="newRequest.leaveFrom" focus-element="true" required/>
+					<input ng-if="$index !== 0 || ($index === 0 && !adding)" type="text" ng-value="convertDate(request.leaveFrom)" disabled/>
+				</td>
+				<td>
+					<input ng-if="$index === 0 && adding" ng-model="newRequest.leaveTo" required/>
+					<input ng-if="$index !== 0 || ($index === 0 && !adding)" type="text" ng-value="convertDate(request.leaveTo)" disabled/>
+				</td>
+				<td>{{request.status}}</td>
 
+				<!-- @TODO Make leaveType as dropdown list -->
+				<td>
+					<input ng-if="$index === 0 && adding" ng-model="newRequest.leaveType" required/>
+					<input ng-if="$index !== 0 || ($index === 0 && !adding)" type="text" ng-value="request.leaveType" disabled/>
+				</td>
+				<td style="text-align: left;">
+					<input ng-if="$index === 0 && adding" ng-model="newRequest.comment" required/>
+					<input ng-if="$index !== 0 || ($index === 0 && !adding)" type="text" ng-value="request.comment" disabled/>
+				</td>
+				<td>
+					<input ng-if="$index === 0 && adding" type="button" class="interactable submitBtn" ng-click="submitRequest()"/>
+					<input ng-if="!($index === 0 && adding) && dateIsInFuture(request.leaveFrom)" type="button" class="interactable cancelBtn" ng-click="cancelRequest($index)"/>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
