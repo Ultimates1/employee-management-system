@@ -1,3 +1,136 @@
+<!-- http://localhost:8080/#!/timekeeping -->
 <div id="timekeeping" ng-controller="TimekeepingController" ng-init="htmlLoaded()" ng-show="ready()">
+ 
+<html>
+<head>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid black;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+div.a {
+    text-align: center;
+}
+th, td {
+    border-bottom: 2px solid black;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+
+<body>
+		<div class="a">
+		<h1 style="font-size:60px;"><u>Time Sheet</u></h1>
+		<h2> Please enter your hours in the below table, according the 
+		the row titles indicated on the right of the screen</h2>
+		<h2>When done, press the Submit button</h2>	
+		</div>
+		
+  <table align="center" style="width:90%">
+  <tr>
+    <th>Times</th>
+    <th>Monday</th>
+    <th>Tuesday</th> 
+    <th>Wednesday</th>
+    <th>Thursday</th>
+    <th>Friday</th> 
+    <th>Saturday</th>
+    <th>Sunday</th>
+  </tr>
+  <tr>
+    <th>Regular hrs</th>
+     <!-- <td><input type="number" size="1"></td> -->
+     <!-- <td><input type="text" size="5" maxlength="5"></td> -->
+    <td><></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+ <th>Overtime</th>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+ <tr>
+ <th>Sick</th>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+   <tr>
+ <th>Vacation</th>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+   <tr>
+ <th>Holiday</th>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+   <tr>
+ <th>Unpaid leave</th>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+   <tr>
+ <th>Other</th>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+   <tr>
+ <th>Total pay:</th>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+<button type="submit" value="Submit">Submit</button>
+</body>
+</html>
 
 </div>
