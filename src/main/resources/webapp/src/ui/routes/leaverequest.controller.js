@@ -109,7 +109,7 @@ angular
 						'leaveFrom': '2018-11-26T08:00:00.000+0000',
 						'leaveTo': '2018-11-28T08:00:00.000+0000',
 						'comment': 'My leaves, none of your business',
-						'status': 'P'
+						'status': 'ED'
 					}
 				];
 

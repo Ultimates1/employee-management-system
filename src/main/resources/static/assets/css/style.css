@@ -200,6 +200,10 @@ input {
 	background-image: linear-gradient(rgb(252, 103, 103), rgb(250, 180, 180), rgb(252, 103, 103));
 }
 
+#leaveRequest .canceled {
+	background-image: linear-gradient(rgb(83, 138, 255), rgb(163, 192, 255), rgb(83, 138, 255));
+}
+
 #workflow {
 	overflow: auto;
 }

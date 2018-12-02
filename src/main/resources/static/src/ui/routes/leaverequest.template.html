@@ -13,7 +13,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="request in leaveRequests" ng-class="{pending: request.status === 'P', accepted: request.status === 'A', rejected: request.status === 'R'}">
+			<tr ng-repeat="request in leaveRequests" ng-class="{pending: request.status === 'P', accepted: request.status === 'A', rejected: request.status === 'R' , canceled: request.status === 'ED'}">
 				<td>
 					<input ng-if="$index === 0 && !adding" type="button" class="input-container" ng-class="{interactable: $index === 0, addBtn: !adding}"
 					 ng-click="addRequest()" />
@@ -42,7 +42,7 @@
 				</td>
 				<td>
 					<input ng-if="$index === 0 && adding" type="button" class="input-container interactable submitBtn" ng-click="submitRequest()" />
-					<input ng-if="!($index === 0 && adding) && dateIsInFuture(request.leaveFrom)" type="button" class="input-container interactable cancelBtn"
+					<input ng-if="!($index === 0 && adding) && request.status !== 'ED' && dateIsInFuture(request.leaveFrom)" type="button" class="input-container interactable cancelBtn"
 					 ng-click="cancelRequest($index)" />
 				</td>
 			</tr>
