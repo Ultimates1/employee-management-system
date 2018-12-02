@@ -1,0 +1,40 @@
+<div id="workflow" ng-controller="WorkflowController" ng-init="htmlLoaded()" ng-show="ready()">
+	<table>
+		<thead>
+			<tr>
+				<th>Employee</th>
+				<th>Leave</th>
+				<th>Return</th>
+				<th>Status</th>
+				<th>Type</th>
+				<th>Reason</th>
+				<th>Comment</th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="request in workflows">
+				<td>{{request.employeeName}} ({{request.employeeID}})</td>
+				<td>{{convertDate(request.leaveFrom)}}</td>
+				<td>{{convertDate(request.leaveTo)}}</td>
+				<td>{{request.status}}</td>
+				<td>{{request.leaveType}}</td>
+				<td>{{request.comment}}</td>
+				<td style="text-align: left;">
+					<input type="text" class="input-container" ng-model="request.addedComment" />
+				</td>
+				<td>
+					<input type="button" class="input-container interactable addBtn" ng-click="addComment($index)" />
+				</td>
+				<td>
+					<input type="button" class="input-container interactable submitBtn" ng-click="acceptRequest($index)" />
+				</td>
+				<td>
+					<input type="button" class="input-container interactable cancelBtn" ng-click="rejectRequest($index)" />
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

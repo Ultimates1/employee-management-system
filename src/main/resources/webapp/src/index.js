@@ -11,4 +11,5 @@ import './ui/routes/leaverequest.controller';
 import './ui/routes/documents.controller';
 import './ui/routes/management.controller';
 import './ui/routes/budget.controller';
+import './ui/routes/workflow.controller';
 import './ui/app.controller';
