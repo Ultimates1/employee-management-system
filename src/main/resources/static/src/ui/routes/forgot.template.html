@@ -1,15 +1,10 @@
-<!-- The link: http://localhost:8080/#!/forgot -->
-<div id="forgot" ng-controller="ForgotController" ng-init="htmlLoaded()" ng-show="ready()" class="resetCenter">
-	<h1 style="color:MediumSeaGreen;"> <ins>Forgot Password? </ins></h1>
-	<br>
-	<label>Enter your email to reset your password.</label>
-	<br><br>
-	<input type="text" id="user" placeholder="username or email@mail.com" size="25" ng-model="user">
-	<br><br>
-	<label id="userError" class="error">Sorry, we can't find this email in our records.</label>
-	<br><br>
-	<button class="buttonReset" ng-click="forgotPassword()"><b>RESET</b></button>
-	<br><br>
-	<button class="buttonReset" ng-click="back()"><b>BACK</b></button>
-	<br>
+<div id="forgot" ng-controller="ForgotController" ng-init="htmlLoaded()" ng-show="ready()">
+	<div class="resetCenter">
+		<h1 style="color:#67AB9F;"><ins>Forgot Password?</ins></h1>
+		<label style="font-size:2vh;">Enter your email to reset your password.</label>
+		<input type="text" class="input-container" placeholder="email@mail.com" ng-model="user" required />
+		<label id="userError" class="error">Sorry, we can't find this email in our records.</label>
+		<button class="interactable tealBtn" ng-click="forgotPassword()" autofocus>RESET</button>
+		<button class="interactable tealBtn" style="transform: translateX(105%);" ng-click="back()">BACK</button>
+	</div>
 </div>

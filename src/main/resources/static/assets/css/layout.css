@@ -3,19 +3,15 @@ body {
     padding: 0px;
     overflow-x: hidden;
     overflow-y: scroll;
+    width: 100%;
+    height: 100%;
 }
 
-button {
-    position: absolute;
-    display: block;
-    width: 20vw;
-    max-width: 30vw;
-    height: auto;
-    margin: 1vh;
-    padding: 1vh;
+select {
+	width: 100%;
 }
 
-input {
+.tealBtn {
     position: absolute;
     display: block;
     width: 20vw;
@@ -93,6 +89,7 @@ img {
 }
 
 .toggle-panel {
+    position: absolute;
     background: transparent url('../images/toggle_right.png') left center/80% 80% no-repeat !important;
     border: none;
     width: 30px;
@@ -169,6 +166,36 @@ img {
     cursor: pointer;
 }
 
+.uib-datepicker-popup li {
+    display: block;
+}
+
+.uib-datepicker-popup.dropdown-menu {
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+}
+
+.card {
+    margin-right: 2vw;
+    display: inline-block;
+    height: 5vh;
+}
+
+.card label {
+    padding: 1vh;
+    height: 100%;
+}
+
+.card button {
+    padding: 0.5vh;
+    height: 2vh;
+    width: 2vh;
+}
+
 .imgA1 {
     position: absolute;
     width: auto;
@@ -206,14 +233,20 @@ img {
     cursor: pointer;
     border-radius: 12px;
 }
+
 .resetCenter {
     margin: auto;
-    width: 60%;
-    padding: 10px;
-    font-family: Arial;
+    transform: translateY(-50%);
 }
 
 #login input {
+    position: absolute;
+    display: block;
+    width: 20vw;
+    max-width: 30vw;
+    height: auto;
+    margin: 1vh;
+    padding: 1vh;
     left: 50vw;
     transform: translate(-50%, 0%);
 }
@@ -224,7 +257,7 @@ img {
     transform: translate(-50%, 0%);
 }
 
-#login button {
+#login .tealBtn {
     bottom: 14vh;
     left: 50vw;
     transform: translate(-50%, 0%);
@@ -234,6 +267,60 @@ img {
     bottom: 10vh;
     left: 50%;
     transform: translate(-50%, 0%);
+}
+
+#forgot {
+    width: 100%;
+    height: 100%;
+    display: grid;
+}
+
+#forgot .input-container {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 5vh;
+    margin: 0;
+    padding: 0;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+#forgot .error {
+    position: relative;
+}
+
+#forgot .tealBtn {
+    width: 50%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#reset {
+    width: 100%;
+    height: 100%;
+    display: grid;
+}
+
+#reset .input-container {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 5vh;
+    margin: 0;
+    padding: 0;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+#reset .error {
+    position: relative;
+}
+
+#reset .tealBtn {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 #home label {
@@ -396,14 +483,124 @@ img {
     padding-bottom: 1vh;
 }
 
+#leaveRequest {
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 85vh;
+    display: grid;
+}
+
+#leaveRequest table {
+    position: relative;
+    margin: auto auto;
+    text-align: center;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0.5vh;
+}
+
+#leaveRequest td {
+    min-width: 3vh;
+    height: auto;
+}
+
+#leaveRequest th {
+    text-align: center;
+}
+
+#leaveRequest tbody:before {
+    content: "-";
+    display: block;
+    line-height: 1vh;
+    color: transparent;
+}
+
+#leaveRequest .input-container {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#leaveRequest .error {
+    top: 15%;
+    left: 15%;
+}
+
+#management {
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+}
+
+#management .container {
+    flex-basis: 100%;
+    padding: 10vh;
+}
+
+#management select {
+    position: relative;
+    width: 50%;
+    margin-bottom: 2vh;
+    padding: 0.5vh;
+}
+
+#management .display {
+    height: 50%;
+    padding: 2vh;
+    overflow-y: scroll;
+}
+
 #documents {
-    height: 65vh;
-    vertical-align: middle;
-    line-height: 65vh;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+}
+
+#documents .container {
+    flex-basis: 100%;
+    padding: 10vh;
+}
+
+#documents select {
+    position: relative;
+    width: 50%;
+    margin-bottom: 2vh;
+    padding: 0.5vh;
+}
+
+#documents .display {
+    height: 50%;
+    padding: 2vh;
+    overflow-y: scroll;
+}
+
+#documents .input-container {
+    width: 100%;
+    display: block;
+}
+
+#documents .tealBtn {
+    bottom: 0;
+    margin-bottom: 3vh;
+    left: 50vw;
+    transform: translate(-50%, 0%);
 }
 
 #documents .link {
-    left: 30%;
     position: relative;
     height: 5vh;
+    margin: 0;
+}
+
+#documents .error {
+    top: 15%;
+    left: 15%;
 }

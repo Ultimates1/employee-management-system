@@ -32,10 +32,10 @@ angular
 				}
 
 				if ($scope.newPass !== $scope.confirmPass) {
-					angular.element(document.getElementById('resetError')).css('visibility', 'visible');
+					$scope.displayMsg(true, '', 'error');
 					return false;
 				} else {
-					angular.element(document.getElementById('resetError')).css('visibility', 'hidden');
+					$scope.displayMsg(false);
 					return true;
 				}
 
@@ -54,6 +54,8 @@ angular
 			};
 
 			$scope.resetPassword = function () {
+				console.log('here');
+				console.log($scope.newPass, $scope.confirmPass);
 				if (!$scope.validatePassword()) {
 					return;
 				}
