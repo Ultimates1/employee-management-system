@@ -3,13 +3,21 @@ body {
 }
 
 select {
+	background-color: rgba(255,255,255,.5);
+    border: none;
+	text-align: center;
+	text-align-last: center;
 	appearance: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	-ms-appearance: none;
 	background: url('../images/button_select.png') no-repeat right;
-	background-size: 5% 100%;
+	background-size: 1.5vw 100%;
 	font-size: 2vh;
+}
+
+select:hover {
+	cursor: pointer;
 }
 
 .tealBtn {
@@ -34,17 +42,20 @@ select {
 
 .addBtn {
     background: transparent url('../images/button_add.png') no-repeat center center;
-    background-size: contain;
+	background-size: contain;
+	border: none;
 }
 
 .submitBtn {
     background: transparent url('../images/button_submit.png') no-repeat center center;
-    background-size: contain;
+	background-size: contain;
+	border: none;
 }
 
 .cancelBtn {
     background: transparent url('../images/button_cancel.png') no-repeat center center;
-    background-size: contain;
+	background-size: contain;
+	border: none;
 }
 
 input {
@@ -80,6 +91,17 @@ input {
     background: lightblue;
     border: 1px solid black;
     border-radius: 24px;
+}
+
+.card label {
+    background-color: rgba(128, 196, 196, 1);
+    box-shadow: 0.5vh 0.5vh rgba(196, 196, 196, 1);
+    border-radius: 5px;
+	color: rgb(240, 255, 255);
+	text-align: center;
+	font-family: "Courier New", Courier, monospace;
+	font-weight: bold;
+	font-size: 2vh;
 }
 
 #home label {
@@ -163,4 +185,25 @@ input {
 
 #leaveRequest .rejected {
 	background-image: linear-gradient(rgb(252, 103, 103), rgb(250, 180, 180), rgb(252, 103, 103));
+}
+
+#management select {
+	border: 1px solid #67ab9f;
+	font-size: 3vh;
+	box-shadow: 1vh 1vh rgba(128, 196, 196, 0.5);
+	color: #558888;
+	background-size: 2vh;
+    background-position-x: 98%;
+}
+
+#management .display {
+	border: 1px solid #67ab9f;
+	box-shadow: 1vh 1vh rgba(128, 196, 196, 0.5);
+}
+
+#management .addBtn {
+	padding: 1vh;
+    margin-left: 5vh;
+    height: 4vh;
+    width: 4vh;
 }

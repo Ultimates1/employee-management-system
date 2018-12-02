@@ -9,10 +9,6 @@ body {
 
 select {
 	width: 100%;
-    background-color: rgba(255,255,255,.5);
-    border: none;
-	text-align: center;
-	text-align-last: center;
 }
 
 .tealBtn {
@@ -183,6 +179,23 @@ img {
     z-index: 1;
 }
 
+.card {
+    margin-right: 2vw;
+    display: inline-block;
+    height: 5vh;
+}
+
+.card label {
+    padding: 1vh;
+    height: 100%;
+}
+
+.card button {
+    padding: 0.5vh;
+    height: 2vh;
+    width: 2vh;
+}
+
 .imgA1 {
     position: absolute;
     width: auto;
@@ -220,6 +233,7 @@ img {
     cursor: pointer;
     border-radius: 12px;
 }
+
 .resetCenter {
     margin: auto;
     width: 60%;
@@ -469,4 +483,30 @@ img {
     margin: 0;
     padding: 0;
     text-align: center;
+}
+
+#management {
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+}
+
+#management .container {
+    flex-basis: 100%;
+    padding: 10vh;
+}
+
+#management select {
+    position: relative;
+    width: 50%;
+    margin-bottom: 2vh;
+    padding: 0.5vh;
+}
+
+#management .display {
+    height: 50%;
+    padding: 2vh;
+    overflow-y: scroll;
 }

@@ -33,7 +33,7 @@
 					<input ng-if="$index !== 0 || ($index === 0 && !adding)" type="text" class="input-container" ng-value="request.leaveType"
 					 disabled />
 					<select ng-if="$index === 0 && adding" class="input-container" ng-model="newRequest.leaveType" ng-options="type for type in leaveTypes"
-					 required>
+					 required></select>
 				</td>
 				<td style="text-align: left;">
 					<input ng-if="$index === 0 && adding" type="text" class="input-container" ng-model="newRequest.comment" required />
