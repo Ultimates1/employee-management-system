@@ -109,6 +109,18 @@ input {
 	font-size: 2vh;
 }
 
+#forgot .input-container {
+	text-align: left;
+	font-size: 2vh;
+	border: 1px solid #67ab9f;
+}
+
+#reset .input-container {
+	text-align: left;
+	font-size: 2vh;
+	border: 1px solid #67ab9f;
+}
+
 #home label {
 	color: #67AB9F;
 	font-size: 5vh;
