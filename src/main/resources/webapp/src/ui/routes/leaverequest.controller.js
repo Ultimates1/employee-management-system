@@ -13,6 +13,18 @@ angular
 			$scope.htmlReady = false;
 			$scope.userID = Access.getAccessContent().userID;
 			$scope.adding = false;
+			$scope.leaveTypes = ['PERSONAL_LEAVE', 'SICK_LEAVE', 'VACATION_LEAVE'];
+			$scope.datePickerOn = {
+				from: false,
+				to: false
+			};
+			$scope.format = 'MM-dd-yyyy';
+			$scope.dateOptions = {
+				dateDisabled: disableCalendarDays,
+				formatYear: 'yy',
+				minMode: 'day',
+				startingDay: 1
+			};
 			$scope.newRequest = {
 				leaveFrom: '',
 				leaveTo: '',
@@ -41,6 +53,15 @@ angular
 				element.text(message ? message : 'Unable to complete your request.');
 				element.css('color', type === 'error' ? 'red' : '#67AB9F');
 				element.css('visibility', display ? 'visible' : 'hidden');
+			};
+
+			$scope.toggleDatePicker = function (which) {
+				$scope.datePickerOn[which] = !$scope.datePickerOn[which];
+			};
+
+			// Disable weekend selection
+			function disableCalendarDays(date, mode) {
+				return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
 			};
 
 			// leave/getrquesthistory/{userID}
@@ -106,22 +127,22 @@ angular
 
 			$scope.addRequest = function () {
 				$scope.adding = true;
-				$scope.leaveRequests.unshift({
+				$scope.newRequest = {
 					leaveFrom: '',
 					leaveTo: '',
 					status: 'P',
 					leaveType: '',
 					comment: ''
-				});
-				document.getElementsByTagName('td')[1].getElementsByTagName('input')[0].focus();
-			}
+				};
+				$scope.leaveRequests.unshift($scope.newRequest);
+			};
 
 			$scope.validateRequest = function (request) {
 				if (request && request.leaveFrom && request.leaveTo && request.leaveType && $scope.convertDate(request.leaveFrom) && $scope.convertDate(request.leaveTo)) {
 					return true;
 				}
 				return false;
-			}
+			};
 
 			$scope.submitRequest = function () {
 				if (!$scope.validateRequest($scope.newRequest)) {
@@ -129,13 +150,13 @@ angular
 					return;
 				}
 
-				console.log('here');
 				$scope.newRequest.createDate = new Date();
 				$scope.newRequest.leaveFrom = new Date($scope.newRequest.leaveFrom);
 				$scope.newRequest.leaveTo = new Date($scope.newRequest.leaveTo);
 				$scope.leaveRequests[0] = $scope.newRequest;
 				$scope.adding = false;
-			}
+				$scope.displayMsg(false);
+			};
 
 			$scope.cancelRequest = function (index) {
 				// Delete using leaveRequestId
@@ -155,7 +176,7 @@ angular
 
 			$scope.dateIsInFuture = function (datestring) {
 				return new Date(datestring) > new Date();
-			}
+			};
 
 			$scope.convertDate = function (date) {
 				date = new Date(date);
@@ -172,21 +193,8 @@ angular
 				var ddChars = dd.split('');
 
 				return (mmChars[1] ? mm : '0' + mmChars[0]) + '-' + (ddChars[1] ? dd : '0' + ddChars[0]) + '-' + yyyy;
-			}
+			};
 
 			$scope.leaveRequests = $scope.getLeaveRequests($scope.userID);
 		}
-	])
-	.directive('focusElement', ['$timeout', function ($timeout) {
-		return {
-			link: function (scope, element, attrs) {
-				scope.$watch(attrs.focusElement, function (value) {
-					if (value === true) {
-						$timeout(function () {
-							element[0].focus();
-						});
-					}
-				});
-			}
-		};
-	}]);
+	]);

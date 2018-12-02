@@ -15,30 +15,35 @@
 		<tbody>
 			<tr ng-repeat="request in leaveRequests" ng-class="{pending: request.status === 'P', accepted: request.status === 'A', rejected: request.status === 'R'}">
 				<td>
-					<input ng-if="$index === 0 && !adding" type="button" ng-class="{interactable: $index === 0, addBtn: !adding}" ng-click="addRequest()"/>
+					<input ng-if="$index === 0 && !adding" type="button" class="input-container" ng-class="{interactable: $index === 0, addBtn: !adding}"
+					 ng-click="addRequest()" />
 				</td>
 				<td>
-					<input ng-if="$index === 0 && adding" ng-model="newRequest.leaveFrom" focus-element="true" required/>
-					<input ng-if="$index !== 0 || ($index === 0 && !adding)" type="text" ng-value="convertDate(request.leaveFrom)" disabled/>
+					<input id="from" ng-if="$index === 0 && adding" type="text" class="input-container" uib-datepicker-popup="{{format}}" ng-model="newRequest.leaveFrom" is-open="datePickerOn.from" ng-click="toggleDatePicker('from')" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
+					<input ng-if="$index !== 0 || ($index === 0 && !adding)" type="text" class="input-container" ng-value="convertDate(request.leaveFrom)"
+					 disabled />
 				</td>
 				<td>
-					<input ng-if="$index === 0 && adding" ng-model="newRequest.leaveTo" required/>
-					<input ng-if="$index !== 0 || ($index === 0 && !adding)" type="text" ng-value="convertDate(request.leaveTo)" disabled/>
+					<input id="to" ng-if="$index === 0 && adding" type="text" class="input-container" uib-datepicker-popup="{{format}}" ng-model="newRequest.leaveTo" is-open="datePickerOn.to" ng-click="toggleDatePicker('to')" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
+					<input ng-if="$index !== 0 || ($index === 0 && !adding)" type="text" class="input-container" ng-value="convertDate(request.leaveTo)"
+					 disabled />
 				</td>
 				<td>{{request.status}}</td>
-
-				<!-- @TODO Make leaveType as dropdown list -->
 				<td>
-					<input ng-if="$index === 0 && adding" ng-model="newRequest.leaveType" required/>
-					<input ng-if="$index !== 0 || ($index === 0 && !adding)" type="text" ng-value="request.leaveType" disabled/>
+					<input ng-if="$index !== 0 || ($index === 0 && !adding)" type="text" class="input-container" ng-value="request.leaveType"
+					 disabled />
+					<select ng-if="$index === 0 && adding" class="input-container" ng-model="newRequest.leaveType" ng-options="type for type in leaveTypes"
+					 required>
 				</td>
 				<td style="text-align: left;">
-					<input ng-if="$index === 0 && adding" ng-model="newRequest.comment" required/>
-					<input ng-if="$index !== 0 || ($index === 0 && !adding)" type="text" ng-value="request.comment" disabled/>
+					<input ng-if="$index === 0 && adding" type="text" class="input-container" ng-model="newRequest.comment" required />
+					<input ng-if="$index !== 0 || ($index === 0 && !adding)" class="input-container" ng-value="request.comment"
+					 disabled />
 				</td>
 				<td>
-					<input ng-if="$index === 0 && adding" type="button" class="interactable submitBtn" ng-click="submitRequest()"/>
-					<input ng-if="!($index === 0 && adding) && dateIsInFuture(request.leaveFrom)" type="button" class="interactable cancelBtn" ng-click="cancelRequest($index)"/>
+					<input ng-if="$index === 0 && adding" type="button" class="input-container interactable submitBtn" ng-click="submitRequest()" />
+					<input ng-if="!($index === 0 && adding) && dateIsInFuture(request.leaveFrom)" type="button" class="input-container interactable cancelBtn"
+					 ng-click="cancelRequest($index)" />
 				</td>
 			</tr>
 		</tbody>

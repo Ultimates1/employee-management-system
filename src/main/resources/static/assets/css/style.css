@@ -2,6 +2,16 @@ body {
 	font-family: Helvetica, sans-serif;
 }
 
+select {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	background: url('../images/button_select.png') no-repeat right;
+	background-size: 5% 100%;
+	font-size: 2vh;
+}
+
 .tealBtn {
 	text-align: center;
 	font-size: 3vh;
@@ -56,6 +66,14 @@ input {
 
 .banner {
     background-color: #67ab9f;
+}
+
+.uib-datepicker-popup.dropdown-menu {
+    background-color: #67AB9F;
+}
+
+.uib-datepicker-popup.dropdown-menu .text-muted {
+	color: transparent;
 }
 
 .navigation .nav_tab {
