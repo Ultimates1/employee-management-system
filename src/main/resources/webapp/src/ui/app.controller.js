@@ -72,7 +72,8 @@ angular
 							leaveRequest: $rootScope.hasFunction('LEAVE_REQUEST'),
 							documents: $rootScope.hasFunction('MY_DOCUMENTS'),
 							management: $rootScope.hasFunction('PROJECT_MANAGEMENT'),
-							budget: $rootScope.hasFunction('WORKFLOW')
+							budget: $rootScope.hasFunction('BUDGET'),
+							workflow: $rootScope.hasFunction('WORKFLOW')
 						};
 						$scope.bannerImgPath = 'assets/images/banner_profile.jpg';
 						break;
@@ -86,7 +87,8 @@ angular
 							leaveRequest: $rootScope.hasFunction('LEAVE_REQUEST'),
 							documents: $rootScope.hasFunction('MY_DOCUMENTS'),
 							management: $rootScope.hasFunction('PROJECT_MANAGEMENT'),
-							budget: $rootScope.hasFunction('WORKFLOW')
+							budget: $rootScope.hasFunction('BUDGET'),
+							workflow: $rootScope.hasFunction('WORKFLOW')
 						};
 						$scope.bannerImgPath = 'assets/images/banner_timekeeping.jpg';
 						break;
@@ -100,7 +102,8 @@ angular
 							leaveRequest: false,
 							documents: $rootScope.hasFunction('MY_DOCUMENTS'),
 							management: $rootScope.hasFunction('PROJECT_MANAGEMENT'),
-							budget: $rootScope.hasFunction('WORKFLOW')
+							budget: $rootScope.hasFunction('BUDGET'),
+							workflow: $rootScope.hasFunction('WORKFLOW')
 						};
 						$scope.bannerImgPath = 'assets/images/banner_leave.jpg';
 						break;
@@ -114,7 +117,8 @@ angular
 							leaveRequest: $rootScope.hasFunction('LEAVE_REQUEST'),
 							documents: false,
 							management: $rootScope.hasFunction('PROJECT_MANAGEMENT'),
-							budget: $rootScope.hasFunction('WORKFLOW')
+							budget: $rootScope.hasFunction('BUDGET'),
+							workflow: $rootScope.hasFunction('WORKFLOW')
 						};
 						$scope.bannerImgPath = 'assets/images/banner_documents.jpg';
 						break;
@@ -128,7 +132,8 @@ angular
 							leaveRequest: $rootScope.hasFunction('LEAVE_REQUEST'),
 							documents: $rootScope.hasFunction('MY_DOCUMENTS'),
 							management: false,
-							budget: $rootScope.hasFunction('WORKFLOW')
+							budget: $rootScope.hasFunction('BUDGET'),
+							workflow: $rootScope.hasFunction('WORKFLOW')
 						};
 						$scope.bannerImgPath = 'assets/images/banner_management.jpg';
 						break;
@@ -142,9 +147,25 @@ angular
 							leaveRequest: $rootScope.hasFunction('LEAVE_REQUEST'),
 							documents: $rootScope.hasFunction('MY_DOCUMENTS'),
 							management: $rootScope.hasFunction('PROJECT_MANAGEMENT'),
-							budget: false
+							budget: false,
+							workflow: $rootScope.hasFunction('WORKFLOW')
 						};
 						$scope.bannerImgPath = 'assets/images/banner_budget.jpg';
+						break;
+					case 'WorkflowController':
+						$scope.view.logout = true;
+						$scope.view.banner = true;
+						$scope.view.nav = true;
+						$scope.navs = {
+							profile: $rootScope.hasFunction('PROFILE'),
+							timekeeping: $rootScope.hasFunction('TIME_SHEET'),
+							leaveRequest: $rootScope.hasFunction('LEAVE_REQUEST'),
+							documents: $rootScope.hasFunction('MY_DOCUMENTS'),
+							management: $rootScope.hasFunction('PROJECT_MANAGEMENT'),
+							budget: $rootScope.hasFunction('BUDGET'),
+							workflow: false
+						};
+						$scope.bannerImgPath = 'assets/images/banner_workflow.jpg';
 						break;
 					default:
 						break;
@@ -179,6 +200,9 @@ angular
 						break;
 					case 'budget':
 						$location.path('/budget');
+						break;
+					case 'workflow':
+						$location.path('/workflow');
 						break;
 					default:
 						$location.path('/');

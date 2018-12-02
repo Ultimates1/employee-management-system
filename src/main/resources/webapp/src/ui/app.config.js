@@ -47,6 +47,10 @@ angular
 					templateUrl: 'src/ui/routes/budget.template.html',
 					controller: 'BudgetController'
 				})
+				.when('/workflow', {
+					templateUrl: 'src/ui/routes/workflow.template.html',
+					controller: 'WorkflowController'
+				})
 				.otherwise('/');
 		}
 	]);

@@ -200,6 +200,24 @@ input {
 	background-image: linear-gradient(rgb(252, 103, 103), rgb(250, 180, 180), rgb(252, 103, 103));
 }
 
+#workflow {
+	overflow: auto;
+}
+
+#workflow td, input {
+	font-size: 2vh;
+}
+
+#workflow th {
+	font-size: 3vh;
+	background-color: #404040;
+	color: #FFFFFF;
+	-webkit-box-shadow: 3px 5px 10px grey;
+	-moz-box-shadow: 3px 5px 10px grey;
+	box-shadow: 3px 5px 10px grey;
+}
+
+
 #management select {
 	border: 1px solid #67ab9f;
 	font-size: 3vh;
