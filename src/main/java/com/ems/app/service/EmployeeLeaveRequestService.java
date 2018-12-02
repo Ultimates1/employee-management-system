@@ -39,8 +39,8 @@ public class EmployeeLeaveRequestService {
 		return employeeLeaveRequestRepository.findById(leaveRequestId).get();
 	}
 
-	public List<EmployeeLeaveRequestBean> getEmployeeLeaveRequestList(Long userId) {
-		return employeeLeaveRequestRepository.getEmployeeLeaveRequestList(userId);
+	public List<EmployeeLeaveRequestBean> getEmployeeLeaveRequestListByUserId(Long userId) {
+		return employeeLeaveRequestRepository.getEmployeeLeaveRequestListByUserId(userId);
 	}
 
 	public List<EmployeeLeaveRequestBean> getApprovedLeaveRequestList() {
@@ -49,5 +49,9 @@ public class EmployeeLeaveRequestService {
 
 	public List<EmployeeLeaveRequestBean> getRejectedLeaveRequestList() {
 		return employeeLeaveRequestRepository.getRejectedLeaveRequestList();
+	}
+
+	public EmployeeLeaveRequestBean getEmployeeLeaveRequestByLeaveRequestId(Long leaveRequestId) {
+		return employeeLeaveRequestRepository.findById(leaveRequestId).get();
 	}
 }

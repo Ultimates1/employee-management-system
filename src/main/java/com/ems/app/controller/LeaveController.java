@@ -60,6 +60,24 @@ public class LeaveController {
 		return response;
 	}
 	
+	@RequestMapping(value="/ems/leave/deleteleave/{user}", method=RequestMethod.GET)
+	Map <String, Object> deleteLeave(
+			@PathVariable("user") String user,
+			@RequestParam("leaveid") Long leaveRequestId) {
+		Map <String, Object> response = new HashMap<String, Object>();
+		try {
+			Long userId = Long.parseLong(user);
+			employeeLeaveRequestUtil.deleteLeaveRequest(userId, leaveRequestId);
+			response.put("success", true);
+			response.put("message", "Leave request deleted Successfully.");
+		} catch (Exception e) {
+			response.put("success", false);
+			response.put("message", e.getMessage());
+			e.printStackTrace();
+		}
+		return response;
+	}
+	
 	@RequestMapping(value="/ems/leave/requestleave/{user}", method=RequestMethod.GET)
 	Map <String, Object> requestLeave(
 			@PathVariable("user") String user,

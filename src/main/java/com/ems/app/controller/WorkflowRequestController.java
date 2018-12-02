@@ -1,6 +1,7 @@
 package com.ems.app.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ems.app.bean.EmployeeLeaveRequestBean;
 import com.ems.app.bean.WorkflowRequestBean;
 import com.ems.app.service.WorkflowRequestService;
 import com.ems.app.utils.WorkflowRequestUtil;
@@ -30,7 +30,7 @@ public class WorkflowRequestController {
 		Map <String, Object> response = new HashMap<String, Object>();
 		try {
 			Long userId = Long.parseLong(user);
-			Map<Long, EmployeeLeaveRequestBean> pendingList = workflowRequestService.getPendingWorkflowRequest(userId);
+			List<WorkflowRequestBean> pendingList = workflowRequestService.getPendingWorkflowRequest(userId);
 			response.put("success", true);
 			response.put("message", "Retrieved workflow request successfully.");
 			response.put("pendinglist", pendingList);

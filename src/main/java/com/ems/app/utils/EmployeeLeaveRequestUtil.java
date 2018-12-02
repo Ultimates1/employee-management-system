@@ -92,11 +92,38 @@ public class EmployeeLeaveRequestUtil {
 
 	public List<EmployeeLeaveRequestBean> getEmployeeLeaveRequestList(Long userId) throws EmployeeLeaveException {
 		try {
-			List<EmployeeLeaveRequestBean> employeeLeaveRequestList = employeeLeaveRequestService.getEmployeeLeaveRequestList(userId);
+			List<EmployeeLeaveRequestBean> employeeLeaveRequestList = employeeLeaveRequestService.getEmployeeLeaveRequestListByUserId(userId);
 			if(null != employeeLeaveRequestList && !employeeLeaveRequestList.isEmpty()) {
 				return employeeLeaveRequestList;
 			}
 			throw new EmployeeLeaveException("No leave request record found for this employee.");
+		} catch(Exception ex) {
+			ex.printStackTrace();
+			throw new EmployeeLeaveException(ex.getMessage());
+		} 
+	}
+
+	public void deleteLeaveRequest(Long userId, Long leaveRequestId) throws EmployeeLeaveException {
+		try {
+			EmployeeLeaveRequestBean employeeLeaveRequestBean = employeeLeaveRequestService.getEmployeeLeaveRequestByLeaveRequestId(leaveRequestId);
+			if(null == employeeLeaveRequestBean) {
+				throw new EmployeeLeaveException("No leave request record found for this leave request id.");
+			}
+			
+			List<WorkflowRequestBean> workflowRequestList = workflowRequestService.getWorkflowListByLeaveRequestId(leaveRequestId);
+			if(null != workflowRequestList && !workflowRequestList.isEmpty()) {
+				for(WorkflowRequestBean workflowRequestBean: workflowRequestList) {
+					workflowRequestBean.setUpdateDate(new Date());
+					workflowRequestBean.setStatus("ED");
+					workflowRequestBean.setComment("Deleted by employee");
+					workflowRequestService.addOrUpdateworkflowRequest(workflowRequestBean);
+				}
+			}
+			
+			employeeLeaveRequestBean.setUpdateDate(new Date());
+			employeeLeaveRequestBean.setStatus("ED");
+			employeeLeaveRequestBean.setComment("Deleted by employee");
+			employeeLeaveRequestService.saveOrUpdateLeaveRequest(employeeLeaveRequestBean);
 		} catch(Exception ex) {
 			ex.printStackTrace();
 			throw new EmployeeLeaveException(ex.getMessage());

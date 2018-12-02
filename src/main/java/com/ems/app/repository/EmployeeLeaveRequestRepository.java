@@ -16,7 +16,7 @@ public interface EmployeeLeaveRequestRepository extends CrudRepository<EmployeeL
 	List<EmployeeLeaveRequestBean> getLeaveRequestListByStatusOfWorkflow(String status);*/
 
 	@Query(value="SELECT * FROM EMS_LEAVE_REQUEST WHERE USER_ID=?", nativeQuery = true)
-	List<EmployeeLeaveRequestBean> getEmployeeLeaveRequestList(Long userId);
+	List<EmployeeLeaveRequestBean> getEmployeeLeaveRequestListByUserId(Long userId);
 
 	@Query(value="SELECT * FROM EMS_LEAVE_REQUEST WHERE LEAVE_REQUEST_ID IN ("
 			+ "SELECT LEAVE_REQUEST_ID FROM ("

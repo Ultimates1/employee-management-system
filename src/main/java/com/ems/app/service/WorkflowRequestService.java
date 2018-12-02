@@ -1,12 +1,10 @@
 package com.ems.app.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ems.app.bean.EmployeeLeaveRequestBean;
 import com.ems.app.bean.WorkflowRequestBean;
 import com.ems.app.repository.WorkflowRequestRepository;
 
@@ -24,7 +22,7 @@ public class WorkflowRequestService {
 		return workflowRequestRepository.getWorkflowByStatus(status);
 	}
 
-	public Map<Long, EmployeeLeaveRequestBean> getPendingWorkflowRequest(Long userId) {
+	public List<WorkflowRequestBean> getPendingWorkflowRequest(Long userId) {
 		return workflowRequestRepository.getPendingWorkflowRequest(userId);
 	}
 
@@ -35,5 +33,9 @@ public class WorkflowRequestService {
 	public void addOrUpdateworkflowRequest(WorkflowRequestBean oldWorkflowRequestBean) {
 		workflowRequestRepository.save(oldWorkflowRequestBean);
 		
+	}
+
+	public List<WorkflowRequestBean> getWorkflowListByLeaveRequestId(Long leaveRequestId) {
+		return workflowRequestRepository.getWorkflowListByLeaveRequestId(leaveRequestId);
 	}
 }
