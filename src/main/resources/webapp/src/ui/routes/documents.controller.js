@@ -8,10 +8,12 @@ angular
 		'$rootScope',
 		'$scope',
 		'$http',
+		'$window',
 		'Access',
-		function ($rootScope, $scope, $http, Access) {
+		function ($rootScope, $scope, $http, $window, Access) {
 			$scope.htmlReady = false;
 			$scope.userID = Access.getAccessContent().userID;
+			$scope.currentDocument = {};
 
 			$scope.ready = function () {
 				if (!Access.getLoginStatus()) {
@@ -28,10 +30,47 @@ angular
 				$scope.htmlReady = true;
 			};
 
+			$scope.displayMsg = function (display, message, type) {
+				let element = angular.element(document.getElementById('documentsError'));
+				element.text(message ? message : 'All fields are required.');
+				element.css('color', type === 'error' ? 'red' : '#67AB9F');
+				element.css('visibility', display ? 'visible' : 'hidden');
+			};
+
 			$scope.getDocuments = function (userID) {
 				return [
-					['Doc 1', 'abc.com'],
-					['Doc 2', 'xyz.com']
+					{
+						template: {
+							name: 'Template 1',
+							url: 'url_to_template_1.pdf'
+						},
+						fields: [
+							{
+								id: 'name',
+								text: 'Full Name'
+							},
+							{
+								id: 'position',
+								text: 'Position'
+							}
+						]
+					},
+					{
+						template: {
+							name: 'Template 2',
+							url: 'url_to_template_2.pdf'
+						},
+						fields: [
+							{
+								id: 'name',
+								text: 'Full Name'
+							},
+							{
+								id: 'offer',
+								text: 'Offer'
+							}
+						]
+					}
 				];
 
 				// $http.get('ems/documents/getDocuments/?user=' + $scope.userID)
@@ -48,6 +87,22 @@ angular
 				// 	});
 			};
 
-			$scope.documents = getDocuments($scope.userID);
+			$scope.submit = function () {
+				if (!$scope.selectedDocument) {
+					return;
+				}
+				if ($scope.selectedDocument.fields.length !== Object.keys($scope.currentDocument).length) {
+					$scope.displayMsg(true, '', 'error');
+				} else {
+					console.log(
+						'Hello', $scope.currentDocument.name + ',\nWe would like to offer you the position of',
+						$scope.currentDocument.position
+					);
+					$scope.displayMsg(false);
+					// $window.open('generated_pdf_page', '_blank');
+				}
+			};
+
+			$scope.documents = $scope.getDocuments($scope.userID);
 		}
 	]);

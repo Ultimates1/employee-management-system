@@ -431,18 +431,6 @@ img {
     padding-bottom: 1vh;
 }
 
-#documents {
-    height: 65vh;
-    vertical-align: middle;
-    line-height: 65vh;
-}
-
-#documents .link {
-    left: 30%;
-    position: relative;
-    height: 5vh;
-}
-
 #leaveRequest {
     margin-left: 5%;
     margin-right: 5%;
@@ -485,6 +473,11 @@ img {
     text-align: center;
 }
 
+#leaveRequest .error {
+    top: 15%;
+    left: 15%;
+}
+
 #management {
     margin-left: 5%;
     margin-right: 5%;
@@ -509,4 +502,53 @@ img {
     height: 50%;
     padding: 2vh;
     overflow-y: scroll;
+}
+
+#documents {
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+}
+
+#documents .container {
+    flex-basis: 100%;
+    padding: 10vh;
+}
+
+#documents select {
+    position: relative;
+    width: 50%;
+    margin-bottom: 2vh;
+    padding: 0.5vh;
+}
+
+#documents .display {
+    height: 50%;
+    padding: 2vh;
+    overflow-y: scroll;
+}
+
+#documents .input-container {
+    width: 100%;
+    display: block;
+}
+
+#documents .tealBtn {
+    bottom: 0;
+    margin-bottom: 3vh;
+    left: 50vw;
+    transform: translate(-50%, 0%);
+}
+
+#documents .link {
+    position: relative;
+    height: 5vh;
+    margin: 0;
+}
+
+#documents .error {
+    top: 15%;
+    left: 15%;
 }

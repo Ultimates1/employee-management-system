@@ -1,7 +1,7 @@
 <div id="management" ng-controller="ManagementController" ng-init="htmlLoaded()" ng-show="ready()">
 	<div class="container">
-		<select class="interactive input-container" ng-model="selectedProject" ng-options="project as project.name for project in projectList" required></select>
-		<select class="interactive input-container" style="display:inline-block" ng-model="selectedEmployee" ng-options="id as employee for (id, employee) in employeeList" required></select>
+		<select class="interactable" ng-model="selectedProject" ng-options="project as project.name for project in projectList" required></select>
+		<select class="interactable" style="display:inline-block" ng-model="selectedEmployee" ng-options="id as employee for (id, employee) in employeeList" required></select>
 		<button ng-if="selectedProject && selectedEmployee && selectedProject.members.indexOf(selectedEmployee) === -1" class="interactable addBtn" style="display:inline-block" ng-click="addProjectEmployee()"></button>
 		<div class="display">
 			<div ng-if="selectedProject" class="card" ng-repeat="id in selectedProject.members">
