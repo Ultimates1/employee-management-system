@@ -1,6 +1,7 @@
 var angular = require('angular');
 
-require('../data/access.service.js');
+require('../data/access.service');
+require('../data/leaverequest.service');
 
 angular
 	.module('ems')
@@ -8,12 +9,14 @@ angular
 		'$rootScope',
 		'$scope',
 		'$http',
+		'$route',
 		'Access',
-		function ($rootScope, $scope, $http, Access) {
+		'LeaveRequest',
+		async function ($rootScope, $scope, $http, $route, Access, LeaveRequest) {
 			$scope.htmlReady = false;
 			$scope.userID = Access.getAccessContent().userID;
 			$scope.adding = false;
-			$scope.leaveTypes = ['PERSONAL_LEAVE', 'SICK_LEAVE', 'VACATION_LEAVE'];
+			$scope.leaveTypes = ['PERSONAL_LEAVE', 'SICK_LEAVE', 'UNPLANNED_LEAVE'];
 			$scope.datePickerOn = {
 				from: false,
 				to: false
@@ -26,10 +29,9 @@ angular
 				startingDay: 1
 			};
 			$scope.newRequest = {
-				leaveFrom: '',
-				leaveTo: '',
-				status: 'P',
-				leaveType: '',
+				leavefrom: '',
+				leaveto: '',
+				leavetype: '',
 				comment: ''
 			};
 
@@ -64,81 +66,20 @@ angular
 				return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
 			};
 
-			// leave/getrquesthistory/{userID}
-			$scope.getLeaveRequests = function (userID) {
-				return [
-					{
-						'leaveRequestId': 1,
-						'createDate': '2018-11-29T15:55:48.345+0000',
-						'updateDate': null,
-						'userId': 1,
-						'leaveType': 'PERSONAL_LEAVE',
-						'leaveFrom': '2019-11-26T08:00:00.000+0000',
-						'leaveTo': '2019-11-28T08:00:00.000+0000',
-						'comment': 'My leaves, none of your business',
-						'status': 'P'
-					},
-					{
-						'leaveRequestId': 2,
-						'createDate': '2018-11-29T23:19:14.493+0000',
-						'updateDate': null,
-						'userId': 1,
-						'leaveType': 'PERSONAL_LEAVE',
-						'leaveFrom': '2018-11-26T08:00:00.000+0000',
-						'leaveTo': '2018-11-28T08:00:00.000+0000',
-						'comment': 'My leaves, none of your business',
-						'status': 'R'
-					},
-					{
-						'leaveRequestId': 3,
-						'createDate': '2018-11-29T23:19:32.154+0000',
-						'updateDate': null,
-						'userId': 1,
-						'leaveType': 'SICK_LEAVE',
-						'leaveFrom': '2018-11-26T08:00:00.000+0000',
-						'leaveTo': '2018-11-28T08:00:00.000+0000',
-						'comment': 'My leaves, none of your business',
-						'status': 'A'
-					},
-					{
-						'leaveRequestId': 4,
-						'createDate': '2018-11-29T23:20:17.350+0000',
-						'updateDate': null,
-						'userId': 1,
-						'leaveType': 'SICK_LEAVE',
-						'leaveFrom': '2018-11-26T08:00:00.000+0000',
-						'leaveTo': '2018-11-28T08:00:00.000+0000',
-						'comment': 'My leaves, none of your business',
-						'status': 'ED'
-					}
-				];
-
-				// $http.get('leave/getrquesthistory/' + $scope.userID)
-				// 	.then(function success(response) {
-				// 		if (response.data.success) {
-				// 			return response.data.leavebalance;
-				// 		} else {
-				// 			$scope.displayMsg(true, response.data.message, 'error');
-				// 		}
-				// 	}, function error(response) {
-				// 		$scope.displayMsg(true, response.data.message, 'error');
-				// 	});
-			};
-
 			$scope.addRequest = function () {
 				$scope.adding = true;
+				$scope.displayMsg(false);
 				$scope.newRequest = {
-					leaveFrom: '',
-					leaveTo: '',
-					status: 'P',
-					leaveType: '',
+					leavefrom: '',
+					leaveto: '',
+					leavetype: '',
 					comment: ''
 				};
 				$scope.leaveRequests.unshift($scope.newRequest);
 			};
 
 			$scope.validateRequest = function (request) {
-				if (request && request.leaveFrom && request.leaveTo && request.leaveType && $scope.convertDate(request.leaveFrom) && $scope.convertDate(request.leaveTo)) {
+				if (request && request.leavefrom && request.leaveto && request.leavetype && $scope.convertDate(request.leavefrom) && $scope.convertDate(request.leaveto)) {
 					return true;
 				}
 				return false;
@@ -150,28 +91,41 @@ angular
 					return;
 				}
 
-				$scope.newRequest.createDate = new Date();
-				$scope.newRequest.leaveFrom = new Date($scope.newRequest.leaveFrom);
-				$scope.newRequest.leaveTo = new Date($scope.newRequest.leaveTo);
-				$scope.leaveRequests[0] = $scope.newRequest;
-				$scope.adding = false;
-				$scope.displayMsg(false);
+				$scope.newRequest.leavefrom = $scope.convertDate($scope.newRequest.leavefrom);
+				$scope.newRequest.leaveto = $scope.convertDate($scope.newRequest.leaveto);
+
+				$http
+					.get(
+						'ems/leave/requestleave/' + $scope.userID + '?' +
+						'leavetype=' + $scope.newRequest.leavetype + '&' +
+						'leavefrom=' + $scope.newRequest.leavefrom + '&' +
+						'leaveto=' + $scope.newRequest.leaveto + '&' +
+						'comment=' + $scope.newRequest.comment
+					)
+					.then(function success(response) {
+						if (response.data.success) {
+							$scope.adding = false;
+							$route.reload();
+						} else {
+							$scope.displayMsg(true, response.data.message, 'error');
+						}
+					}, function error(response) {
+						$scope.displayMsg(true, response.data.message, 'error');
+					});
 			};
 
 			$scope.cancelRequest = function (index) {
-				// Delete using leaveRequestId
-				$scope.leaveRequests.splice(index, 1);
-
-				// $http.get('leave/getrquesthistory/' + $scope.userID)
-				// 	.then(function success(response) {
-				// 		if (response.data.success) {
-				// 			return response.data.leavebalance;
-				// 		} else {
-				// 			$scope.displayMsg(true, response.data.message, 'error');
-				// 		}
-				// 	}, function error(response) {
-				// 		$scope.displayMsg(true, response.data.message, 'error');
-				// 	});
+				$http.get('ems/leave/deleteleave/' + $scope.userID + '?leaveid=' + $scope.leaveRequests[index].leaveRequestId)
+					.then(function success(response) {
+						console.log(response);
+						if (response.data.success) {
+							$route.reload();
+						} else {
+							$scope.displayMsg(true, response.data.message, 'error');
+						}
+					}, function error(response) {
+						$scope.displayMsg(true, response.data.message, 'error');
+					});
 			};
 
 			$scope.dateIsInFuture = function (datestring) {
@@ -192,9 +146,9 @@ angular
 				var mmChars = mm.split('');
 				var ddChars = dd.split('');
 
-				return (mmChars[1] ? mm : '0' + mmChars[0]) + '-' + (ddChars[1] ? dd : '0' + ddChars[0]) + '-' + yyyy;
+				return yyyy + '-' + (mmChars[1] ? mm : '0' + mmChars[0]) + '-' + (ddChars[1] ? dd : '0' + ddChars[0]);
 			};
 
-			$scope.leaveRequests = $scope.getLeaveRequests($scope.userID);
+			$scope.leaveRequests = await LeaveRequest.getLeaveRequests($scope.userID, $scope.displayMsg);
 		}
 	]);

@@ -188,6 +188,10 @@ input {
 	box-shadow: 3px 5px 10px grey;
 }
 
+#leaveRequest .default {
+	background-image: linear-gradient(rgb(230, 230, 230), rgb(255, 255, 255), rgb(230, 230, 230));
+}
+
 #leaveRequest .pending {
 	background-image: linear-gradient(rgb(233, 247, 110), rgb(244, 252, 210), rgb(233, 247, 110));
 }
