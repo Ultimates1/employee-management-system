@@ -54,8 +54,6 @@ angular
 			};
 
 			$scope.resetPassword = function () {
-				console.log('here');
-				console.log($scope.newPass, $scope.confirmPass);
 				if (!$scope.validatePassword()) {
 					return;
 				}

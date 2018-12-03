@@ -3,9 +3,8 @@ var angular = require('angular');
 angular
 	.module('ems')
 	.factory('Access', [
-		'$rootScope',
 		'$window',
-		function ($rootScope, $window) {
+		function ($window) {
 			return {
 				getLoginStatus: function () {
 					return JSON.parse($window.localStorage.getItem('loggedIn'));
