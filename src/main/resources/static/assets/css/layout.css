@@ -607,6 +607,11 @@ img {
     overflow-y: scroll;
 }
 
+#management .error {
+    top: 15%;
+    left: 15%;
+}
+
 #documents {
     margin-left: 5%;
     margin-right: 5%;

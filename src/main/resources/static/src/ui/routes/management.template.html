@@ -1,11 +1,12 @@
-<div id="management" ng-controller="ManagementController" ng-init="htmlLoaded()" ng-show="ready()">
+<div id="management" ng-init="htmlLoaded()" ng-show="ready()">
+	<div id="managementError" class="error"></div>
 	<div class="container">
-		<select class="interactable" ng-model="selectedProject" ng-options="project as project.name for project in projectList" required></select>
-		<select class="interactable" style="display:inline-block" ng-model="selectedEmployee" ng-options="id as employee for (id, employee) in employeeList" required></select>
-		<button ng-if="selectedProject && selectedEmployee && selectedProject.members.indexOf(selectedEmployee) === -1" class="interactable addBtn" style="display:inline-block" ng-click="addProjectEmployee()"></button>
+		<select class="interactable" ng-model="selectedProject" ng-options="project as project.projectName for project in projectList" ng-change="getProjectEmployees()"></select>
+		<select class="interactable" style="display:inline-block" ng-model="selectedEmployee" ng-options="employee as (employee.fristName + ' ' + employee.lastName + '(' + employee.userId + ')') for employee in employeeList" required></select>
+		<button ng-if="selectedProject && selectedEmployee && employeeNotInList()" class="interactable addBtn" style="display:inline-block" ng-click="addProjectEmployee()"></button>
 		<div class="display">
-			<div ng-if="selectedProject" class="card" ng-repeat="id in selectedProject.members">
-				<label>{{employeeList[id]}} ({{id}})</label>
+			<div ng-if="selectedProject" class="card" ng-repeat="member in members">
+				<label>{{member.fristName}} {{member.lastName}} ({{member.userId}})</label>
 				<button class="interactable cancelBtn" ng-click="removeProjectEmployee($index)"></button>
 			</div>
 		</div>

@@ -1,4 +1,4 @@
-<div id="documents" ng-controller="DocumentsController" ng-init="htmlLoaded()" ng-show="ready()">
+<div id="documents" ng-init="htmlLoaded()" ng-show="ready()">
 	<div id="documentsError" class="error"></div>
 	<div class="container">
 		<select class="interactable" ng-model="selectedDocument" ng-options="value as value.template.name for (key, value) in documents" required></select>

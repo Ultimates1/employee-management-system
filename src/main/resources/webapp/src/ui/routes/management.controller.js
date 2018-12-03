@@ -1,6 +1,7 @@
 var angular = require('angular');
 
 require('../data/access.service.js');
+require('../data/management.service.js');
 
 angular
 	.module('ems')
@@ -8,17 +9,19 @@ angular
 		'$rootScope',
 		'$scope',
 		'Access',
-		function ($rootScope, $scope, Access) {
+		'Management',
+		async function ($rootScope, $scope, Access, Management) {
 			$scope.htmlReady = false;
 			$scope.userID = Access.getAccessContent().userID;
+			$scope.members = [];
 
 			$scope.ready = function () {
 				if (!Access.getLoginStatus()) {
 					$rootScope.goTo('login');
 				}
-				if (!$rootScope.hasFunction('PROJECT_MANAGEMENT')) {
-					$rootScope.goTo('home');
-				}
+				// if (!$rootScope.hasFunction('MANAGEMENT')) {
+				// 	$rootScope.goTo('home');
+				// }
 				return $scope.htmlReady;
 			};
 
@@ -27,56 +30,43 @@ angular
 				$scope.htmlReady = true;
 			};
 
-			$scope.getEmployeeList = function (userID) {
-				return {
-					'eA': 'employee A',
-					'eB': 'employee B',
-					'eC': 'employee C',
-					'eD': 'employee D',
-					'eE': 'employee E',
-					'eF': 'employee F',
-					'eG': 'employee G',
-					'eH': 'employee H',
-					'eI': 'employee I',
-					'eJ': 'employee J',
-					'eK': 'employee K',
-					'eL': 'employee L',
-					'eM': 'employee M',
-					'eN': 'employee N',
-					'eO': 'employee O',
-					'eP': 'employee P'
-				};
-			}
+			$scope.displayMsg = function (display, message, type) {
+				let element = angular.element(document.getElementById('managementError'));
+				element.text(message ? message : 'Unable to complete your request.');
+				element.css('color', type === 'error' ? 'red' : '#67AB9F');
+				element.css('visibility', display ? 'visible' : 'hidden');
+			};
 
-			$scope.getProjectList = function (userID) {
-				return [
-					{
-						id: 'p1',
-						name: 'Project 1',
-						members: ['eA', 'eB', 'eC']
-					},
-					{
-						id: 'p2',
-						name: 'Project 2',
-						members: ['eD', 'eE', 'eH']
-					},
-					{
-						id: 'p3',
-						name: 'Project 3',
-						members: ['eF', 'eG', 'eI', 'eJ', 'eK', 'eL', 'eM', 'eN', 'eO', 'eP']
+			$scope.getProjectEmployees = async function () {
+				$scope.members = await Management.getProjectEmployees($scope.userID, $scope.selectedProject.projectId, $scope.displayMsg);
+				$scope.$apply();
+			};
+
+			$scope.employeeNotInList = function () {
+				for (let i = 0; i < $scope.members.length; i++) {
+					if ($scope.selectedEmployee.userId === $scope.members[i].userId) {
+						return false;
 					}
-				]
+				}
+				return true;
 			};
 
 			$scope.addProjectEmployee = function () {
-				$scope.selectedProject.members.push($scope.selectedEmployee);
-			}
-
+				Management
+					.addProjectEmployee($scope.selectedProject.projectId, $scope.selectedEmployee.userId, $scope.displayMsg)
+					.then(() => {
+						$scope.getProjectEmployees();
+					});
+			};
 			$scope.removeProjectEmployee = function (index) {
-				$scope.selectedProject.members.splice(index, 1);
-			}
+				Management
+					.removeProjectEmployee($scope.selectedProject.projectId, $scope.members[index].userId, $scope.displayMsg)
+					.then(() => {
+						$scope.getProjectEmployees();
+					});
+			};
 
-			$scope.projectList = $scope.getProjectList($scope.userID);
-			$scope.employeeList = $scope.getEmployeeList($scope.userID);
+			$scope.projectList = await Management.getProjectList($scope.userID, $scope.displayMsg);
+			$scope.employeeList = await Management.getEmployeeList($scope.displayMsg);
 		}
 	]);
