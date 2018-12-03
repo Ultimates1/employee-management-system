@@ -37,4 +37,8 @@ public class EmployeeService {
 	public List<EmployeeBean> getEmployeeListByProjectId(Long projectId) {
 		return employeeRepository.getEmployeeListByProjectId(projectId);
 	}
+
+	public List<EmployeeBean> getActiveEmployeeList() {
+		return employeeRepository.getActiveEmployeeList();
+	}
 }

@@ -1,5 +1,7 @@
 package com.ems.app.utils;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,5 +36,14 @@ public class EmployeeInformationUtil {
 			ex.printStackTrace();
 			throw new EmployeeInformationException(ex.getMessage());
 		} 
+	}
+
+	public List<EmployeeBean> getActiveEmployeeList() throws EmployeeInformationException {
+		try {
+			return employeeService.getActiveEmployeeList();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+			throw new EmployeeInformationException(ex.getMessage());
+		}
 	}
 }

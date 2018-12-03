@@ -22,4 +22,7 @@ public interface EmployeeRepository extends CrudRepository<EmployeeBean, Long> {
 
 	@Query(value="SELECT * FROM EMS_EMPLOYEE WHERE USER_ID IN (SELECT USER_ID FROM EMS_EMPLOYEE_PROJECT_MAP WHERE PROJECT_ID=6 AND CURRENT_PROJECT=TRUE)", nativeQuery = true)
 	public List<EmployeeBean> getEmployeeListByProjectId(Long projectId);
+
+	@Query(value="SELECT * FROM EMS_EMPLOYEE WHERE CURRENT_EMPLOYEE=TRUE", nativeQuery = true)
+	public List<EmployeeBean> getActiveEmployeeList();
 }
