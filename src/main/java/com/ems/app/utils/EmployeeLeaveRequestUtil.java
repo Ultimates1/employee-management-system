@@ -62,7 +62,7 @@ public class EmployeeLeaveRequestUtil {
 			employeeLeaveRequestBean = employeeLeaveRequestService.saveOrUpdateLeaveRequest(employeeLeaveRequestBean);
 
 			List<Long> approverIdList = new ArrayList<>();
-			ProjectBean projectBean = projectService.getProjectBeanByEmployeeUserId(employeeLeaveRequestBean.getUserId());
+			ProjectBean projectBean = projectService.getPojectListByUserId(employeeLeaveRequestBean.getUserId()).get(0);
 			if(null == projectBean) {
 				throw new EmployeeLeaveException("No project details found.");
 			}
