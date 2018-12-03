@@ -66,6 +66,15 @@ angular
 				return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
 			};
 
+			$scope.updateList = async function () {
+				$scope.leaveRequests = await LeaveRequest.getLeaveRequests($scope.userID, $scope.displayMsg);
+				$scope.$apply();
+
+				if ($scope.leaveRequests.length === 0) {
+					$scope.displayMsg(true, 'You have no leave request.', 'error');
+				}
+			};
+
 			$scope.addRequest = function () {
 				$scope.adding = true;
 				$scope.displayMsg(false);
@@ -149,6 +158,6 @@ angular
 				return yyyy + '-' + (mmChars[1] ? mm : '0' + mmChars[0]) + '-' + (ddChars[1] ? dd : '0' + ddChars[0]);
 			};
 
-			$scope.leaveRequests = await LeaveRequest.getLeaveRequests($scope.userID, $scope.displayMsg);
+			$scope.updateList();
 		}
 	]);

@@ -19,9 +19,9 @@ angular
 				if (!Access.getLoginStatus()) {
 					$rootScope.goTo('login');
 				}
-				// if (!$rootScope.hasFunction('MANAGEMENT')) {
-				// 	$rootScope.goTo('home');
-				// }
+				if (!$rootScope.hasFunction('PROJECT_MANAGEMENT')) {
+					$rootScope.goTo('home');
+				}
 				return $scope.htmlReady;
 			};
 
@@ -35,6 +35,16 @@ angular
 				element.text(message ? message : 'Unable to complete your request.');
 				element.css('color', type === 'error' ? 'red' : '#67AB9F');
 				element.css('visibility', display ? 'visible' : 'hidden');
+			};
+
+			$scope.updateList = async function () {
+				$scope.projectList = await Management.getProjectList($scope.userID, $scope.displayMsg);
+				$scope.employeeList = await Management.getEmployeeList($scope.displayMsg);
+				$scope.$apply();
+
+				if ($scope.projectList.length === 0) {
+					$scope.displayMsg(true, 'You have no current project.', 'error');
+				}
 			};
 
 			$scope.getProjectEmployees = async function () {
@@ -66,7 +76,6 @@ angular
 					});
 			};
 
-			$scope.projectList = await Management.getProjectList($scope.userID, $scope.displayMsg);
-			$scope.employeeList = await Management.getEmployeeList($scope.displayMsg);
+			$scope.updateList();
 		}
 	]);
