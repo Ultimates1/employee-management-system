@@ -530,6 +530,57 @@ img {
     left: 15%;
 }
 
+#workflow {
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 85vh;
+    display: grid;
+}
+
+#workflow table {
+    position: relative;
+    margin: auto auto;
+    text-align: center;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0.5vh;
+}
+
+#workflow tr:nth-child(even) {
+    background-color: rgba(103, 171, 159, 0.25);
+}
+
+#workflow td {
+    min-width: 3vh;
+    height: auto;
+}
+
+#leaveRequest th {
+    text-align: center;
+}
+
+#workflow tbody:before {
+    content: "-";
+    display: block;
+    line-height: 1vh;
+    color: transparent;
+}
+
+#workflow .input-container {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#workflow .error {
+    top: 15%;
+    left: 15%;
+}
+
 #management {
     margin-left: 5%;
     margin-right: 5%;
