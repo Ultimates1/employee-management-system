@@ -1,5 +1,6 @@
 body {
 	font-family: Helvetica, sans-serif;
+	background-color: #0055FF01;
 }
 
 select {
@@ -98,6 +99,10 @@ input {
     border-radius: 24px;
 }
 
+.navigation .nav_tab label {
+    font-size: 2vh;
+}
+
 .card label {
     background-color: rgba(128, 196, 196, 1);
     box-shadow: 0.5vh 0.5vh rgba(196, 196, 196, 1);
@@ -171,10 +176,6 @@ input {
 	font-size: 2vh;
 }
 
-#leaveRequest {
-	overflow: auto;
-}
-
 #leaveRequest td, input {
 	font-size: 2vh;
 }
@@ -225,7 +226,6 @@ input {
 	box-shadow: 3px 5px 10px grey;
 }
 
-
 #management select {
 	border: 1px solid #67ab9f;
 	font-size: 3vh;
@@ -245,6 +245,19 @@ input {
     margin-left: 5vh;
     height: 4vh;
     width: 4vh;
+}
+
+#management .input-container {
+	text-align: left;
+	font-size: 2vh;
+	border: 1px solid #67ab9f;
+	border-radius: 12px;
+}
+
+#management .textbox {
+    text-align: left;
+	font-size: 2vh;
+	border: none;
 }
 
 #documents select {
