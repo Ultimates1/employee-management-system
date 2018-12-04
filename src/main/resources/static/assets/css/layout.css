@@ -55,8 +55,6 @@ img {
 .column {
     float: left;
     padding-top: 5%;
-    height: 100vh;
-    max-height: 100vh;
 }
 
 .left {
@@ -81,6 +79,8 @@ img {
     width: 100%;
     height: 15vh;
     display: flex;
+    position: fixed;
+    z-index: 100;
 }
 
 .banner img {
@@ -89,7 +89,7 @@ img {
 }
 
 .toggle-panel {
-    position: absolute;
+    position: fixed;
     background: transparent url('../images/toggle_right.png') left center/80% 80% no-repeat !important;
     border: none;
     width: 30px;
@@ -115,7 +115,7 @@ img {
 
 .navigation {
     z-index: 1;
-    position: absolute;
+    position: fixed;
     width: 15vw;
     top: 50%;
     transform: translateY(-50%);
@@ -388,7 +388,6 @@ img {
     display: flex;
     padding-left: 5%;
     padding-right: 10%;
-    transform: translateY(-10vh);
 }
 
 #profile hr {
@@ -408,6 +407,7 @@ img {
     width: 20vh;
     height: 20vh;
     margin: 0 auto;
+    z-index: 200;
 }
 
 #profile .text {
@@ -458,7 +458,7 @@ img {
 }
 
 #profile .right {
-    padding-top: 20vh;
+    padding-top: 15%;
     margin-left: 5%;
 }
 
@@ -486,8 +486,9 @@ img {
 #leaveRequest {
     margin-left: 5%;
     margin-right: 5%;
-    height: 85vh;
+    height: 100%;
     display: grid;
+    overflow: auto;
 }
 
 #leaveRequest table {
@@ -528,13 +529,15 @@ img {
 #leaveRequest .error {
     top: 15%;
     left: 15%;
+    position: fixed;
 }
 
 #workflow {
     margin-left: 5%;
     margin-right: 5%;
-    height: 85vh;
+    height: 100%;
     display: grid;
+    overflow: auto;
 }
 
 #workflow table {
@@ -555,7 +558,7 @@ img {
     height: auto;
 }
 
-#leaveRequest th {
+#workflow th {
     text-align: center;
 }
 
@@ -579,19 +582,23 @@ img {
 #workflow .error {
     top: 15%;
     left: 15%;
+    position: fixed;
 }
 
 #management {
     margin-left: 5%;
     margin-right: 5%;
-    height: 85vh;
-    display: flex;
-    align-items: center;
+    display: grid;
+    height: 100%;
+    grid-template-rows: 100% 100%;
 }
 
 #management .container {
-    flex-basis: 100%;
-    padding: 10vh;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 15%;
+    width: 90%;
+    height: 75%;
 }
 
 #management select {
@@ -602,7 +609,7 @@ img {
 }
 
 #management .display {
-    height: 50%;
+    height: 40%;
     padding: 2vh;
     overflow-y: scroll;
 }
@@ -610,19 +617,42 @@ img {
 #management .error {
     top: 15%;
     left: 15%;
+    position: fixed;
+}
+
+#management .input-container {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 5vh;
+    margin: 0;
+    padding: 0;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+#management .textbox {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 #documents {
     margin-left: 5%;
     margin-right: 5%;
-    height: 85vh;
-    display: flex;
-    align-items: center;
+    display: grid;
+    height: 100%;
 }
 
 #documents .container {
-    flex-basis: 100%;
-    padding: 10vh;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 15%;
+    width: 90%;
+    height: 75%;
 }
 
 #documents select {
@@ -633,7 +663,7 @@ img {
 }
 
 #documents .display {
-    height: 50%;
+    height: 40%;
     padding: 2vh;
     overflow-y: scroll;
 }
@@ -644,7 +674,7 @@ img {
 }
 
 #documents .tealBtn {
-    bottom: 0;
+    margin-top: 5vh;
     margin-bottom: 3vh;
     left: 50vw;
     transform: translate(-50%, 0%);
@@ -659,4 +689,5 @@ img {
 #documents .error {
     top: 15%;
     left: 15%;
+    position: fixed;
 }

@@ -14,6 +14,7 @@ angular
 			$scope.htmlReady = false;
 			$scope.userID = Access.getAccessContent().userID;
 			$scope.members = [];
+			$scope.newProject = {};
 
 			$scope.ready = function () {
 				if (!Access.getLoginStatus()) {
@@ -32,7 +33,7 @@ angular
 
 			$scope.displayMsg = function (display, message, type) {
 				let element = angular.element(document.getElementById('managementError'));
-				element.text(message ? message : 'Unable to complete your request.');
+				element.text(message || 'Unable to complete your request.');
 				element.css('color', type === 'error' ? 'red' : '#67AB9F');
 				element.css('visibility', display ? 'visible' : 'hidden');
 			};
@@ -68,11 +69,29 @@ angular
 						$scope.getProjectEmployees();
 					});
 			};
+
 			$scope.removeProjectEmployee = function (index) {
 				Management
 					.removeProjectEmployee($scope.selectedProject.projectId, $scope.members[index].userId, $scope.displayMsg)
 					.then(() => {
 						$scope.getProjectEmployees();
+					});
+			};
+
+			$scope.addProject = function () {
+				if (!(
+					$scope.newProject.name && $scope.newProject.manager &&
+					$scope.newProject.hr && $scope.newProject.description
+				)) {
+					$scope.displayMsg(true, 'Missing project information', 'error');
+					return;
+				}
+
+				Management
+					.addProject($scope.newProject, $scope.displayMsg)
+					.then(async () => {
+						$scope.projectList = await Management.getProjectList($scope.userID, $scope.displayMsg);
+						$scope.$apply();
 					});
 			};
 

@@ -1,8 +1,13 @@
 <div id="management" ng-init="htmlLoaded()" ng-show="ready()">
 	<div id="managementError" class="error"></div>
 	<div class="container">
-		<select class="interactable" ng-model="selectedProject" ng-options="project as project.projectName for project in projectList" ng-change="getProjectEmployees()"></select>
-		<select class="interactable" style="display:inline-block" ng-model="selectedEmployee" ng-options="employee as (employee.fristName + ' ' + employee.lastName + '(' + employee.userId + ')') for employee in employeeList" required></select>
+		<h1 style="color:#67AB9F;"><ins>View Project</ins></h1>
+		<select class="interactable" ng-model="selectedProject" ng-options="project as project.projectName for project in projectList" ng-change="getProjectEmployees()">
+			<option value="" disabled selected>Select Project</option>
+		</select>
+		<select class="interactable" style="display:inline-block" ng-model="selectedEmployee" ng-options="employee as (employee.fristName + ' ' + employee.lastName + '(' + employee.userId + ')') for employee in employeeList" required>
+			<option value="" disabled selected>Select Employee</option>
+		</select>
 		<button ng-if="selectedProject && selectedEmployee && employeeNotInList()" class="interactable addBtn" style="display:inline-block" ng-click="addProjectEmployee()"></button>
 		<div class="display">
 			<div ng-if="selectedProject" class="card" ng-repeat="member in members">
@@ -10,5 +15,25 @@
 				<button class="interactable cancelBtn" ng-click="removeProjectEmployee($index)"></button>
 			</div>
 		</div>
+	</div>
+	<div class="container">
+		<h1 style="color:#67AB9F;"><ins>Create Project</ins></h1>
+		<input type="text" class="input-container" style="text-align:center; font-size:3vh;" placeholder="Project's Name" ng-model="newProject.name" required />
+		<select class="interactable" ng-model="newProject.manager" ng-options="employee as (employee.fristName + ' ' + employee.lastName + '(' + employee.userId + ')') for employee in employeeList" required>
+			<option value="" disabled selected>Select Manager</option>
+		</select>
+		<select class="interactable" ng-model="newProject.hr" ng-options="employee as (employee.fristName + ' ' + employee.lastName + '(' + employee.userId + ')') for employee in employeeList" required>
+			<option value="" disabled selected>Select HR</option>
+		</select>
+		<div class="display" style="height:30%;">
+			<textarea class="textbox" placeholder="Project's Description" ng-model="newProject.description"></textarea>
+		</div>
+		<div class="checkbox" style="margin-top:2vh; font-size:2vh;">
+			<label>
+				<input type="checkbox" ng-model="newProject.ongoing" ng-init="newProject.ongoing=true">
+				Ongoing Project
+			</label>
+		</div>
+		<button class="interactable tealBtn" style="left:50%; transform:translateX(-50%);" ng-click="addProject()">Add Project</button>
 	</div>
 </div>
