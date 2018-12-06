@@ -25,4 +25,20 @@ public class EmployeeService {
 	public Long getCurrentEmployeeIdByEmailId(String emailId) {
 		return employeeRepository.getCurrentEmployeeIdByEmailId(emailId);
 	}
+	
+	public String getCurrentEmployeeEmailIdByUserId(Long userId) {
+		return employeeRepository.getCurrentEmployeeEmailIdByUserId(userId);
+	}
+	
+	public EmployeeBean getCurrentEmployeeIdByUserId(Long userId) {
+		return employeeRepository.getCurrentEmployeeByUserId(userId);
+	}
+
+	public List<EmployeeBean> getEmployeeListByProjectId(Long projectId) {
+		return employeeRepository.getEmployeeListByProjectId(projectId);
+	}
+
+	public List<EmployeeBean> getActiveEmployeeList() {
+		return employeeRepository.getActiveEmployeeList();
+	}
 }

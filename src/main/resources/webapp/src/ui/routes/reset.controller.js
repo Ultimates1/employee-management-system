@@ -15,6 +15,7 @@ angular
 			$scope.user = $routeParams.user;
 			$scope.newPass = '';
 			$scope.confirmPass = '';
+			$scope.sent = false;
 
 			$scope.ready = function () {
 				return $scope.htmlReady;
@@ -27,13 +28,15 @@ angular
 
 			$scope.validatePassword = function () {
 				if (!$scope.newPass && !$scope.confirmPass) {
-					return;
+					return false;
 				}
 
 				if ($scope.newPass !== $scope.confirmPass) {
-					angular.element('#resetError').css('visibility', 'visible');
+					$scope.displayMsg(true, '', 'error');
+					return false;
 				} else {
-					angular.element('#resetError').css('visibility', 'hidden');
+					$scope.displayMsg(false);
+					return true;
 				}
 
 				// Optional: Strong password validation
@@ -43,17 +46,34 @@ angular
 				// - 1 Symbol
 			};
 
+			$scope.displayMsg = function (display, message, type) {
+				let element = angular.element(document.getElementById('resetError'));
+				element.text(message ? message : "Password entries don't match.");
+				element.css('color', type === 'error' ? 'red' : '#67AB9F');
+				element.css('visibility', display ? 'visible' : 'hidden');
+			};
+
 			$scope.resetPassword = function () {
 				if (!$scope.validatePassword()) {
 					return;
 				}
 
-				$http.get('ems/access/resetpassword/?user=' + $scope.user + '&newpass=' + $scope.newPass)
+				if ($scope.send) {
+					return;
+				}
+
+				$http.get('ems/access/resetpassword/' + $scope.user + '?newpass=' + $scope.newPass)
 					.then(function success(response) {
-						$scope.response = response.data;
-						$rootScope.goTo('login');
-					}, function error(err) {
-						$scope.response = err;
+						if (response.data.success) {
+							$scope.displayMsg(true, response.data.message);
+							$scope.send = true;
+							$rootScope.goTo('login');
+						} else {
+							$scope.send = false;
+							$scope.displayMsg(true, response.data.message, 'error');
+						}
+					}, function error(response) {
+						$scope.displayMsg(true, response.data.message, 'error');
 					});
 			};
 		}

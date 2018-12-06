@@ -47,9 +47,9 @@ angular
 					templateUrl: 'src/ui/routes/budget.template.html',
 					controller: 'BudgetController'
 				})
-				.when('/evaluation', {
-					templateUrl: 'src/ui/routes/evaluation.template.html',
-					controller: 'EvaluationController'
+				.when('/workflow', {
+					templateUrl: 'src/ui/routes/workflow.template.html',
+					controller: 'WorkflowController'
 				})
 				.otherwise('/');
 		}

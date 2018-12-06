@@ -3,19 +3,15 @@ body {
     padding: 0px;
     overflow-x: hidden;
     overflow-y: scroll;
+    width: 100%;
+    height: 100%;
 }
 
-button {
-    position: absolute;
-    display: block;
-    width: 20vw;
-    max-width: 30vw;
-    height: auto;
-    margin: 1vh;
-    padding: 1vh;
+select {
+	width: 100%;
 }
 
-input {
+.tealBtn {
     position: absolute;
     display: block;
     width: 20vw;
@@ -38,6 +34,7 @@ img {
     display: block;
     margin: 1vh;
     padding: 0px;
+    visibility: hidden;
 }
 
 .link {
@@ -58,8 +55,6 @@ img {
 .column {
     float: left;
     padding-top: 5%;
-    height: 100vh;
-    max-height: 100vh;
 }
 
 .left {
@@ -84,6 +79,8 @@ img {
     width: 100%;
     height: 15vh;
     display: flex;
+    position: fixed;
+    z-index: 100;
 }
 
 .banner img {
@@ -92,6 +89,7 @@ img {
 }
 
 .toggle-panel {
+    position: fixed;
     background: transparent url('../images/toggle_right.png') left center/80% 80% no-repeat !important;
     border: none;
     width: 30px;
@@ -117,7 +115,7 @@ img {
 
 .navigation {
     z-index: 1;
-    position: absolute;
+    position: fixed;
     width: 15vw;
     top: 50%;
     transform: translateY(-50%);
@@ -168,6 +166,36 @@ img {
     cursor: pointer;
 }
 
+.uib-datepicker-popup li {
+    display: block;
+}
+
+.uib-datepicker-popup.dropdown-menu {
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+}
+
+.card {
+    margin-right: 2vw;
+    display: inline-block;
+    height: 5vh;
+}
+
+.card label {
+    padding: 1vh;
+    height: 100%;
+}
+
+.card button {
+    padding: 0.5vh;
+    height: 2vh;
+    width: 2vh;
+}
+
 .imgA1 {
     position: absolute;
     width: auto;
@@ -191,7 +219,34 @@ img {
     padding: 0px;
 }
 
+.buttonReset {
+	background-color: LightCyan;
+    border-style: solid;
+    border-color: #66CDAA;
+    color: #66CDAA;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.resetCenter {
+    margin: auto;
+    transform: translateY(-50%);
+}
+
 #login input {
+    position: absolute;
+    display: block;
+    width: 20vw;
+    max-width: 30vw;
+    height: auto;
+    margin: 1vh;
+    padding: 1vh;
     left: 50vw;
     transform: translate(-50%, 0%);
 }
@@ -200,10 +255,9 @@ img {
     bottom: 25vh;
     left: 50vw;
     transform: translate(-50%, 0%);
-    visibility: hidden;
 }
 
-#login button {
+#login .tealBtn {
     bottom: 14vh;
     left: 50vw;
     transform: translate(-50%, 0%);
@@ -213,6 +267,60 @@ img {
     bottom: 10vh;
     left: 50%;
     transform: translate(-50%, 0%);
+}
+
+#forgot {
+    width: 100%;
+    height: 100%;
+    display: grid;
+}
+
+#forgot .input-container {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 5vh;
+    margin: 0;
+    padding: 0;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+#forgot .error {
+    position: relative;
+}
+
+#forgot .tealBtn {
+    width: 50%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#reset {
+    width: 100%;
+    height: 100%;
+    display: grid;
+}
+
+#reset .input-container {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 5vh;
+    margin: 0;
+    padding: 0;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+#reset .error {
+    position: relative;
+}
+
+#reset .tealBtn {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 #home label {
@@ -280,7 +388,6 @@ img {
     display: flex;
     padding-left: 5%;
     padding-right: 10%;
-    transform: translateY(-10vh);
 }
 
 #profile hr {
@@ -300,6 +407,7 @@ img {
     width: 20vh;
     height: 20vh;
     margin: 0 auto;
+    z-index: 200;
 }
 
 #profile .text {
@@ -350,7 +458,7 @@ img {
 }
 
 #profile .right {
-    padding-top: 20vh;
+    padding-top: 15%;
     margin-left: 5%;
 }
 
@@ -375,14 +483,211 @@ img {
     padding-bottom: 1vh;
 }
 
+#leaveRequest {
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 100%;
+    display: grid;
+    overflow: auto;
+}
+
+#leaveRequest table {
+    position: relative;
+    margin: auto auto;
+    text-align: center;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0.5vh;
+}
+
+#leaveRequest td {
+    min-width: 3vh;
+    height: auto;
+}
+
+#leaveRequest th {
+    text-align: center;
+}
+
+#leaveRequest tbody:before {
+    content: "-";
+    display: block;
+    line-height: 1vh;
+    color: transparent;
+}
+
+#leaveRequest .input-container {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#leaveRequest .error {
+    top: 15%;
+    left: 15%;
+    position: fixed;
+}
+
+#workflow {
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 100%;
+    display: grid;
+    overflow: auto;
+}
+
+#workflow table {
+    position: relative;
+    margin: auto auto;
+    text-align: center;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0.5vh;
+}
+
+#workflow tr:nth-child(even) {
+    background-color: rgba(103, 171, 159, 0.25);
+}
+
+#workflow td {
+    min-width: 3vh;
+    height: auto;
+}
+
+#workflow th {
+    text-align: center;
+}
+
+#workflow tbody:before {
+    content: "-";
+    display: block;
+    line-height: 1vh;
+    color: transparent;
+}
+
+#workflow .input-container {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#workflow .error {
+    top: 15%;
+    left: 15%;
+    position: fixed;
+}
+
+#management {
+    margin-left: 5%;
+    margin-right: 5%;
+    display: grid;
+    height: 100%;
+    grid-template-rows: 100% 100%;
+}
+
+#management .container {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 15%;
+    width: 90%;
+    height: 75%;
+}
+
+#management select {
+    position: relative;
+    width: 50%;
+    margin-bottom: 2vh;
+    padding: 0.5vh;
+}
+
+#management .display {
+    height: 40%;
+    padding: 2vh;
+    overflow-y: scroll;
+}
+
+#management .error {
+    top: 15%;
+    left: 15%;
+    position: fixed;
+}
+
+#management .input-container {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 5vh;
+    margin: 0;
+    padding: 0;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+#management .textbox {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 #documents {
-    height: 65vh;
-    vertical-align: middle;
-    line-height: 65vh;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: grid;
+    height: 100%;
+}
+
+#documents .container {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 15%;
+    width: 90%;
+    height: 75%;
+}
+
+#documents select {
+    position: relative;
+    width: 50%;
+    margin-bottom: 2vh;
+    padding: 0.5vh;
+}
+
+#documents .display {
+    height: 40%;
+    padding: 2vh;
+    overflow-y: scroll;
+}
+
+#documents .input-container {
+    width: 100%;
+    display: block;
+}
+
+#documents .tealBtn {
+    margin-top: 5vh;
+    margin-bottom: 3vh;
+    left: 50vw;
+    transform: translate(-50%, 0%);
 }
 
 #documents .link {
-    left: 30%;
     position: relative;
     height: 5vh;
+    margin: 0;
+}
+
+#documents .error {
+    top: 15%;
+    left: 15%;
+    position: fixed;
 }

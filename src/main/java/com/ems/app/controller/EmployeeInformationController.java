@@ -1,6 +1,9 @@
 package com.ems.app.controller;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,11 +21,11 @@ public class EmployeeInformationController {
 	EmployeeInformationUtil employeeInformationUtil;
 
 	@RequestMapping(value="/ems/utils/addemployee", method=RequestMethod.GET)
-	String addEmployee(@RequestParam("fristname") String fristName,
+	Map <String, Object> addEmployee(@RequestParam("fristname") String fristName,
 			@RequestParam("lastname") String lastName,
 			@RequestParam("emailid") String emailId,
 			@RequestParam("phoneno") String phoneNo) {
-		String response = new String();
+		Map <String, Object> response = new HashMap<String, Object>();
 		try {
 			EmployeeBean employeeBean = new EmployeeBean();
 			employeeBean.setCreateDate(new Date());
@@ -32,10 +35,28 @@ public class EmployeeInformationController {
 			employeeBean.setPhoneNo(phoneNo);
 			employeeBean.setCurrentEmployee(true);
 			employeeInformationUtil.addEmployee(employeeBean);
-			response = "Employee record is added.";
-		}catch(Exception ex) {
-			ex.printStackTrace();
-			response = ex.getMessage();
+			response.put("success", true);
+			response.put("message", "Employee record is added.");
+		}catch(Exception e) {
+			e.printStackTrace();
+			response.put("success", false);
+			response.put("message", e.getMessage());
+		}
+		return response;
+	}
+	
+	@RequestMapping(value="/ems/utils/getactiveemployee", method=RequestMethod.GET)
+	Map <String, Object> addEmployee() {
+		Map <String, Object> response = new HashMap<String, Object>();
+		try {
+			List<EmployeeBean> employeeBeanList = employeeInformationUtil.getActiveEmployeeList();
+			response.put("success", true);
+			response.put("message", "Employee record is added.");
+			response.put("employeeList", employeeBeanList);
+		}catch(Exception e) {
+			e.printStackTrace();
+			response.put("success", false);
+			response.put("message", e.getMessage());
 		}
 		return response;
 	}

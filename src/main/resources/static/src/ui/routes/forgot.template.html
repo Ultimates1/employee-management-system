@@ -1,16 +1,10 @@
-<div id="forgot" ng-controller="ForgotController" ng-init="htmlLoaded()" ng-show="ready()">
-	<label>Forgot Username?</label>
-	<label>Enter your email to retrieve your username.</label>
-	<input type="text" id="email" placeholder="example@mail.com" ng-model="email">
-	<label id="emailError" class="error">Sorry, we can't find this email in our records.</label>
-	<button ng-click="forgotID()">RETRIEVE</button>
-	<button ng-click="back()">BACK</button>
-	<hr>
-	<label>Forgot Password?</label>
-	<label>Enter your username or email to reset your password.</label>
-	<input type="text" id="user" placeholder="username or example@mail.com" ng-model="user">
-	<label id="userError" class="error">Sorry, we can't find this username or email in our records.</label>
-	<button ng-click="forgotPassword()">RESET</button>
-	<button ng-click="back()">BACK</button>
-	<br>
+<div id="forgot" ng-init="htmlLoaded()" ng-show="ready()">
+	<div class="resetCenter">
+		<h1 style="color:#67AB9F;"><ins>Forgot Password?</ins></h1>
+		<label style="font-size:2vh;">Enter your email to reset your password.</label>
+		<input type="text" class="input-container" placeholder="email@mail.com" ng-model="user" required />
+		<label id="userError" class="error">Sorry, we can't find this email in our records.</label>
+		<button class="interactable tealBtn" ng-click="forgotPassword()" autofocus>RESET</button>
+		<button class="interactable tealBtn" style="transform: translateX(105%);" ng-click="back()">BACK</button>
+	</div>
 </div>

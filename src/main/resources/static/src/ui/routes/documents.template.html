@@ -1,5 +1,13 @@
-<div id="documents" ng-controller="DocumentsController" ng-init="htmlLoaded()" ng-show="ready()">
-	<div class="interactable link" ng-repeat="field in accessContent.documents">
-		<a href="{{field[1]}}">{{field[0]}}</a>
+<div id="documents" ng-init="htmlLoaded()" ng-show="ready()">
+	<div id="documentsError" class="error"></div>
+	<div class="container">
+		<select class="interactable" ng-model="selectedDocument" ng-options="value as value.template.name for (key, value) in documents" required></select>
+		<div style="height:5vh; padding:1vh;">
+			<a ng-if="selectedDocument" class="interactable link" ng-href="selectedDocument.template.url">View Template</a>
+		</div>
+		<div class="display">
+			<input ng-if="selectedDocument" type="text" class="input-container" placeholder="{{item.text}}" ng-model="currentDocument[item.id]" ng-repeat="item in selectedDocument.fields" required />
+		</div>
+		<button class="interactable tealBtn" autofocus ng-click="submit()">Submit</button>
 	</div>
 </div>

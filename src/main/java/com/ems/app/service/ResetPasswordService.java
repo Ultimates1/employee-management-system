@@ -21,8 +21,8 @@ public class ResetPasswordService {
 	public List<ResetPasswordBean> getAllResetPasswords() {
 		return (List<ResetPasswordBean>) resetPasswordRepository.findAll();
 	}
-/*
-	public Long getCurrentEmployeeIdByEmailId(String emailId) {
-		return employeeRepository.getCurrentEmployeeIdByEmailId(emailId);
-	}*/
+
+	public ResetPasswordBean getResetPasswordBeanByResetKey(String resetKey) {
+		return resetPasswordRepository.getResetPasswordBeanByResetKey(resetKey);
+	}
 }

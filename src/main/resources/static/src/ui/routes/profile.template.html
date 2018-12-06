@@ -1,12 +1,12 @@
-<div id="profile" ng-controller="ProfileController" ng-init="htmlLoaded()" ng-show="ready()">
+<div id="profile" ng-init="htmlLoaded()" ng-show="ready()">
 	<div class="column left">
 		<div class="imgContainer">
 			<img ng-src="{{getProfileImgPath()}}">
 			<div class="text" style="font-weight:bold; font-size:3vh; bottom:3vh;">
-				{{accessContent.info.name}}
+				{{profileInfo.name}}
 			</div>
 			<div class="text">
-				{{accessContent.info.title}}
+				{{profileInfo.title}}
 			</div>
 		</div>
 		<div class="infoContainer">
@@ -16,7 +16,7 @@
 				</div>
 				<div class="item-right">
 					<label>
-						{{accessContent.info.group}}
+						{{profileInfo.group}}
 					</label>
 				</div>
 			</div>
@@ -28,7 +28,7 @@
 					<img src="assets/images/phones.png">
 				</div>
 				<div class="item-right">
-					<label ng-repeat="phone in accessContent.info.phoneNumbers">
+					<label ng-repeat="phone in profileInfo.phoneNumbers">
 						{{phone[0]}}: {{phone[1]}}
 					</label>
 				</div>
@@ -41,7 +41,7 @@
 					<img src="assets/images/contact.png">
 				</div>
 				<div class="item-right">
-					<label ng-repeat="field in accessContent.info.contact">
+					<label ng-repeat="field in profileInfo.contact">
 						{{field}}
 					</label>
 				</div>
@@ -54,7 +54,7 @@
 					<img src="assets/images/skills.png">
 				</div>
 				<div class="item-right">
-					<label ng-repeat="skill in accessContent.info.skills">
+					<label ng-repeat="skill in profileInfo.skills">
 						{{skill}}
 					</label>
 				</div>
@@ -68,7 +68,7 @@
 				<div class="item-right"><hr></div>
 			</div>
 			<div class="infoContainer">
-				<div ng-repeat-start="item in accessContent.info.experiences">
+				<div ng-repeat-start="item in profileInfo.experiences">
 					<div class="title">
 						{{item.title}} @ {{item.location}}
 					</div>
@@ -79,7 +79,7 @@
 						{{item.description}}
 					</p>
 				</div>
-				<hr ng-repeat-end ng-if="$index !== accessContent.info.experiences.length - 1">
+				<hr ng-repeat-end ng-if="$index !== profileInfo.experiences.length - 1">
 			</div>
 		</div>
 		<div>
@@ -88,7 +88,7 @@
 				<div class="item-right"><hr></div>
 			</div>
 			<div class="infoContainer">
-				<div ng-repeat-start="item in accessContent.info.achievements">
+				<div ng-repeat-start="item in profileInfo.achievements">
 					<div class="title">
 						{{item.title}}
 					</div>
@@ -96,7 +96,7 @@
 						{{item.description}}
 					</p>
 				</div>
-				<hr ng-repeat-end ng-if="$index !== accessContent.info.achievements.length - 1">
+				<hr ng-repeat-end ng-if="$index !== profileInfo.achievements.length - 1">
 			</div>
 		</div>
 		<div>
@@ -105,7 +105,7 @@
 				<div class="item-right"><hr></div>
 			</div>
 			<div class="infoContainer">
-				<div ng-repeat-start="item in accessContent.info.educations">
+				<div ng-repeat-start="item in profileInfo.educations">
 					<div class="title">
 						{{item.title}}
 					</div>
@@ -116,7 +116,7 @@
 						{{item.description}}
 					</p>
 				</div>
-				<hr ng-repeat-end ng-if="$index !== accessContent.info.educations.length - 1">
+				<hr ng-repeat-end ng-if="$index !== profileInfo.educations.length - 1">
 			</div>
 		</div>
 	</div>

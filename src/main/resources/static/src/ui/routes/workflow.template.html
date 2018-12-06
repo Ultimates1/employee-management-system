@@ -1,0 +1,39 @@
+<div id="workflow" ng-init="htmlLoaded()" ng-show="ready()">
+	<div id="workflowError" class="error"></div>
+	<table>
+		<thead>
+			<tr>
+				<th>Workflow ID</th>
+				<th>Employee ID</th>
+				<th>Leave Request ID</th>
+				<th>Created Date</th>
+				<th>Status</th>
+				<th>Comment</th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in workflows track by item.workflowId">
+				<td>{{item.workflowId}}</td>
+				<td>{{item.userId}}</td>
+				<td>{{item.leaveRequestId}}</td>
+				<td>{{convertDate(item.createDate)}}</td>
+				<td>{{item.status}}</td>
+				<td style="text-align: left;">
+					<input type="text" class="input-container" ng-model="item.comment" />
+				</td>
+				<td>
+					<input type="button" class="input-container interactable addBtn" ng-click="updateWorkflow($index, 'P')" />
+				</td>
+				<td>
+					<input type="button" class="input-container interactable submitBtn" ng-click="updateWorkflow($index, 'A')" />
+				</td>
+				<td>
+					<input type="button" class="input-container interactable cancelBtn" ng-click="updateWorkflow($index, 'R')" />
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
