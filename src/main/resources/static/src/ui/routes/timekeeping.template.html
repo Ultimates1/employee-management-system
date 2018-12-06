@@ -1,3 +1,808 @@
-<div id="timekeeping" ng-controller="TimekeepingController" ng-init="htmlLoaded()" ng-show="ready()">
-<!-- http://localhost:8080/#!/timekeeping -->
+<head>
+	<style>
+
+		button {
+	position:absolute;
+	bottom:40;
+	}
+	div.a {
+		text-align: center;
+	}
+	table {
+		width:70%;
+	}
+	table, th, td {
+		 
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+	th, td {
+		padding: 15px;
+		text-align: center;
+		font-weight: bold;
+		font-size: large;
+	}
+	table tr:nth-child(even) {
+		background-color: #eee;
+		}
+	table tr:nth-child(odd) {
+	   background-color: #fff;
+	}
+	table th {
+		background-color: black;
+		color: white;
+	}
+	</style>
+</head>
+<div id="timekeeping" ng-init="htmlLoaded()" ng-show="ready()">
+	<div class="a">
+		<h1 style="font-size:60px;"><u>Time Sheet</u></h1>
+		<h2> Please enter your hours in the below table, according the
+			the row titles indicated on the right of the screen</h2>
+		<h2>When done, press the Submit button</h2>
+	</div>
+
+	<body>
+		<table id="example" class="display" style="width:100%">
+			<thead>
+				<tr>
+					<th>Day of the week</th>
+					<th>Hours worked</th>
+					<th>Sick</th>
+					<th>Vacation</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Monday </td>
+					<td><select size="1" id="row-1-Monday" name="row-1-Monday">
+							<option value="0" selected="selected">
+								0
+							</option>
+							<option value="1" selected="selected">
+								1
+							</option>
+							<option value="2" selected="selected">
+								2
+							</option>
+							<option value="3" selected="selected">
+								3
+							</option>
+							<option value="4" selected="selected">
+								4
+							</option>
+							<option value="5" selected="selected">
+								5
+							</option>
+							<option value="6" selected="selected">
+								6
+							</option>
+							<option value="7" selected="selected">
+								7
+							</option>
+							<option value="8" selected="selected">
+								8
+							</option>
+							<option value="9" selected="selected">
+								9
+							</option>
+							<option value="10" selected="selected">
+								10
+							</option>
+						</select></td>
+					<td><select size="1" id="row-1-Monday" name="row-1-Monday">
+							<option value="0" selected="selected">
+								0
+							</option>
+							<option value="1" selected="selected">
+								1
+							</option>
+							<option value="2" selected="selected">
+								2
+							</option>
+							<option value="3" selected="selected">
+								3
+							</option>
+							<option value="4" selected="selected">
+								4
+							</option>
+							<option value="5" selected="selected">
+								5
+							</option>
+							<option value="6" selected="selected">
+								6
+							</option>
+							<option value="7" selected="selected">
+								7
+							</option>
+							<option value="8" selected="selected">
+								8
+							</option>
+							<option value="9" selected="selected">
+								9
+							</option>
+							<option value="10" selected="selected">
+								10
+							</option>
+						</select></td>
+					<td><select size="1" id="row-1-Monday" name="row-1-Monday">
+							<option value="0" selected="selected">
+								0
+							</option>
+							<option value="1" selected="selected">
+								1
+							</option>
+							<option value="2" selected="selected">
+								2
+							</option>
+							<option value="3" selected="selected">
+								3
+							</option>
+							<option value="4" selected="selected">
+								4
+							</option>
+							<option value="5" selected="selected">
+								5
+							</option>
+							<option value="6" selected="selected">
+								6
+							</option>
+							<option value="7" selected="selected">
+								7
+							</option>
+							<option value="8" selected="selected">
+								8
+							</option>
+							<option value="9" selected="selected">
+								9
+							</option>
+							<option value="10" selected="selected">
+								10
+							</option>
+						</select></td>
+				</tr>
+				<tr>
+					<td>Tuesday</td>
+					<td><select size="1" id="row-1-Tuesday" name="row-1-Tuesday">
+							<option value="0" selected="selected">
+								0
+							</option>
+							<option value="1" selected="selected">
+								1
+							</option>
+							<option value="2" selected="selected">
+								2
+							</option>
+							<option value="3" selected="selected">
+								3
+							</option>
+							<option value="4" selected="selected">
+								4
+							</option>
+							<option value="5" selected="selected">
+								5
+							</option>
+							<option value="6" selected="selected">
+								6
+							</option>
+							<option value="7" selected="selected">
+								7
+							</option>
+							<option value="8" selected="selected">
+								8
+							</option>
+							<option value="9" selected="selected">
+								9
+							</option>
+							<option value="10" selected="selected">
+								10
+							</option>
+						</select></td>
+					<td><select size="1" id="row-1-Tuesday" name="row-1-Tuesday">
+							<option value="0" selected="selected">
+								0
+							</option>
+							<option value="1" selected="selected">
+								1
+							</option>
+							<option value="2" selected="selected">
+								2
+							</option>
+							<option value="3" selected="selected">
+								3
+							</option>
+							<option value="4" selected="selected">
+								4
+							</option>
+							<option value="5" selected="selected">
+								5
+							</option>
+							<option value="6" selected="selected">
+								6
+							</option>
+							<option value="7" selected="selected">
+								7
+							</option>
+							<option value="8" selected="selected">
+								8
+							</option>
+							<option value="9" selected="selected">
+								9
+							</option>
+							<option value="10" selected="selected">
+								10
+							</option>
+						</select></td>
+					<td><select size="1" id="row-1-Tuesday" name="row-1-Tuesday">
+							<option value="0" selected="selected">
+								0
+							</option>
+							<option value="1" selected="selected">
+								1
+							</option>
+							<option value="2" selected="selected">
+								2
+							</option>
+							<option value="3" selected="selected">
+								3
+							</option>
+							<option value="4" selected="selected">
+								4
+							</option>
+							<option value="5" selected="selected">
+								5
+							</option>
+							<option value="6" selected="selected">
+								6
+							</option>
+							<option value="7" selected="selected">
+								7
+							</option>
+							<option value="8" selected="selected">
+								8
+							</option>
+							<option value="9" selected="selected">
+								9
+							</option>
+							<option value="10" selected="selected">
+								10
+							</option>
+						</select></td>
+				</tr>
+				<tr>
+					<td>Wednesday</td>
+					<td><select size="1" id="row-1-Wednesday" name="row-1-Wednesday">
+							<option value="0" selected="selected">
+								0
+							</option>
+							<option value="1" selected="selected">
+								1
+							</option>
+							<option value="2" selected="selected">
+								2
+							</option>
+							<option value="3" selected="selected">
+								3
+							</option>
+							<option value="4" selected="selected">
+								4
+							</option>
+							<option value="5" selected="selected">
+								5
+							</option>
+							<option value="6" selected="selected">
+								6
+							</option>
+							<option value="7" selected="selected">
+								7
+							</option>
+							<option value="8" selected="selected">
+								8
+							</option>
+							<option value="9" selected="selected">
+								9
+							</option>
+							<option value="10" selected="selected">
+								10
+							</option>
+						</select></td>
+					<td><select size="1" id="row-1-Wednesday" name="row-1-Wednesday">
+							<option value="0" selected="selected">
+								0
+							</option>
+							<option value="1" selected="selected">
+								1
+							</option>
+							<option value="2" selected="selected">
+								2
+							</option>
+							<option value="3" selected="selected">
+								3
+							</option>
+							<option value="4" selected="selected">
+								4
+							</option>
+							<option value="5" selected="selected">
+								5
+							</option>
+							<option value="6" selected="selected">
+								6
+							</option>
+							<option value="7" selected="selected">
+								7
+							</option>
+							<option value="8" selected="selected">
+								8
+							</option>
+							<option value="9" selected="selected">
+								9
+							</option>
+							<option value="10" selected="selected">
+								10
+							</option>
+						</select></td>
+					<td><select size="1" id="row-1-Wednesday" name="row-1-Wednesday">
+							<option value="0" selected="selected">
+								0
+							</option>
+							<option value="1" selected="selected">
+								1
+							</option>
+							<option value="2" selected="selected">
+								2
+							</option>
+							<option value="3" selected="selected">
+								3
+							</option>
+							<option value="4" selected="selected">
+								4
+							</option>
+							<option value="5" selected="selected">
+								5
+							</option>
+							<option value="6" selected="selected">
+								6
+							</option>
+							<option value="7" selected="selected">
+								7
+							</option>
+							<option value="8" selected="selected">
+								8
+							</option>
+							<option value="9" selected="selected">
+								9
+							</option>
+							<option value="10" selected="selected">
+								10
+							</option>
+						</select></td>
+				<tr>
+					<td>Thursday</td>
+					<td><select size="1" id="row-1-Thursday" name="row-1-Thursday">
+							<option value="0" selected="selected">
+								0
+							</option>
+							<option value="1" selected="selected">
+								1
+							</option>
+							<option value="2" selected="selected">
+								2
+							</option>
+							<option value="3" selected="selected">
+								3
+							</option>
+							<option value="4" selected="selected">
+								4
+							</option>
+							<option value="5" selected="selected">
+								5
+							</option>
+							<option value="6" selected="selected">
+								6
+							</option>
+							<option value="7" selected="selected">
+								7
+							</option>
+							<option value="8" selected="selected">
+								8
+							</option>
+							<option value="9" selected="selected">
+								9
+							</option>
+							<option value="10" selected="selected">
+								10
+							</option>
+						</select></td>
+					<td><select size="1" id="row-1-Thursday" name="row-1-Thursday">
+							<option value="0" selected="selected">
+								0
+							</option>
+							<option value="1" selected="selected">
+								1
+							</option>
+							<option value="2" selected="selected">
+								2
+							</option>
+							<option value="3" selected="selected">
+								3
+							</option>
+							<option value="4" selected="selected">
+								4
+							</option>
+							<option value="5" selected="selected">
+								5
+							</option>
+							<option value="6" selected="selected">
+								6
+							</option>
+							<option value="7" selected="selected">
+								7
+							</option>
+							<option value="8" selected="selected">
+								8
+							</option>
+							<option value="9" selected="selected">
+								9
+							</option>
+							<option value="10" selected="selected">
+								10
+							</option>
+						</select></td>
+					<td><select size="1" id="row-1-Thursday" name="row-1-Thursday">
+							<option value="0" selected="selected">
+								0
+							</option>
+							<option value="1" selected="selected">
+								1
+							</option>
+							<option value="2" selected="selected">
+								2
+							</option>
+							<option value="3" selected="selected">
+								3
+							</option>
+							<option value="4" selected="selected">
+								4
+							</option>
+							<option value="5" selected="selected">
+								5
+							</option>
+							<option value="6" selected="selected">
+								6
+							</option>
+							<option value="7" selected="selected">
+								7
+							</option>
+							<option value="8" selected="selected">
+								8
+							</option>
+							<option value="9" selected="selected">
+								9
+							</option>
+							<option value="10" selected="selected">
+								10
+							</option>
+						</select></td>
+				<tr>
+					<td>Friday</td>
+					<td><select size="1" id="row-1-Friday" name="row-1-Friday">
+							<option value="0" selected="selected">
+								0
+							</option>
+							<option value="1" selected="selected">
+								1
+							</option>
+							<option value="2" selected="selected">
+								2
+							</option>
+							<option value="3" selected="selected">
+								3
+							</option>
+							<option value="4" selected="selected">
+								4
+							</option>
+							<option value="5" selected="selected">
+								5
+							</option>
+							<option value="6" selected="selected">
+								6
+							</option>
+							<option value="7" selected="selected">
+								7
+							</option>
+							<option value="8" selected="selected">
+								8
+							</option>
+							<option value="9" selected="selected">
+								9
+							</option>
+							<option value="10" selected="selected">
+								10
+							</option>
+						</select></td>
+					<td><select size="1" id="row-1-Friday" name="row-1-Friday">
+							<option value="0" selected="selected">
+								0
+							</option>
+							<option value="1" selected="selected">
+								1
+							</option>
+							<option value="2" selected="selected">
+								2
+							</option>
+							<option value="3" selected="selected">
+								3
+							</option>
+							<option value="4" selected="selected">
+								4
+							</option>
+							<option value="5" selected="selected">
+								5
+							</option>
+							<option value="6" selected="selected">
+								6
+							</option>
+							<option value="7" selected="selected">
+								7
+							</option>
+							<option value="8" selected="selected">
+								8
+							</option>
+							<option value="9" selected="selected">
+								9
+							</option>
+							<option value="10" selected="selected">
+								10
+							</option>
+						</select></td>
+					<td><select size="1" id="row-1-Friday" name="row-1-Friday">
+							<option value="0" selected="selected">
+								0
+							</option>
+							<option value="1" selected="selected">
+								1
+							</option>
+							<option value="2" selected="selected">
+								2
+							</option>
+							<option value="3" selected="selected">
+								3
+							</option>
+							<option value="4" selected="selected">
+								4
+							</option>
+							<option value="5" selected="selected">
+								5
+							</option>
+							<option value="6" selected="selected">
+								6
+							</option>
+							<option value="7" selected="selected">
+								7
+							</option>
+							<option value="8" selected="selected">
+								8
+							</option>
+							<option value="9" selected="selected">
+								9
+							</option>
+							<option value="10" selected="selected">
+								10
+							</option>
+						</select></td>
+				<tr>
+					<td>Saturday</td>
+					<td><select size="1" id="row-1-Saturday" name="row-1-Saturday">
+							<option value="0" selected="selected">
+								0
+							</option>
+							<option value="1" selected="selected">
+								1
+							</option>
+							<option value="2" selected="selected">
+								2
+							</option>
+							<option value="3" selected="selected">
+								3
+							</option>
+							<option value="4" selected="selected">
+								4
+							</option>
+							<option value="5" selected="selected">
+								5
+							</option>
+							<option value="6" selected="selected">
+								6
+							</option>
+							<option value="7" selected="selected">
+								7
+							</option>
+							<option value="8" selected="selected">
+								8
+							</option>
+							<option value="9" selected="selected">
+								9
+							</option>
+							<option value="10" selected="selected">
+								10
+							</option>
+						</select></td>
+					<td><select size="1" id="row-1-Saturday" name="row-1-Saturday">
+							<option value="0" selected="selected">
+								0
+							</option>
+							<option value="1" selected="selected">
+								1
+							</option>
+							<option value="2" selected="selected">
+								2
+							</option>
+							<option value="3" selected="selected">
+								3
+							</option>
+							<option value="4" selected="selected">
+								4
+							</option>
+							<option value="5" selected="selected">
+								5
+							</option>
+							<option value="6" selected="selected">
+								6
+							</option>
+							<option value="7" selected="selected">
+								7
+							</option>
+							<option value="8" selected="selected">
+								8
+							</option>
+							<option value="9" selected="selected">
+								9
+							</option>
+							<option value="10" selected="selected">
+								10
+							</option>
+						</select></td>
+					<td><select size="1" id="row-1-Saturday" name="row-1-Saturday">
+							<option value="0" selected="selected">
+								0
+							</option>
+							<option value="1" selected="selected">
+								1
+							</option>
+							<option value="2" selected="selected">
+								2
+							</option>
+							<option value="3" selected="selected">
+								3
+							</option>
+							<option value="4" selected="selected">
+								4
+							</option>
+							<option value="5" selected="selected">
+								5
+							</option>
+							<option value="6" selected="selected">
+								6
+							</option>
+							<option value="7" selected="selected">
+								7
+							</option>
+							<option value="8" selected="selected">
+								8
+							</option>
+							<option value="9" selected="selected">
+								9
+							</option>
+							<option value="10" selected="selected">
+								10
+							</option>
+						</select></td>
+				<tr>
+					<td>Sunday</td>
+					<td><select size="1" id="row-1-Sunday" name="row-1-Sunday">
+							<option value="0" selected="selected">
+								0
+							</option>
+							<option value="1" selected="selected">
+								1
+							</option>
+							<option value="2" selected="selected">
+								2
+							</option>
+							<option value="3" selected="selected">
+								3
+							</option>
+							<option value="4" selected="selected">
+								4
+							</option>
+							<option value="5" selected="selected">
+								5
+							</option>
+							<option value="6" selected="selected">
+								6
+							</option>
+							<option value="7" selected="selected">
+								7
+							</option>
+							<option value="8" selected="selected">
+								8
+							</option>
+							<option value="9" selected="selected">
+								9
+							</option>
+							<option value="10" selected="selected">
+								10
+							</option>
+						</select></td>
+					<td><select size="1" id="row-1-Sunday" name="row-1-Sunday">
+							<option value="0" selected="selected">
+								0
+							</option>
+							<option value="1" selected="selected">
+								1
+							</option>
+							<option value="2" selected="selected">
+								2
+							</option>
+							<option value="3" selected="selected">
+								3
+							</option>
+							<option value="4" selected="selected">
+								4
+							</option>
+							<option value="5" selected="selected">
+								5
+							</option>
+							<option value="6" selected="selected">
+								6
+							</option>
+							<option value="7" selected="selected">
+								7
+							</option>
+							<option value="8" selected="selected">
+								8
+							</option>
+							<option value="9" selected="selected">
+								9
+							</option>
+							<option value="10" selected="selected">
+								10
+							</option>
+						</select></td>
+					<td><select size="1" id="row-1-Sunday" name="row-1-Sunday">
+							<option value="0" selected="selected">
+								0
+							</option>
+							<option value="1" selected="selected">
+								1
+							</option>
+							<option value="2" selected="selected">
+								2
+							</option>
+							<option value="3" selected="selected">
+								3
+							</option>
+							<option value="4" selected="selected">
+								4
+							</option>
+							<option value="5" selected="selected">
+								5
+							</option>
+							<option value="6" selected="selected">
+								6
+							</option>
+							<option value="7" selected="selected">
+								7
+							</option>
+							<option value="8" selected="selected">
+								8
+							</option>
+							<option value="9" selected="selected">
+								9
+							</option>
+							<option value="10" selected="selected">
+								10
+							</option>
+						</select></td>
+					<button type="submit" value="Submit">Submit</button>
 </div>
