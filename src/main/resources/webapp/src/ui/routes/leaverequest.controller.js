@@ -21,7 +21,7 @@ angular
 				from: false,
 				to: false
 			};
-			$scope.format = 'MM-dd-yyyy';
+			$scope.format = 'yyyy-MM-dd';
 			$scope.dateOptions = {
 				dateDisabled: disableCalendarDays,
 				formatYear: 'yy',

@@ -1,7 +1,9 @@
 <div id="documents" ng-init="htmlLoaded()" ng-show="ready()">
-	<div id="documentsError" class="error"></div>
+	<div id="documentsError" class="error fixed"></div>
 	<div class="container">
-		<select class="interactable" ng-model="selectedDocument" ng-options="value as value.template.name for (key, value) in documents" required></select>
+		<select class="interactable" ng-model="selectedDocument" ng-options="value as value.template.name for (key, value) in documents" required>
+			<option value="" disabled selected>Select Template</option>
+		</select>
 		<div style="height:5vh; padding:1vh;">
 			<a ng-if="selectedDocument" class="interactable link" ng-href="selectedDocument.template.url">View Template</a>
 		</div>

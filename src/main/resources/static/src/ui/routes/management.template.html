@@ -1,5 +1,5 @@
-<div id="management" ng-init="htmlLoaded()" ng-show="ready()">
-	<div id="managementError" class="error"></div>
+<div id="management" class="grid-page" ng-init="htmlLoaded()" ng-show="ready()">
+	<div id="managementError" class="error fixed"></div>
 	<div class="container">
 		<h1 style="color:#67AB9F;"><ins>View Project</ins></h1>
 		<select class="interactable" ng-model="selectedProject" ng-options="project as project.projectName for project in projectList" ng-change="getProjectEmployees()">
@@ -18,7 +18,7 @@
 	</div>
 	<div class="container">
 		<h1 style="color:#67AB9F;"><ins>Create Project</ins></h1>
-		<input type="text" class="input-container" style="text-align:center; font-size:3vh;" placeholder="Project's Name" ng-model="newProject.name" required />
+		<input type="text" class="input-container" style="font-size:3vh;" placeholder="Project's Name" ng-model="newProject.name" required />
 		<select class="interactable" ng-model="newProject.manager" ng-options="employee as (employee.fristName + ' ' + employee.lastName + '(' + employee.userId + ')') for employee in employeeList" required>
 			<option value="" disabled selected>Select Manager</option>
 		</select>

@@ -9,7 +9,7 @@
 </head>
 
 <body ng-controller="ApplicationController" ng-init="htmlLoaded()" ng-show="ready()">
-		<label class="interactable link" ng-show="view.logout" ng-click="logout()" style="right:1vw; top:1vh;">Sign Out</label>
+		<label class="interactable link" ng-show="view.logout" ng-click="logout()" style="right:1vw; top:1vh; z-index:200;">Sign Out</label>
 		<div class="banner" ng-show="view.banner">
 			<img class="item-left" src="assets/images/logo.png">
 			<img class="item-right" ng-src="{{bannerImgPath}}">

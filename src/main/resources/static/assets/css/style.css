@@ -16,9 +16,24 @@ select {
 	background-size: 1.5vw 100%;
 	font-size: 2vh;
 }
-
 select:hover {
 	cursor: pointer;
+}
+
+.table th {
+	text-align: center;
+	font-size: 3vh;
+	background-color: #404040;
+	color: #FFFFFF;
+	-webkit-box-shadow: 3px 5px 10px grey;
+	-moz-box-shadow: 3px 5px 10px grey;
+	box-shadow: 3px 5px 10px grey;
+}
+.table td {
+	font-size: 2vh;
+}
+.table tr:nth-child(even) {
+    background-color: rgba(103, 171, 159, 0.25);
 }
 
 .tealBtn {
@@ -88,7 +103,6 @@ input {
 .uib-datepicker-popup.dropdown-menu {
     background-color: #67AB9F;
 }
-
 .uib-datepicker-popup.dropdown-menu .text-muted {
 	color: transparent;
 }
@@ -98,7 +112,6 @@ input {
     border: 1px solid black;
     border-radius: 24px;
 }
-
 .navigation .nav_tab label {
     font-size: 2vh;
 }
@@ -114,13 +127,7 @@ input {
 	font-size: 2vh;
 }
 
-#forgot .input-container {
-	text-align: left;
-	font-size: 2vh;
-	border: 1px solid #67ab9f;
-}
-
-#reset .input-container {
+.input-container {
 	text-align: left;
 	font-size: 2vh;
 	border: 1px solid #67ab9f;
@@ -132,7 +139,6 @@ input {
 	text-align: center;
 	font-weight: bold;
 }
-
 #home .dashboard .panel .overlay {
 	font-size: 3vh;
 	font-weight: bold;
@@ -144,86 +150,50 @@ input {
 	color: white;
 	font-size: 2vh;
 }
-
 #profile .infoContainer label {
     font-size: 2vh;
 }
-
 #profile hr {
 	border-bottom: 1px solid #67AB9F;
     border-top: none;
     border-left: none;
     border-right: none;
 }
-
 #profile .sectionTitle {
 	font-size: 3vh;
 	text-transform: uppercase;
 	color: #67AB9F;
 }
-
 #profile .right .infoContainer .title {
 	font-size: 2vh;
 	font-style: italic;
 }
-
 #profile .right .infoContainer .period {
 	font-size: 2vh;
 	color: #00D9D9;
 }
-
 #profile .right .infoContainer p {
 	font-size: 2vh;
 }
 
-#leaveRequest td, input {
-	font-size: 2vh;
+#leaveRequest .input-container {
+	text-align: center;
+	border: none;
 }
-
-#leaveRequest th {
-	font-size: 3vh;
-	background-color: #404040;
-	color: #FFFFFF;
-	-webkit-box-shadow: 3px 5px 10px grey;
-	-moz-box-shadow: 3px 5px 10px grey;
-	box-shadow: 3px 5px 10px grey;
-}
-
 #leaveRequest .default {
 	background-image: linear-gradient(rgb(230, 230, 230), rgb(255, 255, 255), rgb(230, 230, 230));
 }
-
 #leaveRequest .pending {
 	background-image: linear-gradient(rgb(233, 247, 110), rgb(244, 252, 210), rgb(233, 247, 110));
 }
-
 #leaveRequest .accepted {
 	background-image: linear-gradient(#67ab9f, lightblue, #67ab9f);
 }
-
 #leaveRequest .rejected {
 	background-image: linear-gradient(rgb(252, 103, 103), rgb(250, 180, 180), rgb(252, 103, 103));
 }
-
 #leaveRequest .canceled {
 	background-image: linear-gradient(rgb(83, 138, 255), rgb(163, 192, 255), rgb(83, 138, 255));
-}
-
-#workflow {
-	overflow: auto;
-}
-
-#workflow td, input {
-	font-size: 2vh;
-}
-
-#workflow th {
-	font-size: 3vh;
-	background-color: #404040;
-	color: #FFFFFF;
-	-webkit-box-shadow: 3px 5px 10px grey;
-	-moz-box-shadow: 3px 5px 10px grey;
-	box-shadow: 3px 5px 10px grey;
 }
 
 #management select {
@@ -234,12 +204,10 @@ input {
 	background-size: 2vh;
     background-position-x: 98%;
 }
-
 #management .display {
 	border: 1px solid #67ab9f;
 	box-shadow: 1vh 1vh rgba(128, 196, 196, 0.5);
 }
-
 #management .addBtn {
 	padding: 1vh;
     margin-left: 5vh;
@@ -248,12 +216,10 @@ input {
 }
 
 #management .input-container {
-	text-align: left;
-	font-size: 2vh;
-	border: 1px solid #67ab9f;
+	text-align: center;
+	font-size: 3vh;
 	border-radius: 12px;
 }
-
 #management .textbox {
     text-align: left;
 	font-size: 2vh;
@@ -268,18 +234,13 @@ input {
 	background-size: 2vh;
     background-position-x: 98%;
 }
-
 #documents .display {
 	border: 1px solid #67ab9f;
 	box-shadow: 1vh 1vh rgba(128, 196, 196, 0.5);
 }
-
 #documents .input-container {
-	border: 1px solid #67ab9f;
-	font-size: 2vh;
 	margin-bottom: 1vh;
 }
-
 #documents .link {
     font-size: 3vh;
 }
