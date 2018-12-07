@@ -1,6 +1,8 @@
 # employee-management-system
 This repo is for Employee Management System (as a part of CS5800 course project)
+
 [Product Page](http://cs5800.u-ems.com/#!/login)
+
 [Team Page](http://cs580.yusun.io/teams-fall2018/The_Ultimates/index.html#!/)
 
 ## Steps to setup project
