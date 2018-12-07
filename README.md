@@ -52,5 +52,4 @@ https://www.eclipse.org/downloads/packages/release/photon/r/eclipse-ide-java-ee-
 
 ## Notes
 
-- Developers, please read this before beginning development: [Coding Standars](https://github.com/Ultimates1/employee-management-system/wiki/Coding-Standards)
 - Check out [Wikis](https://github.com/Ultimates1/employee-management-system/wiki) for more documentation.
