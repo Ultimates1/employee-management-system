@@ -100,6 +100,21 @@ input {
     background-color: #67ab9f;
 }
 
+.toggle-panel {
+    background: transparent url('../images/toggle_right.png') left center/80% 80% no-repeat !important;
+    border: none;
+   	opacity: 0.5;
+}
+.toggle-panel:hover {
+    opacity: 1;
+}
+.toggle-panel.active {
+    background: transparent url('../images/toggle_left.png') left center/80% 80% no-repeat !important;
+}
+.toggle-panel.active:hover {
+    opacity: 1;
+}
+
 .uib-datepicker-popup.dropdown-menu {
     background-color: #67AB9F;
 }

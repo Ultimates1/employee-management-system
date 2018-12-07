@@ -127,24 +127,12 @@ img {
 
 .toggle-panel {
     position: fixed;
-    background: transparent url('../images/toggle_right.png') left center/80% 80% no-repeat !important;
-    border: none;
     width: 30px;
     height: 100px;
-    opacity: 0.5;
     z-index: 2;
     top: 0;
     bottom: 0;
     margin: auto 1vh;
-}
-.toggle-panel:hover {
-    opacity: 1;
-}
-.toggle-panel.active {
-    background: transparent url('../images/toggle_left.png') left center/80% 80% no-repeat !important;
-}
-.toggle-panel.active:hover {
-    opacity: 1;
 }
 
 .navigation {
